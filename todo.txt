@@ -1,0 +1,3 @@
+formularios, usar react hook formularios
+trabajar con zustand para los estados
+zod para validaciones?
