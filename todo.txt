@@ -5,17 +5,10 @@ react router para varias paginas
 
 https://www.bezkoder.com/react-hook-form-material-ui-validation/
 
- const goToRegister = () => {
-    console.log("first");
-    navigate("/", { replace: true });
-  };
+https://www.youtube.com/watch?v=tUbmbfpbFRY&ab_channel=codrr
 
-  <Box mt={3}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={goToRegister}
-            >
-              Registrarse
-            </Button>
-          </Box>
+https://www.youtube.com/watch?v=ayFYaEaI2ic&list=PLPl81lqbj-4J2xx_YAb97dpCG1rxl2wv-&index=6&ab_channel=Bluuweb
+
+https://bluuweb.dev/05-react/material-ui.html
+
+https://zenoo.github.io/mui-theme-creator/
