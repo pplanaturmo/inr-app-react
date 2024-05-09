@@ -28,13 +28,19 @@ export default function Login() {
 
   return (
     <>
-      <Paper sx={{ maxWidth: "lg", alignSelf: "center" }}>
-        <Box px={3} py={2}>
+      <Paper>
+        <Box
+          px={3}
+          py={2}
+          display={"flex"}
+          flexDirection={"column"}
+          alignContent={"center"}
+        >
           <Typography variant="h6" align="center" margin="dense">
             Iniciar Sesión
           </Typography>
           <Grid container spacing={2} display={"flex"} flexDirection={"column"}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={9} md={6}>
               <TextField
                 required
                 id="email"
