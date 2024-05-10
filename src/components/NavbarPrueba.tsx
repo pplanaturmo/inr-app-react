@@ -26,9 +26,8 @@ export default function Navbar() {
     ? "50%"
     : "0%";
 
-  const [drawerUserOpen, setDrawerUserOpen] = useState(false);
-
   const [drawerMenuOpen, setDrawerMenuOpen] = useState(false);
+  const [drawerUserOpen, setDrawerUserOpen] = useState(false);
 
   const toggleDrawerMenu = () => {
     setDrawerMenuOpen(!drawerMenuOpen);
@@ -37,26 +36,23 @@ export default function Navbar() {
     setDrawerUserOpen(!drawerUserOpen);
   };
   const handleMenuClick = () => {
+    // Handle menu item click
     setDrawerMenuOpen(false);
   };
-
   const handleUserClick = () => {
+    // Handle menu item click
     setDrawerUserOpen(false);
   };
-
   return (
     <>
       <div>Navbar</div>
       <AppBar position="static">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <CustomMenuIcon onClick={toggleDrawerMenu} />
-
           <div>Navbar</div>
           <CustomUserIcon onClick={toggleDrawerUser} />
-          {/* <CustomMenuIcon onClick={toggleDrawerUser} />
 
-          <div>Navbar</div>
-          <CustomUserIcon onClick={toggleDrawerMenu} /> */}
+          {/* Navbar normal aqui */}
         </Toolbar>
       </AppBar>
 
@@ -76,6 +72,7 @@ export default function Navbar() {
           onClick={toggleDrawerMenu}
           style={{ marginLeft: "auto" }}
         >
+          {/* <CustomCloseIcon onClick={toggleDrawer} /> */}
           <CancelIcon fontSize="large" style={{ color: "red" }} />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
@@ -107,8 +104,8 @@ export default function Navbar() {
       </Drawer>
       <Drawer
         variant="temporary"
-        anchor="right"
-        open={drawerUserOpen}
+        anchor="left"
+        open={drawerMenuOpen}
         onClose={toggleDrawerUser}
         ModalProps={{ keepMounted: true }}
         PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
@@ -135,7 +132,7 @@ export default function Navbar() {
             <ListItemIcon>
               <HomeIcon style={{ color: "black" }} />
             </ListItemIcon>
-            <ListItemText primary="Alertas" />
+            <ListItemText primary="Inicio" />
           </ListItemButton>
           <ListItemButton
             component={NavLink}
@@ -145,7 +142,7 @@ export default function Navbar() {
             <ListItemIcon>
               <BloodtypeIcon style={{ color: "firebrick" }} />
             </ListItemIcon>
-            <ListItemText primary="Actualizar datos" />
+            <ListItemText primary="Añadir medición" />
           </ListItemButton>
           {/* Aqui mas links? */}
         </List>
