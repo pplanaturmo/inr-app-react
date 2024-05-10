@@ -22,7 +22,7 @@ export default function RegisterMeasurement() {
 
   const navigate = useNavigate();
   const goToDosages = () => {
-    navigate("/dosages/pending", { replace: true });
+    navigate("/inr-app/dosages/pending", { replace: true });
   };
   return (
     <>

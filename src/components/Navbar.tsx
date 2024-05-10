@@ -32,7 +32,7 @@ export default function Navbar() {
   };
 
   const handleMenuClick = () => {
-    // Handle menu item click (e.g., navigate to a different page)
+    // Handle menu item click
     setDrawerOpen(false);
   };
 
