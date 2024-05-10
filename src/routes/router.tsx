@@ -4,6 +4,8 @@ import Register from "../pages/Authentication/Register";
 import LoginLayout from "../layouts/LoginLayout";
 import Home from "../pages/Home/Home";
 import MainLayout from "../layouts/MainLayout";
+import RegisterMeasurement from "../pages/Home/RegisterMeasurement";
+import PendingDosages from "../pages/Home/PendingDosages";
 
 export const router = createBrowserRouter([
   {
@@ -31,10 +33,11 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        index: true,
+        path: "/inr-app",
         element: <Home />,
       },
-      {},
+      { path: "/inr-app/measurement/add", element: <RegisterMeasurement /> },
+      { path: "/inr-app/dosages/pending", element: <PendingDosages /> },
     ],
   },
 ]);

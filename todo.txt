@@ -8,6 +8,10 @@ https://www.bezkoder.com/react-hook-form-material-ui-validation/
 https://www.youtube.com/watch?v=tUbmbfpbFRY&ab_channel=codrr
 
 https://www.youtube.com/watch?v=ayFYaEaI2ic&list=PLPl81lqbj-4J2xx_YAb97dpCG1rxl2wv-&index=6&ab_channel=Bluuweb
+https://bluuweb.dev/05-react/material-ui.html#minipractica-card-product
+
+https://reactjsexample.com/react-daypicker-a-versatile-and-customizable-date-picker-component-for-react/
+https://reactjsexample.com/simple-and-flexible-events-calendar-written-in-react/
 
 https://bluuweb.dev/05-react/material-ui.html
 
