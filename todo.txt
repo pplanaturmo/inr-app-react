@@ -2,7 +2,8 @@ formularios, usar react hook formularios
 trabajar con zustand para los estados
 zod para validaciones?
 react router para varias paginas
-
+https://www.baeldung.com/spring-security-login-react
+https://www.javaguides.net/2024/01/spring-boot-security-jwt-tutorial.html#:~:text=Spring%20Boot%20Security%20JWT%20Authentication%20and%20Authorization%20Tutorial,Repositories%20...%205%205.%20JWT%20Implementation%20Classes%20
 https://www.bezkoder.com/react-hook-form-material-ui-validation/
 
 https://www.youtube.com/watch?v=tUbmbfpbFRY&ab_channel=codrr

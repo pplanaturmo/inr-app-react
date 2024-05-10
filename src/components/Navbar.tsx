@@ -24,7 +24,7 @@ export default function Navbar() {
     ? "66%"
     : isTablet
     ? "50%"
-    : "0%";
+    : "20%";
 
   const [drawerUserOpen, setDrawerUserOpen] = useState(false);
 
