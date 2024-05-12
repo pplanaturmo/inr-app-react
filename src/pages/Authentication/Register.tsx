@@ -4,11 +4,19 @@ import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
 
-import { useForm, Controller } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  SubmitHandler,
+  FieldValues,
+} from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import { RegisterRequestSchema } from "../../schemas";
+import { RegisterRequest } from "../../interfaces";
+import { z } from "zod";
 
 export default function Register() {
   const {
@@ -18,14 +26,39 @@ export default function Register() {
     formState: { errors },
   } = useForm({});
 
-  const registerUser = () => {
+  const registerUser = async (data: FormData) => {
     console.log("registrado");
+    await onSubmit(data);
   };
 
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate("/", { replace: true });
   };
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      // Validate form data
+      const validatedData = RegisterRequestSchema.parse(
+        data as RegisterRequest
+      );
+
+      // If validation passes, proceed with form submission
+      const response = await registerUser(validatedData);
+      console.log(response);
+      // Handle successful registration
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error("Validation error:", error.errors);
+        // Handle validation error (e.g., display error messages to the user)
+      } else {
+        console.error("Registration failed:", error);
+        // Handle registration failure
+      }
+    }
+  };
+
+  // const onSubmit: SubmitHandler<RegisterRequest> = (data) => console.log(data);
 
   return (
     <>
@@ -41,8 +74,8 @@ export default function Register() {
           Registrarse en la aplicación
         </Typography>
 
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={12}>
+        <Grid container spacing={1} justifyContent="center" alignItems="center">
+          <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="name"
@@ -56,7 +89,7 @@ export default function Register() {
             />
             <ErrorMessage>{errors.name?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="surnames"
@@ -70,7 +103,7 @@ export default function Register() {
             />
             <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="email"
@@ -84,7 +117,7 @@ export default function Register() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="idCard"
@@ -98,7 +131,7 @@ export default function Register() {
             />
             <ErrorMessage>{errors.idCard?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="healthCard"
@@ -109,14 +142,28 @@ export default function Register() {
                 required:
                   "El número completo de la tarjeta sanitaria es obligatorio",
               })}
-              error={errors.email ? true : false}
+              error={errors.healthCard ? true : false}
             />
             <ErrorMessage>
               {errors.healthCard?.message?.toString()}
             </ErrorMessage>
           </Grid>
+          <Grid item xs={12} sm={9} md={7}>
+            <TextField
+              required
+              id="phone"
+              label="Teléfono"
+              fullWidth
+              margin="dense"
+              {...register("phone", {
+                required: "El número de teléfono es obligatorio",
+              })}
+              error={errors.phone ? true : false}
+            />
+            <ErrorMessage>{errors.phone?.message?.toString()}</ErrorMessage>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={9} md={7}>
           <TextField
             required
             id="password"
@@ -131,7 +178,7 @@ export default function Register() {
           />
           <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={9} md={7}>
           <TextField
             required
             id="confirmPassword"
@@ -149,7 +196,7 @@ export default function Register() {
           </ErrorMessage>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={9} md={7}>
           <FormControlLabel
             control={
               <Controller
@@ -198,7 +245,7 @@ export default function Register() {
             <Button
               variant="contained"
               color="secondary"
-              onClick={handleSubmit(registerUser)}
+              onClick={handleSubmit(onSubmit)}
             >
               Registrar usuario
             </Button>
