@@ -5,19 +5,19 @@ import useSessionUser from "../hooks/useSessionUser";
 import { useEffect } from "react";
 
 export default function MainLayout() {
-  const navigate = useNavigate();
-  const user = useSessionUser();
+  // const navigate = useNavigate();
+  // const user = useSessionUser();
 
-  useEffect(() => {
-    // if (user) {
-    //   navigate("/inr-app");
-    // } else {
-    //   navigate("/login");
-    // }
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
+  // useEffect(() => {
+  // if (user) {
+  //   navigate("/inr-app");
+  // } else {
+  //   navigate("/login");
+  // }
+  //   if (!user) {
+  //     navigate("/");
+  //   }
+  // }, [user, navigate]);
 
   return (
     <>

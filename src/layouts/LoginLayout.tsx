@@ -7,7 +7,8 @@ import { useEffect } from "react";
 
 export default function LoginLayout() {
   const navigate = useNavigate();
-  const user = useSessionUser();
+  // const user = useSessionUser();
+  const user = true;
 
   useEffect(() => {
     if (user) {

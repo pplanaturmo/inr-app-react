@@ -7,11 +7,16 @@ import MainLayout from "../layouts/MainLayout";
 import RegisterMeasurement from "../pages/home/RegisterMeasurement";
 import PendingDosages from "../pages/home/PendingDosages";
 import ProtectedRoute from "../components/ProtectedRoute";
+import LoggedRoute from "../components/LoggedRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoginLayout />,
+    element: (
+      <LoggedRoute>
+        <LoginLayout />
+      </LoggedRoute>
+    ),
     children: [
       {
         path: "/",
