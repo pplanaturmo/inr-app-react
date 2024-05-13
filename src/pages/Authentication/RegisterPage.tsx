@@ -1,64 +1,96 @@
 import Box from "@mui/material/Box/Box";
-import Button from "@mui/material/Button/Button";
 import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
-
-import {
-  useForm,
-  Controller,
-  SubmitHandler,
-  FieldValues,
-} from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import { RegisterRequestSchema } from "../../schemas";
-import { RegisterRequest } from "../../interfaces";
-import { z } from "zod";
 
-export default function Register() {
+import { registerUser } from "../../services/AuthenticationService";
+import Button from "@mui/material/Button/Button";
+
+export default function RegisterPage() {
+  // const {
+  //   register,
+  //   control,
+  //   handleSubmit,
+  //   formState: { errors },
+  //   watch,
+  // } = useForm({});
+
+  // const registerUser = async (data: FormData) => {
+  //   console.log("registrado");
+  //   await onSubmit(data);
+  // };
+
+  // const navigate = useNavigate();
+  // const goToLogin = () => {
+  //   navigate("/", { replace: true });
+  // };
+
+  // const onSubmit = async (data: RegisterRequest) => {
+  //   try {
+  //     const response = await registerUser(data);
+
+  //     console.log(response);
+  //     // Handle successful registration
+  //   } catch (error) {
+  //     // Handle registration error
+  //     console.error(error);
+  //   }
+  // };
+
+  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  //   try {
+
+  //     const validatedData = registerRequestSchema.parse(
+  //       data as RegisterRequest
+  //     );
+  //     const response = await registerUser(validatedData);
+  //     console.log(response);
+
+  //   } catch (error) {
+  //     if (error instanceof z.ZodError) {
+  //       console.error("Validation error:", error.errors);
+
+  //     } else {
+  //       console.error("Registration failed:", error);
+
+  //     }
+  //   }
+  // };
+
+  // const onSubmit: SubmitHandler<RegisterRequest> = (data) => console.log(data);
+
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({});
 
-  const registerUser = async (data: FormData) => {
-    console.log("registrado");
-    await onSubmit(data);
+  const password = watch("password");
+
+  const onSubmit = async (data) => {
+    // const validatedData = registerRequestSchema.parse(data);
+    try {
+      const response = await registerUser(data);
+
+      console.log(response);
+      // Handle successful registration
+    } catch (error) {
+      // Handle registration error
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate("/", { replace: true });
   };
-
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      // Validate form data
-      const validatedData = RegisterRequestSchema.parse(
-        data as RegisterRequest
-      );
-
-      // If validation passes, proceed with form submission
-      const response = await registerUser(validatedData);
-      console.log(response);
-      // Handle successful registration
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        console.error("Validation error:", error.errors);
-        // Handle validation error (e.g., display error messages to the user)
-      } else {
-        console.error("Registration failed:", error);
-        // Handle registration failure
-      }
-    }
-  };
-
-  // const onSubmit: SubmitHandler<RegisterRequest> = (data) => console.log(data);
 
   return (
     <>
@@ -82,7 +114,7 @@ export default function Register() {
               label="Nombre"
               fullWidth
               margin="dense"
-              {...register("fullname", {
+              {...register("name", {
                 required: "El nombre es obligatorio",
               })}
               error={errors.name ? true : false}
@@ -92,18 +124,18 @@ export default function Register() {
           <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
-              id="surnames"
+              id="surname"
               label="Apellidos"
               fullWidth
               margin="dense"
-              {...register("surnames", {
+              {...register("surname", {
                 required: "Los apellidos son obligatorios",
               })}
               error={errors.surnames ? true : false}
             />
             <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="email"
@@ -112,6 +144,10 @@ export default function Register() {
               margin="dense"
               {...register("email", {
                 required: "El correo electrónico es obligatorio",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Por favor ingrese un correo electrónico válido",
+                },
               })}
               error={errors.email ? true : false}
             />
@@ -173,12 +209,16 @@ export default function Register() {
             margin="dense"
             {...register("password", {
               required: "La contraseña es obligatoria",
+              minLength: {
+                value: 8,
+                message: "La contraseña debe tener al menos 8 caracteres",
+              },
             })}
             error={errors.password ? true : false}
           />
           <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
         </Grid>
-        <Grid item xs={12} sm={9} md={7}>
+        {/* <Grid item xs={12} sm={9} md={7}>
           <TextField
             required
             id="confirmPassword"
@@ -188,6 +228,25 @@ export default function Register() {
             margin="dense"
             {...register("confirmPassword", {
               required: "La confirmación de contraseña es obligatoria",
+            })}
+            error={errors.confirmPassword ? true : false}
+          />
+          <ErrorMessage>
+            {errors.confirmPassword?.message?.toString()}
+          </ErrorMessage>
+        </Grid> */}
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="confirmPassword"
+            label="Confirmar Contraseña"
+            type="password"
+            fullWidth
+            margin="dense"
+            {...register("confirmPassword", {
+              required: "La confirmación de contraseña es obligatoria",
+              validate: (value) =>
+                value === password || "Las contraseñas no coinciden",
             })}
             error={errors.confirmPassword ? true : false}
           />

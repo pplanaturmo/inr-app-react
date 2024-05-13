@@ -8,7 +8,7 @@ import Button from "@mui/material/Button/Button";
 import Paper from "@mui/material/Paper/Paper";
 import { useNavigate } from "react-router-dom";
 
-export default function RegisterMeasurement() {
+export default function RegisterMeasurementPage() {
   const {
     register,
     handleSubmit,

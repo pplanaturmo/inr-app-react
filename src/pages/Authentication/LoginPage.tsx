@@ -7,16 +7,30 @@ import Grid from "@mui/material/Grid/Grid";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../services/AuthenticationService";
 
-export default function Login() {
+export default function LoginPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({});
 
-  const logUser = () => {
-    console.log("registrado");
+  // const onSubmit = () => {
+  //   console.log("2");
+  // };
+
+  const onSubmit = async (data) => {
+    // const validatedData = registerRequestSchema.parse(data);
+    try {
+      const response = await authenticateUser(data);
+
+      console.log(response);
+      // Handle successful registration
+    } catch (error) {
+      // Handle registration error
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -85,7 +99,7 @@ export default function Login() {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleSubmit(logUser)}
+              onClick={handleSubmit(onSubmit)}
             >
               Conectarse
             </Button>

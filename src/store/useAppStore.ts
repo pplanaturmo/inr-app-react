@@ -1,20 +1,22 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { AuthenticatedUser, LoginRequest } from "../interfaces";
+import { UserResponse } from "../types";
 
-interface AppStateProps {
-  isAuthenticated: boolean;
-  user: AuthenticatedUser | null;
-  error: string | null;
-  login: (credentials: LoginRequest) => Promise<void>;
-  logout: () => void;
+interface AppState {
+  user: UserResponse | null;
 }
-
-export const useAppStore = create<AppStateProps>()(
+export const useAppStore = create<AppState>()(
   devtools(
-    persist((get, set, api) => ({}), {
-      name: "appStorage",
-      storage: createJSONStorage(() => sessionStorage),
-    })
+    persist(
+      (set) => ({
+        user: null,
+        setUser: (user: UserResponse) => set({ user }),
+        clearUser: () => set({ user: null }),
+      }),
+      {
+        name: "appStorage",
+        storage: createJSONStorage(() => sessionStorage),
+      }
+    )
   )
 );
