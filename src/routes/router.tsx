@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/authentication/LoginPage";
 import Register from "../pages/authentication/RegisterPage";
 import LoginLayout from "../layouts/LoginLayout";
@@ -7,6 +7,96 @@ import MainLayout from "../layouts/MainLayout";
 import RegisterMeasurement from "../pages/home/RegisterMeasurement";
 import PendingDosages from "../pages/home/PendingDosages";
 import ProtectedRoute from "../components/ProtectedRoute";
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
+  },
+  {},
+
+  {
+    path: "/inr-app",
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/inr-app",
+        element: <Home />,
+      },
+      { path: "/inr-app/measurement/add", element: <RegisterMeasurement /> },
+      { path: "/inr-app/dosages/pending", element: <PendingDosages /> },
+    ],
+  },
+]);
+
+// //primer tipo de prote
+// export const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <LoginLayout />,
+//     children: [
+//       {
+//         index: true,
+//         element: <Navigate to="/login" replace />,
+//       },
+//       {
+//         path: "login",
+//         element: <Login />,
+//       },
+//       {
+//         path: "/register",
+//         element: <Register />,
+//       },
+//     ],
+//   },
+//   {},
+//   {
+//     path: "/inr-app",
+//     element: <MainLayout />,
+//     children: [
+//       {
+//         path: "/inr-app",
+//         element: (
+//           <ProtectedRoute>
+//             <Home />
+//           </ProtectedRoute>
+//         ),
+//       },
+//       {
+//         path: "/inr-app/measurement/add",
+//         element: (
+//           <ProtectedRoute>
+//             <RegisterMeasurement />
+//           </ProtectedRoute>
+//         ),
+//       },
+//       {
+//         path: "/inr-app/dosages/pending",
+//         element: (
+//           <ProtectedRoute>
+//             <PendingDosages />
+//           </ProtectedRoute>
+//         ),
+//       },
+//     ],
+//   },
+// ]);
+
+//sin proteccion
 
 // export const router = createBrowserRouter([
 //   {
@@ -42,55 +132,3 @@ import ProtectedRoute from "../components/ProtectedRoute";
 //     ],
 //   },
 // ]);
-
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LoginLayout />,
-    children: [
-      {
-        index: true,
-        element: <Navigate to="/login" replace />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-    ],
-  },
-  {},
-  {
-    path: "/inr-app",
-    element: <MainLayout />,
-    children: [
-      {
-        path: "/inr-app",
-        element: (
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/inr-app/measurement/add",
-        element: (
-          <ProtectedRoute>
-            <RegisterMeasurement />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/inr-app/dosages/pending",
-        element: (
-          <ProtectedRoute>
-            <PendingDosages />
-          </ProtectedRoute>
-        ),
-      },
-    ],
-  },
-]);

@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   // If the user does not exist, redirect to the login page
-  return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate to="/" state={{ from: location }} replace />;
 };
 
 export default ProtectedRoute;

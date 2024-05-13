@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
 
-import { useForm, Controller, FieldValues } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
