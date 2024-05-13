@@ -1,12 +1,22 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { UserResponse } from "../types";
 
-interface AppState {}
+interface AppState {
+  user: UserResponse | null;
+}
 export const useAppStore = create<AppState>()(
   devtools(
-    persist((get, set, api) => ({}), {
-      name: "appStorage",
-      storage: createJSONStorage(() => sessionStorage),
-    })
+    persist(
+      (set) => ({
+        user: null,
+        setUser: (user: UserResponse) => set({ user }),
+        clearUser: () => set({ user: null }),
+      }),
+      {
+        name: "appStorage",
+        storage: createJSONStorage(() => sessionStorage),
+      }
+    )
   )
 );

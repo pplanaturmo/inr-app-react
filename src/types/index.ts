@@ -17,5 +17,16 @@ import {
 // };
 
 export type RegisterRequest = z.infer<typeof registerRequestSchema>;
+export type RegisterData = Pick<
+  RegisterRequest,
+  | "name"
+  | "surname"
+  | "email"
+  | "password"
+  | "phone"
+  | "healthCard"
+  | "idCard"
+  | "dataConsent"
+>;
 export type LoginRequest = z.infer<typeof loginRequestSchema>;
 export type UserResponse = z.infer<typeof userSchema>;

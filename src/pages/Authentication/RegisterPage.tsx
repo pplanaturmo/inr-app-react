@@ -4,23 +4,25 @@ import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, FieldValues } from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import { RegisterRequest } from "../../types";
+import { registerUser } from "../../services/AuthenticationService";
 
 export default function Register() {
-  const initialValues = {
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    idCard: "",
-    healthCard: "",
-    phone: "",
-    dataConsent: "",
-  };
+  // const initialValues = {
+  //   name: "",
+  //   surname: "",
+  //   email: "",
+  //   password: "",
+  //   idCard: "",
+  //   healthCard: "",
+  //   phone: "",
+  //   dataConsent: "",
+  // };
 
   const {
     register,
@@ -32,8 +34,16 @@ export default function Register() {
 
   const password = watch("password");
 
-  const registerUser = (data) => {
-    console.log(data);
+  const onSubmit = async (data: RegisterRequest) => {
+    try {
+      const response = await registerUser(data);
+
+      console.log(response);
+      // Handle successful registration
+    } catch (error) {
+      // Handle registration error
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -73,16 +83,16 @@ export default function Register() {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              id="surnames"
+              id="surname"
               label="Apellidos"
               fullWidth
               margin="dense"
-              {...register("surnames", {
+              {...register("surname", {
                 required: "Los apellidos son obligatorios",
               })}
-              error={errors.surnames ? true : false}
+              error={errors.surname ? true : false}
             />
-            <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
+            <ErrorMessage>{errors.surname?.message?.toString()}</ErrorMessage>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -218,7 +228,7 @@ export default function Register() {
             <Button
               variant="contained"
               color="secondary"
-              onClick={handleSubmit(registerUser)}
+              onClick={handleSubmit(onSubmit)}
             >
               Registrar usuario
             </Button>
