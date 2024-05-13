@@ -11,15 +11,29 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const initialValues = {
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    idCard: "",
+    healthCard: "",
+    phone: "",
+    dataConsent: "",
+  };
+
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({});
 
-  const registerUser = () => {
-    console.log("registrado");
+  const password = watch("password");
+
+  const registerUser = (data) => {
+    console.log(data);
   };
 
   const navigate = useNavigate();
@@ -79,6 +93,10 @@ export default function Register() {
               margin="dense"
               {...register("email", {
                 required: "El correo electrónico es obligatorio",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  message: "Por favor ingrese un correo electrónico válido",
+                },
               })}
               error={errors.email ? true : false}
             />
@@ -141,6 +159,8 @@ export default function Register() {
             margin="dense"
             {...register("confirmPassword", {
               required: "La confirmación de contraseña es obligatoria",
+              validate: (value) =>
+                value === password || "Las contraseñas no coinciden",
             })}
             error={errors.confirmPassword ? true : false}
           />
