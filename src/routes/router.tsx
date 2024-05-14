@@ -29,8 +29,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  {},
-
   {
     path: "/inr-app",
     element: (
@@ -46,6 +44,10 @@ export const router = createBrowserRouter([
       { path: "/inr-app/measurement/add", element: <RegisterMeasurement /> },
       { path: "/inr-app/dosages/pending", element: <PendingDosages /> },
     ],
+  },
+  {
+    path: "/measurement/",
+    element: <RegisterMeasurement />,
   },
 ]);
 

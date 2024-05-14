@@ -8,5 +8,6 @@ export const userSchema = z.object({
   department: z.number(),
   supervisor: z.number(),
   rangeInr: z.number(),
+  dosePattern: z.number(),
   roles: z.array(roleSchema),
 });
