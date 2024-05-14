@@ -12,6 +12,11 @@ import MenuItem from "@mui/material/MenuItem/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText/FormHelperText";
 import { MeasurementRequest, UserResponse } from "../../types";
 import { registerMeasurement } from "../../services/MeasurementService";
+import { useState } from "react";
+import Dialog from "@mui/material/Dialog/Dialog";
+import DialogTitle from "@mui/material/DialogTitle/DialogTitle";
+import DialogContent from "@mui/material/DialogContent/DialogContent";
+import DialogActions from "@mui/material/DialogActions/DialogActions";
 
 export default function RegisterMeasurementPage() {
   const {
@@ -32,11 +37,11 @@ export default function RegisterMeasurementPage() {
     try {
       const response = await registerMeasurement(data, user);
 
+      //TODO pasar el id de la medida??
+      handleConfirmationOpen();
       console.log("medida registrada");
       console.log(response);
-      goToDosages();
     } catch (error) {
-      // Handle registration error
       console.error(error);
     }
   };
@@ -45,19 +50,41 @@ export default function RegisterMeasurementPage() {
   const goToDosages = () => {
     navigate("/inr-app/dosages/pending", { replace: true });
   };
+  const goToCreateObservation = () => {
+    navigate("/inr-app/observation/create", { replace: true });
+  };
 
-  // const missingNecessaryParameters =
-  //   isFieldNull("rangeInr") || isFieldNull("dosePattern");
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
 
-  const missingNecessaryParameters = false;
+  const handleConfirmationOpen = () => {
+    setConfirmationOpen(true);
+  };
+
+  const handleConfirmationClose = () => {
+    setConfirmationOpen(false);
+  };
+
+  const handleYesConfirmation = () => {
+    goToCreateObservation();
+    handleConfirmationClose();
+  };
+
+  const handleNoConfirmation = () => {
+    goToDosages();
+    handleConfirmationClose();
+  };
+
+  const missingNecessaryParameters = isFieldNull("rangeInr");
+
+  // const missingNecessaryParameters = false; //temporal para probar
+
   if (missingNecessaryParameters) {
     return (
       <>
         <Box>
           <Typography variant="h6" align="center" margin="dense" width={2 / 3}>
-            Pida a su supervisor sanitario que le asigne la medida inicial y los
-            patrones de dosificación correspondientes antes de añadir
-            mediciónes.
+            Necesita tener asignado un nivel de medicación antes de introducir
+            una medida
           </Typography>
         </Box>
       </>
@@ -175,6 +202,20 @@ export default function RegisterMeasurementPage() {
             </Box>
           </Box>
         </Box>
+        <Dialog open={confirmationOpen} onClose={handleConfirmationClose}>
+          <DialogTitle>Confirm</DialogTitle>
+          <DialogContent>
+            ¿Quieres añadir una observación relacionada con esta medida?
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleNoConfirmation} color="primary">
+              No
+            </Button>
+            <Button onClick={handleYesConfirmation} color="primary" autoFocus>
+              Yes
+            </Button>
+          </DialogActions>
+        </Dialog>
       </>
     );
   }
