@@ -10,4 +10,6 @@ export const userSchema = z.object({
   rangeInr: z.number(),
   dosePattern: z.number(),
   roles: z.array(roleSchema),
+  accessToken: z.string(),
+  refreshToken: z.string(),
 });

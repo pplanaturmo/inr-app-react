@@ -74,7 +74,16 @@ export default function RegisterPage() {
 
   const password = watch("password");
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: {
+    name: string;
+    surname: string;
+    email: string;
+    password: string;
+    idCard: string;
+    healthCard: string;
+    phone: number;
+    dataConsent: string;
+  }) => {
     // const validatedData = registerRequestSchema.parse(data);
     try {
       const response = await registerUser(data);

@@ -4,6 +4,7 @@ import {
   registerRequestSchema,
   userSchema,
 } from "../schemas";
+import { measurementRequestSchema } from "../schemas/measurementSchema";
 
 // export type RegisterRequest = {
 //   name: string;
@@ -30,3 +31,4 @@ export type RegisterData = Pick<
 >;
 export type LoginRequest = z.infer<typeof loginRequestSchema>;
 export type UserResponse = z.infer<typeof userSchema>;
+export type MeasurementRequest = z.infer<typeof measurementRequestSchema>;
