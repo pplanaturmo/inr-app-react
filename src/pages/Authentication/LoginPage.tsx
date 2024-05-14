@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../services/AuthenticationService";
+import { useAppStore } from "../../store/useAppStore";
+import { userSchema } from "../../schemas";
 
 export default function LoginPage() {
   const {
@@ -16,6 +18,7 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm({});
 
+  const { setUser } = useAppStore();
   // const onSubmit = () => {
   //   console.log("2");
   // };
@@ -23,12 +26,10 @@ export default function LoginPage() {
   const onSubmit = async (data) => {
     // const validatedData = registerRequestSchema.parse(data);
     try {
-      const response = await authenticateUser(data);
-
-      console.log(response);
-      // Handle successful registration
+      const userData = await authenticateUser(data);
+      console.log(userData);
+      setUser(userData);
     } catch (error) {
-      // Handle registration error
       console.error(error);
     }
   };

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { LoginRequest, RegisterRequest } from "../types";
+import { LoginRequest, RegisterRequest, UserResponse } from "../types";
 
 export async function registerUser(data: RegisterRequest) {
   const baseUrl = "http://localhost:8080";
@@ -45,8 +45,6 @@ export async function authenticateUser(data: LoginRequest) {
     password: data.password,
   };
 
-  console.log(formData);
-
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -59,5 +57,8 @@ export async function authenticateUser(data: LoginRequest) {
     axiosConfig
   );
 
-  return response;
+  const userData: UserResponse = response.data;
+  console.log(userData);
+  return userData;
+  // return response;
 }

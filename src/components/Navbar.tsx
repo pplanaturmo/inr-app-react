@@ -8,6 +8,8 @@ import List from "@mui/material/List/List";
 
 import ListItemText from "@mui/material/ListItemText/ListItemText";
 import CancelIcon from "@mui/icons-material/Cancel";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import { NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
@@ -17,6 +19,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Typography } from "@mui/material";
 import CustomUserIcon from "./icon-components/CustomUserIcon";
+import { useAppStore } from "../store/useAppStore";
 
 export default function Navbar() {
   const isTablet = useMediaQuery("(max-width:900px)");
@@ -44,6 +47,10 @@ export default function Navbar() {
     setDrawerUserOpen(false);
   };
 
+  const { clearUser } = useAppStore();
+  const logoutUser = () => {
+    clearUser();
+  };
   return (
     <>
       <div>Navbar</div>
@@ -133,19 +140,15 @@ export default function Navbar() {
             onClick={handleUserClick}
           >
             <ListItemIcon>
-              <HomeIcon style={{ color: "black" }} />
+              <ManageAccountsIcon style={{ color: "black" }} />
             </ListItemIcon>
-            <ListItemText primary="Alertas" />
+            <ListItemText primary="Perfil" />
           </ListItemButton>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app/measurement/add"
-            onClick={handleUserClick}
-          >
+          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
             <ListItemIcon>
-              <BloodtypeIcon style={{ color: "firebrick" }} />
+              <LogoutIcon style={{ color: "darkslategrey" }} />
             </ListItemIcon>
-            <ListItemText primary="Actualizar datos" />
+            <ListItemText primary="Desconectar" />
           </ListItemButton>
           {/* Aqui mas links? */}
         </List>
