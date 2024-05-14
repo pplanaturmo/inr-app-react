@@ -182,7 +182,6 @@ import FormHelperText from "@mui/material/FormHelperText/FormHelperText";
 
 export default function RegisterMeasurementPage() {
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
@@ -269,7 +268,7 @@ export default function RegisterMeasurementPage() {
                     )}
                   />
                   <FormHelperText>
-                    {errors.measurementInteger?.message}
+                    {errors.measurementInteger?.message?.toString()}
                   </FormHelperText>
                 </FormControl>
               </Grid>
@@ -306,7 +305,7 @@ export default function RegisterMeasurementPage() {
                     )}
                   />
                   <FormHelperText>
-                    {errors.measurementDecimal?.message}
+                    {errors.measurementDecimal?.message?.toString()}
                   </FormHelperText>
                 </FormControl>
               </Grid>
