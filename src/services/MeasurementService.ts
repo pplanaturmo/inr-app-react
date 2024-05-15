@@ -13,8 +13,8 @@ export async function registerMeasurement(
   //   console.log(data.decimal);
   const measurementValue =
     data.measurementInteger + data.measurementDecimal / 10;
-
-  console.log(measurementValue);
+  const body = `{"value":${measurementValue}}`;
+  console.log(body);
 
   const axiosConfig = {
     headers: {
@@ -25,7 +25,7 @@ export async function registerMeasurement(
 
   const response = await axios.post(
     baseUrl + measurementUrl,
-    measurementValue,
+    body,
     axiosConfig
   );
 
