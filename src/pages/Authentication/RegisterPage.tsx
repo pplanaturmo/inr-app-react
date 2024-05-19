@@ -2,7 +2,7 @@ import Box from "@mui/material/Box/Box";
 import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../../services/AuthenticationService";
 import Button from "@mui/material/Button/Button";
+import { RegisterRequest } from "../../types";
 
 export default function RegisterPage() {
   // const {
@@ -74,7 +75,7 @@ export default function RegisterPage() {
 
   const password = watch("password");
 
-  const onSubmit = async (data: {
+  const onSubmit: SubmitHandler<RegisterRequest> = async (data: {
     name: string;
     surname: string;
     email: string;
@@ -111,12 +112,26 @@ export default function RegisterPage() {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography variant="h6" align="center" margin="dense">
+        <Typography
+          variant="h6"
+          align="center"
+          margin="dense"
+        >
           Registrarse en la aplicación
         </Typography>
 
-        <Grid container spacing={1} justifyContent="center" alignItems="center">
-          <Grid item xs={12} sm={9} md={7}>
+        <Grid
+          container
+          spacing={1}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+          >
             <TextField
               required
               id="name"
@@ -130,7 +145,12 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.name?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+          >
             <TextField
               required
               id="surname"
@@ -144,7 +164,11 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+          >
             <TextField
               required
               id="email"
@@ -162,7 +186,12 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+          >
             <TextField
               required
               id="idCard"
@@ -176,7 +205,12 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.idCard?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+          >
             <TextField
               required
               id="healthCard"
@@ -193,7 +227,12 @@ export default function RegisterPage() {
               {errors.healthCard?.message?.toString()}
             </ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+          >
             <TextField
               required
               id="phone"
@@ -208,7 +247,12 @@ export default function RegisterPage() {
             <ErrorMessage>{errors.phone?.message?.toString()}</ErrorMessage>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={9} md={7}>
+        <Grid
+          item
+          xs={12}
+          sm={9}
+          md={7}
+        >
           <TextField
             required
             id="password"
@@ -244,7 +288,11 @@ export default function RegisterPage() {
             {errors.confirmPassword?.message?.toString()}
           </ErrorMessage>
         </Grid> */}
-        <Grid item xs={12} sm={6}>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+        >
           <TextField
             required
             id="confirmPassword"
@@ -264,7 +312,12 @@ export default function RegisterPage() {
           </ErrorMessage>
         </Grid>
 
-        <Grid item xs={12} sm={9} md={7}>
+        <Grid
+          item
+          xs={12}
+          sm={9}
+          md={7}
+        >
           <FormControlLabel
             control={
               <Controller
@@ -276,7 +329,10 @@ export default function RegisterPage() {
             }
             label="Acepto que se procesen mis datos de forma anónima para fines estadísticos"
           />
-          <Grid item xs={12}>
+          <Grid
+            item
+            xs={12}
+          >
             <FormControlLabel
               control={
                 <Controller
@@ -308,7 +364,11 @@ export default function RegisterPage() {
           </Grid>
         </Grid>
 
-        <Box display="flex" flexDirection="row" justifyContent={"space-around"}>
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent={"space-around"}
+        >
           <Box mt={3}>
             <Button
               variant="contained"
@@ -319,7 +379,11 @@ export default function RegisterPage() {
             </Button>
           </Box>
           <Box mt={3}>
-            <Button variant="contained" color="success" onClick={goToLogin}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={goToLogin}
+            >
               Volver
             </Button>
           </Box>

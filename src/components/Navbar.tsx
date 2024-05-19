@@ -13,13 +13,14 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import { NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
-
+import Button from "@mui/material/Button/Button";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import HomeIcon from "@mui/icons-material/Home";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import CustomUserIcon from "./icon-components/CustomUserIcon";
 import { useAppStore } from "../store/useAppStore";
+import ProjectIcon from "./icon-components/ProjectIcon";
 
 export default function Navbar() {
   const isTablet = useMediaQuery("(max-width:900px)");
@@ -53,17 +54,94 @@ export default function Navbar() {
   };
   return (
     <>
-      <div>Navbar</div>
       <AppBar position="static">
+        <Grid
+          container
+          width={"100%"}
+        >
+          <Grid
+            item
+            xs={1}
+            sx={{ margin: "2rem" }}
+          >
+            <ProjectIcon
+              width="4rem"
+              height="4rem"
+            />
+          </Grid>
+
+          <Grid
+            item
+            xs={10}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Grid
+              container
+              justifyContent={"space-around"}
+              alignItems="center"
+              sx={{ marginTop: "1rem" }}
+            >
+              <Grid
+                item
+                sx={{ margin: "1rem" }}
+              >
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/user"
+                >
+                  User
+                </Button>
+              </Grid>
+              <Grid
+                item
+                sx={{ margin: "1rem" }}
+              >
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/professional"
+                >
+                  Professional
+                </Button>
+              </Grid>
+              <Grid
+                item
+                sx={{ margin: "1rem" }}
+              >
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/manager"
+                >
+                  Manager
+                </Button>
+              </Grid>
+              <Grid
+                item
+                sx={{ margin: "1rem" }}
+              >
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/admin"
+                >
+                  Admin
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <CustomMenuIcon onClick={toggleDrawerMenu} />
 
           <div>Navbar</div>
           <CustomUserIcon onClick={toggleDrawerUser} />
-          {/* <CustomMenuIcon onClick={toggleDrawerUser} />
-
-          <div>Navbar</div>
-          <CustomUserIcon onClick={toggleDrawerMenu} /> */}
         </Toolbar>
       </AppBar>
 
@@ -83,7 +161,10 @@ export default function Navbar() {
           onClick={toggleDrawerMenu}
           style={{ marginLeft: "auto" }}
         >
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
+          <CancelIcon
+            fontSize="large"
+            style={{ color: "red" }}
+          />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Navegación
@@ -128,7 +209,10 @@ export default function Navbar() {
           style={{ marginLeft: "auto" }}
         >
           {/* <CustomCloseIcon onClick={toggleDrawer} /> */}
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
+          <CancelIcon
+            fontSize="large"
+            style={{ color: "red" }}
+          />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Navegación
@@ -144,7 +228,11 @@ export default function Navbar() {
             </ListItemIcon>
             <ListItemText primary="Perfil" />
           </ListItemButton>
-          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
+          <ListItemButton
+            component={NavLink}
+            to="/"
+            onClick={logoutUser}
+          >
             <ListItemIcon>
               <LogoutIcon style={{ color: "darkslategrey" }} />
             </ListItemIcon>

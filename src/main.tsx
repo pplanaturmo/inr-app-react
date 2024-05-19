@@ -16,13 +16,20 @@ const themeOptions: ThemeOptions = {
       main: "#b8e6b5",
     },
     secondary: {
-      main: "#5de8dc",
+      main: "#6b4de8",
     },
     info: {
-      main: "#66b6dc",
+      main: "#ffa726",
     },
     background: {
       default: "#e4dfdf",
+      paper: "rgba(251,242,242,0.86)",
+    },
+    success: {
+      main: "#0ef11d",
+    },
+    warning: {
+      main: "#ffff00",
     },
   },
 };

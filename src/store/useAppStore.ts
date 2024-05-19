@@ -10,6 +10,7 @@ interface AppState {
   clearUser: () => void;
   isFieldNull: (fieldName: keyof UserResponse) => boolean;
 }
+
 export const useAppStore = create<AppState>()(
   devtools(
     persist(

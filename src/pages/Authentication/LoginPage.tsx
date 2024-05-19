@@ -4,27 +4,23 @@ import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../services/AuthenticationService";
 import { useAppStore } from "../../store/useAppStore";
-import { userSchema } from "../../schemas";
+import { LoginRequest } from "../../types";
 
 export default function LoginPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({});
+  } = useForm<LoginRequest>();
 
   const { setUser } = useAppStore();
-  // const onSubmit = () => {
-  //   console.log("2");
-  // };
 
-  const onSubmit = async (data) => {
-    // const validatedData = registerRequestSchema.parse(data);
+  const onSubmit: SubmitHandler<LoginRequest> = async (data) => {
     try {
       const userData = await authenticateUser(data);
       console.log(userData);
@@ -49,7 +45,11 @@ export default function LoginPage() {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography variant="h6" align="center" margin="dense">
+        <Typography
+          variant="h6"
+          align="center"
+          margin="dense"
+        >
           Iniciar Sesión
         </Typography>
         <Grid
@@ -67,6 +67,7 @@ export default function LoginPage() {
               label="Email"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("email", {
                 required: "El correo electrónico es obligatorio",
               })}
@@ -74,7 +75,7 @@ export default function LoginPage() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item>
             <TextField
               required
               id="password"
