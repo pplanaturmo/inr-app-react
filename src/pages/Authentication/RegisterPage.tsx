@@ -2,7 +2,12 @@ import Box from "@mui/material/Box/Box";
 import TextField from "@mui/material/TextField/TextField";
 import Typography from "@mui/material/Typography/Typography";
 import Grid from "@mui/material/Grid/Grid";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  SubmitHandler,
+  FieldValues,
+} from "react-hook-form";
 import FormControlLabel from "@mui/material/FormControlLabel/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
@@ -10,61 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../../services/AuthenticationService";
 import Button from "@mui/material/Button/Button";
-import { RegisterRequest } from "../../types";
+import { registerRequestSchema } from "../../schemas";
 
 export default function RegisterPage() {
-  // const {
-  //   register,
-  //   control,
-  //   handleSubmit,
-  //   formState: { errors },
-  //   watch,
-  // } = useForm({});
-
-  // const registerUser = async (data: FormData) => {
-  //   console.log("registrado");
-  //   await onSubmit(data);
-  // };
-
-  // const navigate = useNavigate();
-  // const goToLogin = () => {
-  //   navigate("/", { replace: true });
-  // };
-
-  // const onSubmit = async (data: RegisterRequest) => {
-  //   try {
-  //     const response = await registerUser(data);
-
-  //     console.log(response);
-  //     // Handle successful registration
-  //   } catch (error) {
-  //     // Handle registration error
-  //     console.error(error);
-  //   }
-  // };
-
-  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-  //   try {
-
-  //     const validatedData = registerRequestSchema.parse(
-  //       data as RegisterRequest
-  //     );
-  //     const response = await registerUser(validatedData);
-  //     console.log(response);
-
-  //   } catch (error) {
-  //     if (error instanceof z.ZodError) {
-  //       console.error("Validation error:", error.errors);
-
-  //     } else {
-  //       console.error("Registration failed:", error);
-
-  //     }
-  //   }
-  // };
-
-  // const onSubmit: SubmitHandler<RegisterRequest> = (data) => console.log(data);
-
   const {
     register,
     control,
@@ -75,19 +28,10 @@ export default function RegisterPage() {
 
   const password = watch("password");
 
-  const onSubmit: SubmitHandler<RegisterRequest> = async (data: {
-    name: string;
-    surname: string;
-    email: string;
-    password: string;
-    idCard: string;
-    healthCard: string;
-    phone: number;
-    dataConsent: string;
-  }) => {
-    // const validatedData = registerRequestSchema.parse(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const validatedData = registerRequestSchema.parse(data);
     try {
-      const response = await registerUser(data);
+      const response = await registerUser(validatedData);
 
       console.log(response);
       // Handle successful registration
