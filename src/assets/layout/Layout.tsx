@@ -26,9 +26,18 @@ export const Layout = () => {
       {isLogged() ? (
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
-          <Topbar handleDrawerOpen={handleDrawerOpen} open={open}/>
-          <Drawer open={open} handleDrawerClose={handleDrawerClose} />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}></Box>
+          <Topbar
+            handleDrawerOpen={handleDrawerOpen}
+            open={open}
+          />
+          <Drawer
+            open={open}
+            handleDrawerClose={handleDrawerClose}
+          />
+          <Box
+            component="main"
+            sx={{ flexGrow: 1, p: 3 }}
+          ></Box>
         </Box>
       ) : (
         <NavLink to={ROUTER_PATHS.login} />
