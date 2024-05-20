@@ -1,10 +1,13 @@
 import { z } from "zod";
 import {
+  dosageResponseSchema,
   loginRequestSchema,
+  measurementResponseSchema,
+  observationRequestSchema,
   registerRequestSchema,
   userSchema,
 } from "../schemas";
-import { measurementRequestSchema } from "../schemas/measurementSchema";
+import { measurementRequestSchema } from "../schemas/measurementRequestSchema";
 
 // export type RegisterRequest = {
 //   name: string;
@@ -32,3 +35,6 @@ export type RegisterData = Pick<
 export type LoginRequest = z.infer<typeof loginRequestSchema>;
 export type UserResponse = z.infer<typeof userSchema>;
 export type MeasurementRequest = z.infer<typeof measurementRequestSchema>;
+export type ObservationResponse = z.infer<typeof observationRequestSchema>;
+export type MeasurementResponse = z.infer<typeof measurementResponseSchema>;
+export type DosageResponse = z.infer<typeof dosageResponseSchema>;
