@@ -18,32 +18,37 @@ export default function Footer() {
     >
       <Grid container justifyContent="space-around" alignItems="space-around">
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom align="center">
             <Link>Contacta con nosotros</Link>
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="body1" gutterBottom>
-            Medical Clinic Name
+          <Typography
+            variant="body1"
+            gutterBottom
+            align="center"
+            sx={{ fontWeight: "900" }}
+          >
+            Sanguinius INR
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="body2" gutterBottom>
-            Address: 123 Medical Street, City, Country
+          <Typography variant="body2" gutterBottom align="center">
+            Dirección: 123 Calle Baal, Cartago, Delenda Est
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="body2" gutterBottom>
-            Phone: +123 456 7890
+          <Typography variant="body2" gutterBottom align="center">
+            Teléfono: +34 555 456 7890
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="body2" gutterBottom>
+          <Typography variant="body2" gutterBottom align="center">
             Email: sanguiniusInr@medicalclinic.com
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Typography variant="body2" gutterBottom>
+          <Typography variant="body2" gutterBottom align="center">
             Follow us on: Facebook | Twitter | Instagram
           </Typography>
         </Grid>
