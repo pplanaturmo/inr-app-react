@@ -72,6 +72,23 @@ export default function LoginPage() {
                 required: "El correo electrónico es obligatorio",
               })}
               error={errors.email ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -83,10 +100,28 @@ export default function LoginPage() {
               type="password"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("password", {
                 required: "La contraseña es obligatoria",
               })}
               error={errors.password ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
           </Grid>

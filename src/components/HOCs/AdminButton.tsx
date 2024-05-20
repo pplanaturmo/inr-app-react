@@ -1,5 +1,5 @@
-import useSessionUser from "../../hooks/useSessionUser";
 import { ReactNode } from "react";
+import useSessionUser from "../../hooks/useSessionUser";
 
 interface AdminButtonProps {
   children: ReactNode;
@@ -20,9 +20,3 @@ const AdminButton: React.FC<AdminButtonProps> = ({ children }) => {
 };
 
 export default AdminButton;
-
-//TODO poner en el back esto para devolver solo lista de nombres de rol
-.roles(user.getRoles().stream()
-.map(Role::getRole)
-.collect(Collectors.toList()))
-.build();

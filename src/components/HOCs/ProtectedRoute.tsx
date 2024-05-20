@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useSessionUser from "../hooks/useSessionUser";
+import useSessionUser from "../../hooks/useSessionUser";
 import { ReactNode } from "react";
 
 interface ProtectedRouteProps {
@@ -15,7 +15,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   if (user) {
     return <>{children}</>;
   } else {
-    return <Navigate to="/" state={{ from: location }} replace />;
+    return (
+      <Navigate
+        to="/"
+        state={{ from: location }}
+        replace
+      />
+    );
   }
 };
 

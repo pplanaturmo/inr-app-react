@@ -60,6 +60,7 @@ export default function RegisterPage() {
           variant="h6"
           align="center"
           margin="dense"
+          sx={{ backgroundColor: "white" }}
         >
           Registrarse en la aplicación
         </Typography>
@@ -82,10 +83,28 @@ export default function RegisterPage() {
               label="Nombre"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("name", {
                 required: "El nombre es obligatorio",
               })}
               error={errors.name ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.name?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -101,10 +120,28 @@ export default function RegisterPage() {
               label="Apellidos"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("surname", {
                 required: "Los apellidos son obligatorios",
               })}
               error={errors.surnames ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -119,6 +156,7 @@ export default function RegisterPage() {
               label="Email"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("email", {
                 required: "El correo electrónico es obligatorio",
                 pattern: {
@@ -127,6 +165,23 @@ export default function RegisterPage() {
                 },
               })}
               error={errors.email ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -142,10 +197,28 @@ export default function RegisterPage() {
               label="DNI"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("idCard", {
                 required: "El DNI es obligatorio",
               })}
               error={errors.email ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.idCard?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -161,11 +234,29 @@ export default function RegisterPage() {
               label="Tarjeta sanitaria"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("healthCard", {
                 required:
                   "El número completo de la tarjeta sanitaria es obligatorio",
               })}
               error={errors.healthCard ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>
               {errors.healthCard?.message?.toString()}
@@ -183,10 +274,28 @@ export default function RegisterPage() {
               label="Teléfono"
               fullWidth
               margin="dense"
+              sx={{ backgroundColor: "white" }}
               {...register("phone", {
                 required: "El número de teléfono es obligatorio",
               })}
               error={errors.phone ? true : false}
+              InputProps={{
+                sx: {
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "black",
+                  },
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  "&.Mui-focused": {
+                    color: "black",
+                  },
+                },
+              }}
             />
             <ErrorMessage>{errors.phone?.message?.toString()}</ErrorMessage>
           </Grid>
@@ -204,6 +313,7 @@ export default function RegisterPage() {
             type="password"
             fullWidth
             margin="dense"
+            sx={{ backgroundColor: "white" }}
             {...register("password", {
               required: "La contraseña es obligatoria",
               minLength: {
@@ -212,26 +322,27 @@ export default function RegisterPage() {
               },
             })}
             error={errors.password ? true : false}
+            InputProps={{
+              sx: {
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "black",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "black",
+                },
+              },
+            }}
+            InputLabelProps={{
+              sx: {
+                "&.Mui-focused": {
+                  color: "black",
+                },
+              },
+            }}
           />
           <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
         </Grid>
-        {/* <Grid item xs={12} sm={9} md={7}>
-          <TextField
-            required
-            id="confirmPassword"
-            label="Confirmar Contraseña"
-            type="password"
-            fullWidth
-            margin="dense"
-            {...register("confirmPassword", {
-              required: "La confirmación de contraseña es obligatoria",
-            })}
-            error={errors.confirmPassword ? true : false}
-          />
-          <ErrorMessage>
-            {errors.confirmPassword?.message?.toString()}
-          </ErrorMessage>
-        </Grid> */}
+
         <Grid
           item
           xs={12}
@@ -244,12 +355,30 @@ export default function RegisterPage() {
             type="password"
             fullWidth
             margin="dense"
+            sx={{ backgroundColor: "white" }}
             {...register("confirmPassword", {
               required: "La confirmación de contraseña es obligatoria",
               validate: (value) =>
                 value === password || "Las contraseñas no coinciden",
             })}
             error={errors.confirmPassword ? true : false}
+            InputProps={{
+              sx: {
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "black",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "black",
+                },
+              },
+            }}
+            InputLabelProps={{
+              sx: {
+                "&.Mui-focused": {
+                  color: "black",
+                },
+              },
+            }}
           />
           <ErrorMessage>
             {errors.confirmPassword?.message?.toString()}
@@ -268,7 +397,16 @@ export default function RegisterPage() {
                 name="consentData"
                 control={control}
                 defaultValue={false}
-                render={({ field }) => <Checkbox {...field} />}
+                render={({ field }) => (
+                  <Checkbox
+                    {...field}
+                    sx={{
+                      "&.Mui-checked": {
+                        color: "black",
+                      },
+                    }}
+                  />
+                )}
               />
             }
             label="Acepto que se procesen mis datos de forma anónima para fines estadísticos"
@@ -292,6 +430,11 @@ export default function RegisterPage() {
                       color="primary"
                       checked={value}
                       onChange={(e) => onChange(e.target.checked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: "black",
+                        },
+                      }}
                     />
                   )}
                 />
@@ -310,8 +453,9 @@ export default function RegisterPage() {
 
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           justifyContent={"space-around"}
+          alignContent={"center"}
         >
           <Box mt={3}>
             <Button
@@ -322,7 +466,11 @@ export default function RegisterPage() {
               Registrar usuario
             </Button>
           </Box>
-          <Box mt={3}>
+          <Box
+            mt={3}
+            display="flex"
+            justifyContent="center"
+          >
             <Button
               variant="contained"
               color="success"

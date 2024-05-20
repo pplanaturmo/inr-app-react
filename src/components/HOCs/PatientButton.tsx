@@ -1,22 +1,22 @@
 import useSessionUser from "../../hooks/useSessionUser";
 import { ReactNode } from "react";
 
-interface UserButtonProps {
+interface PatientButtonProps {
   children: ReactNode;
 }
 
-const UserButton: React.FC<UserButtonProps> = ({ children }) => {
+const PatientButton: React.FC<PatientButtonProps> = ({ children }) => {
   const user = useSessionUser();
   //TODO pasar los roles de usuario a array de strings
   //   const userRoles = user ? user.roles.map((role) => role.name) : [];
   //   const isAdmin = userRoles.includes("ADMIN");
-  const isUser = user?.roles.includes("USER");
+  const isPatient = user?.roles.includes("PATIENT");
 
-  if (isUser) {
+  if (isPatient) {
     return <>{children}</>;
   } else {
     return null;
   }
 };
 
-export default UserButton;
+export default PatientButton;
