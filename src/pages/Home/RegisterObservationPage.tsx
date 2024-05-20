@@ -11,6 +11,9 @@ import Button from "@mui/material/Button/Button";
 
 import { CauseEnum, CauseOptions } from "../../constants/CauseOptions";
 import { Dayjs } from "dayjs";
+import { DosageResponse, ObservationResponse } from "../../types";
+import ObservationCard from "../../components/cards/ObservationCard";
+import DosageCard from "../../components/cards/DosageCard";
 
 export default function RegisterObservationPage() {
   const [date, setDate] = useState<Dayjs | null | undefined>(null);
@@ -32,6 +35,18 @@ export default function RegisterObservationPage() {
     });
   };
 
+  const observation: ObservationResponse = {
+    date: new Date(),
+    cause: "causa",
+    description: "descripcion",
+  };
+
+  const dosage: DosageResponse = {
+    id: 1,
+    date: new Date(),
+    value: 0.25,
+    taken: true,
+  };
   return (
     <Box
       component="form"
@@ -89,6 +104,8 @@ export default function RegisterObservationPage() {
           Enviar observación
         </Button>
       </Box>
+      <ObservationCard observation={observation} />
+      <DosageCard dosage={dosage} />
     </Box>
   );
 }
