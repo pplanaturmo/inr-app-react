@@ -8,6 +8,8 @@ import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/router";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const themeOptions: ThemeOptions = {
   palette: {
@@ -33,7 +35,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline />
     <ThemeProvider theme={customTheme}>
-      <RouterProvider router={router} />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <RouterProvider router={router} />
+      </LocalizationProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -17,3 +17,9 @@ https://reactjsexample.com/simple-and-flexible-events-calendar-written-in-react/
 https://bluuweb.dev/05-react/material-ui.html
 
 https://zenoo.github.io/mui-theme-creator/
+
+
+https://reactrouter.com/en/main/hooks/use-matches#breadcrumbs
+https://stackoverflow.com/questions/75473709/react-router-v6-breadcrumbs-and-partially-matching-routes
+
+https://www.codementor.io/@anthonyelam/deploying-a-spring-boot-application-with-a-mysql-database-and-front-end-assets-on-aws-or-azure-28dybfehhh

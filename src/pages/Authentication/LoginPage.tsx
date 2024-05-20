@@ -23,11 +23,11 @@ export default function LoginPage() {
   //   console.log("2");
   // };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: { email: string; password: string }) => {
     // const validatedData = registerRequestSchema.parse(data);
     try {
       const userData = await authenticateUser(data);
-      console.log(userData);
+
       setUser(userData);
     } catch (error) {
       console.error(error);

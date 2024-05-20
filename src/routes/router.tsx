@@ -5,10 +5,11 @@ import Home from "../pages/Home/HomePage";
 import MainLayout from "../layouts/MainLayout";
 import RegisterMeasurement from "../pages/Home/RegisterMeasurementPage";
 import PendingDosages from "../pages/Home/PendingDosagesPage";
-import ProtectedRoute from "../components/ProtectedRoute";
-import LoggedRoute from "../components/LoggedRoute";
+import ProtectedRoute from "../components/HOCs/ProtectedRoute";
+import LoggedRoute from "../components/HOCs/LoggedRoute";
 import LoginPage from "../pages/Authentication/LoginPage";
 import RegisterPage from "../pages/Authentication/RegisterPage";
+import RegisterObservationPage from "../pages/Home/RegisterObservationPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,8 +47,12 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/measurement/",
+    path: "/add-measurement/",
     element: <RegisterMeasurement />,
+  },
+  {
+    path: "/add-observation",
+    element: <RegisterObservationPage />,
   },
 ]);
 

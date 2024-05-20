@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { roleSchema } from "./roleSchema";
 export const userSchema = z.object({
   id: z.number(),
   name: z.string(),
@@ -9,7 +8,7 @@ export const userSchema = z.object({
   supervisor: z.number(),
   rangeInr: z.number(),
   dosePattern: z.number(),
-  roles: z.array(roleSchema),
+  roles: z.array(z.string()),
   accessToken: z.string(),
   refreshToken: z.string(),
 });
