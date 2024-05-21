@@ -10,7 +10,7 @@ const AdminButton: React.FC<AdminButtonProps> = ({ children }) => {
   //TODO pasar los roles de usuario a array de strings
   //   const userRoles = user ? user.roles.map((role) => role.name) : [];
   //   const isAdmin = userRoles.includes("ADMIN");
-  const isAdmin = user?.roles.includes("ADMIN");
+  const isAdmin = user?.role === "ADMIN";
 
   if (isAdmin) {
     return <>{children}</>;

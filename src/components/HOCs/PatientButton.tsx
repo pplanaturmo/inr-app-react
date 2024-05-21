@@ -7,10 +7,7 @@ interface PatientButtonProps {
 
 const PatientButton: React.FC<PatientButtonProps> = ({ children }) => {
   const user = useSessionUser();
-  //TODO pasar los roles de usuario a array de strings
-  //   const userRoles = user ? user.roles.map((role) => role.name) : [];
-  //   const isAdmin = userRoles.includes("ADMIN");
-  const isPatient = user?.roles.includes("PATIENT");
+  const isPatient = user?.role === "PATIENT";
 
   if (isPatient) {
     return <>{children}</>;

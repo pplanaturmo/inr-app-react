@@ -8,20 +8,14 @@ interface ProtectedRouteProps {
 
 //TODO arreglar despues del testeo
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const user = useSessionUser();
-  //   const user = true;
+  // const user = useSessionUser();
+  const user = true;
   const location = useLocation();
 
   if (user) {
     return <>{children}</>;
   } else {
-    return (
-      <Navigate
-        to="/"
-        state={{ from: location }}
-        replace
-      />
-    );
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
 };
 

@@ -55,87 +55,66 @@ export default function Navbar() {
   return (
     <>
       <AppBar position="static">
-        <Grid
-          container
-          width={"100%"}
-        >
-          <Grid
-            item
-            xs={1}
-            sx={{ margin: "2rem" }}
-          >
-            <ProjectIcon
-              width="4rem"
-              height="4rem"
-            />
+        <Grid container width={"100%"}>
+          <Grid item sm={12} md={1} sx={{ margin: "2rem" }}>
+            <ProjectIcon width="4rem" height="4rem" />
           </Grid>
-
           <Grid
             item
-            xs={10}
-            justifyContent={"center"}
-            alignItems={"center"}
+            sm={12}
+            md={9}
+            display={"flex"}
+            flexWrap={"wrap"}
+            justifyContent={"space-around"}
+            alignItems="center"
+            sx={{ marginTop: "1rem" }}
           >
-            <Grid
-              container
-              justifyContent={"space-around"}
-              alignItems="center"
-              sx={{ marginTop: "1rem" }}
+            {/* <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
+            <Button
+              sx={{ margin: "1rem" }}
+              variant="contained"
+              color="secondary"
+              component={NavLink}
+              to="/user"
             >
-              <Grid
-                item
-                sx={{ margin: "1rem" }}
-              >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  component={NavLink}
-                  to="/user"
-                >
-                  User
-                </Button>
-              </Grid>
-              <Grid
-                item
-                sx={{ margin: "1rem" }}
-              >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  component={NavLink}
-                  to="/professional"
-                >
-                  Professional
-                </Button>
-              </Grid>
-              <Grid
-                item
-                sx={{ margin: "1rem" }}
-              >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  component={NavLink}
-                  to="/manager"
-                >
-                  Manager
-                </Button>
-              </Grid>
-              <Grid
-                item
-                sx={{ margin: "1rem" }}
-              >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  component={NavLink}
-                  to="/admin"
-                >
-                  Admin
-                </Button>
-              </Grid>
-            </Grid>
+              User
+            </Button>
+            {/* </Grid>
+            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
+            <Button
+              sx={{ margin: "1rem" }}
+              variant="contained"
+              color="secondary"
+              component={NavLink}
+              to="/professional"
+            >
+              Professional
+            </Button>
+            {/* </Grid>
+            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
+            <Button
+              sx={{ margin: "1rem" }}
+              variant="contained"
+              color="secondary"
+              component={NavLink}
+              to="/manager"
+            >
+              Manager
+            </Button>
+            {/* </Grid>
+            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
+            <Button
+              sx={{ margin: "1rem" }}
+              variant="contained"
+              color="secondary"
+              component={NavLink}
+              to="/admin"
+            >
+              Admin
+            </Button>
+            {/* </Grid> */}
           </Grid>
+          {/* </Grid> */}
         </Grid>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <CustomMenuIcon onClick={toggleDrawerMenu} />
@@ -161,10 +140,7 @@ export default function Navbar() {
           onClick={toggleDrawerMenu}
           style={{ marginLeft: "auto" }}
         >
-          <CancelIcon
-            fontSize="large"
-            style={{ color: "red" }}
-          />
+          <CancelIcon fontSize="large" style={{ color: "red" }} />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Navegación
@@ -209,10 +185,7 @@ export default function Navbar() {
           style={{ marginLeft: "auto" }}
         >
           {/* <CustomCloseIcon onClick={toggleDrawer} /> */}
-          <CancelIcon
-            fontSize="large"
-            style={{ color: "red" }}
-          />
+          <CancelIcon fontSize="large" style={{ color: "red" }} />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Navegación
@@ -228,11 +201,7 @@ export default function Navbar() {
             </ListItemIcon>
             <ListItemText primary="Perfil" />
           </ListItemButton>
-          <ListItemButton
-            component={NavLink}
-            to="/"
-            onClick={logoutUser}
-          >
+          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
             <ListItemIcon>
               <LogoutIcon style={{ color: "darkslategrey" }} />
             </ListItemIcon>

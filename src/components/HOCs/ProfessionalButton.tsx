@@ -9,10 +9,8 @@ const ProfessionalButton: React.FC<ProfessionalButtonProps> = ({
   children,
 }) => {
   const user = useSessionUser();
-  //TODO pasar los roles de usuario a array de strings
-  //   const userRoles = user ? user.roles.map((role) => role.name) : [];
-  //   const isAdmin = userRoles.includes("ADMIN");
-  const isProfessional = user?.roles.includes("PROFESSIONAL");
+
+  const isProfessional = user?.role === "PROFESSIONAL";
 
   if (isProfessional) {
     return <>{children}</>;
