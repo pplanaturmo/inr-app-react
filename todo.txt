@@ -176,3 +176,6 @@ server {
 sudo systemctl start nginx
 Summary
 This guide covers the essential steps to deploy your application stack using Docker on AWS. Each step can be further elaborated based on your specific requirements and AWS configurations. Feel free to ask for more detailed guidance on any of these steps!
+
+
+https://profy.dev/article/react-architecture-api-layer
