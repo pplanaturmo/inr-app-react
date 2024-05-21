@@ -17,7 +17,7 @@ import Button from "@mui/material/Button/Button";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import HomeIcon from "@mui/icons-material/Home";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Hidden, Typography, useTheme } from "@mui/material";
 import CustomUserIcon from "./icon-components/CustomUserIcon";
 import { useAppStore } from "../store/useAppStore";
 import ProjectIcon from "./icon-components/ProjectIcon";
@@ -48,6 +48,20 @@ export default function Navbar() {
   };
   const toggleDrawerUser = () => {
     setDrawerUserOpen(!drawerUserOpen);
+    setUser({
+      id: 1,
+      name: "string",
+      surname: "apellid ods",
+      email: "string",
+      department: 1,
+      supervisor: 1,
+      rangeInr: 1,
+      dosePattern: 1,
+      role: "string",
+      accessToken: "string",
+      refreshToken: "string",
+    });
+    console.log(user);
   };
   const handleMenuClick = () => {
     setDrawerMenuOpen(false);
@@ -57,24 +71,35 @@ export default function Navbar() {
     setDrawerUserOpen(false);
   };
 
-  const { clearUser } = useAppStore();
+  const { clearUser, user, setUser } = useAppStore();
   const logoutUser = () => {
     clearUser();
   };
   const theme = useTheme();
-
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("sm"));
+
+  console.log(user);
   return (
     <>
       <AppBar position="static">
-        <Grid container width={"100%"}>
-          <Grid item sm={12} md={1} sx={{ margin: "2rem" }}>
+        <Grid
+          container
+          width={"100%"}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid
+            item
+            sm={12}
+            md={1}
+            sx={{ margin: "2rem", display: "flex", justifyContent: "center" }}
+          >
             <ProjectIcon width="4rem" height="4rem" />
           </Grid>
           {isMediumScreen && (
             <Grid
               item
-              sm={12}
+              sm={10}
               md={9}
               display={"flex"}
               flexWrap={"wrap"}
@@ -167,17 +192,44 @@ export default function Navbar() {
             </Grid>
           )}
           {isMediumScreen && (
-            <Grid item md={1} textAlign={"center"} marginTop={3}>
+            <Grid
+              item
+              sm={1}
+              textAlign={"center"}
+              marginTop={3}
+              display={"flex"}
+              flexDirection={"column"}
+            >
               <CustomUserIcon onClick={toggleDrawerUser} />
+              <Typography overflow={"hidden"} noWrap>
+                {user?.name}
+              </Typography>
+              <Typography overflow={"hidden"} noWrap>
+                {user?.surname}
+              </Typography>
             </Grid>
           )}
         </Grid>
         {!isMediumScreen && (
           <Toolbar sx={{ justifyContent: "space-between" }}>
-            <CustomMenuIcon onClick={toggleDrawerMenu} />
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              margin={2}
+            >
+              <CustomMenuIcon onClick={toggleDrawerMenu} />
+              <Typography>Menu</Typography>
+            </Box>
 
-            <div>Navbar</div>
-            <CustomUserIcon onClick={toggleDrawerUser} />
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              margin={2}
+            >
+              <CustomUserIcon onClick={toggleDrawerUser} />
+            </Box>
           </Toolbar>
         )}
       </AppBar>
@@ -231,50 +283,48 @@ export default function Navbar() {
               {/* Aqui mas links? */}
             </List>
           </Drawer>
-          <Drawer
-            variant="temporary"
-            anchor="right"
-            open={drawerUserOpen}
-            onClose={toggleDrawerUser}
-            ModalProps={{ keepMounted: true }}
-            PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
-          >
-            {" "}
-            <IconButton
-              color="inherit"
-              aria-label="Close drawer"
-              onClick={toggleDrawerUser}
-              style={{ marginLeft: "auto" }}
-            >
-              <CancelIcon fontSize="large" style={{ color: "red" }} />
-            </IconButton>
-            <Typography
-              sx={{ fontSize: "1.5rem", textDecoration: "underline" }}
-            >
-              Navegación
-            </Typography>
-            <List>
-              <ListItemButton
-                component={NavLink}
-                to="/inr-app/"
-                onClick={handleUserClick}
-              >
-                <ListItemIcon>
-                  <ManageAccountsIcon style={{ color: "black" }} />
-                </ListItemIcon>
-                <ListItemText primary="Perfil" />
-              </ListItemButton>
-              <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
-                <ListItemIcon>
-                  <LogoutIcon style={{ color: "darkslategrey" }} />
-                </ListItemIcon>
-                <ListItemText primary="Desconectar" />
-              </ListItemButton>
-              {/* Aqui mas links? */}
-            </List>
-          </Drawer>
         </>
       )}
+      <Drawer
+        variant="temporary"
+        anchor="right"
+        open={drawerUserOpen}
+        onClose={toggleDrawerUser}
+        ModalProps={{ keepMounted: true }}
+        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
+      >
+        {" "}
+        <IconButton
+          color="inherit"
+          aria-label="Close drawer"
+          onClick={toggleDrawerUser}
+          style={{ marginLeft: "auto" }}
+        >
+          <CancelIcon fontSize="large" style={{ color: "red" }} />
+        </IconButton>
+        <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
+          Navegación
+        </Typography>
+        <List>
+          <ListItemButton
+            component={NavLink}
+            to="/inr-app/"
+            onClick={handleUserClick}
+          >
+            <ListItemIcon>
+              <ManageAccountsIcon style={{ color: "black" }} />
+            </ListItemIcon>
+            <ListItemText primary="Perfil" />
+          </ListItemButton>
+          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
+            <ListItemIcon>
+              <LogoutIcon style={{ color: "darkslategrey" }} />
+            </ListItemIcon>
+            <ListItemText primary="Desconectar" />
+          </ListItemButton>
+          {/* Aqui mas links? */}
+        </List>
+      </Drawer>
     </>
   );
 }
