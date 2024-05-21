@@ -26,7 +26,7 @@ export default function PendingDosagesPage() {
       {loading ? (
         <Spinner />
       ) : (
-        <Box>
+        <Box height={"40rem"}>
           <div>content</div>
         </Box>
       )}

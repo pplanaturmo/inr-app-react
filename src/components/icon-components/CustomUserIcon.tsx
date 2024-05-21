@@ -8,7 +8,7 @@ interface CustomUserIconProps {
 const CustomUserIcon: React.FC<CustomUserIconProps> = ({ onClick }) => {
   return (
     <IconButton onClick={onClick}>
-      <AccountCircleIcon style={{ color: "black" }} />
+      <AccountCircleIcon style={{ color: "black", fontSize: "2.5rem" }} />
     </IconButton>
   );
 };

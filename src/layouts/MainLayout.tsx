@@ -8,17 +8,6 @@ export default function MainLayout() {
   const theme = useTheme();
 
   return (
-    //   <>
-    //     <Navbar />
-    //     <Box sx={{ backgroundColor: theme.palette.background.default }}>
-    //       <div>Main Layout</div>
-
-    //       <Outlet />
-    //     </Box>
-    //     <Footer />
-    //   </>
-    // );
-
     <Box
       sx={{
         display: "flex",

@@ -17,10 +17,19 @@ import Button from "@mui/material/Button/Button";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import HomeIcon from "@mui/icons-material/Home";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useTheme } from "@mui/material";
 import CustomUserIcon from "./icon-components/CustomUserIcon";
 import { useAppStore } from "../store/useAppStore";
 import ProjectIcon from "./icon-components/ProjectIcon";
+import MedicationIcon from "@mui/icons-material/Medication";
+import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
+import NotesIcon from "@mui/icons-material/Notes";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import ReportProblemIcon from "@mui/icons-material/ReportProblem";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import WarningIcon from "@mui/icons-material/Warning";
 
 export default function Navbar() {
   const isTablet = useMediaQuery("(max-width:900px)");
@@ -52,6 +61,9 @@ export default function Navbar() {
   const logoutUser = () => {
     clearUser();
   };
+  const theme = useTheme();
+
+  const isMediumScreen = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <>
       <AppBar position="static">
@@ -59,157 +71,210 @@ export default function Navbar() {
           <Grid item sm={12} md={1} sx={{ margin: "2rem" }}>
             <ProjectIcon width="4rem" height="4rem" />
           </Grid>
-          <Grid
-            item
-            sm={12}
-            md={9}
-            display={"flex"}
-            flexWrap={"wrap"}
-            justifyContent={"space-around"}
-            alignItems="center"
-            sx={{ marginTop: "1rem" }}
-          >
-            {/* <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
-            <Button
-              sx={{ margin: "1rem" }}
-              variant="contained"
-              color="secondary"
-              component={NavLink}
-              to="/user"
+          {isMediumScreen && (
+            <Grid
+              item
+              sm={12}
+              md={9}
+              display={"flex"}
+              flexWrap={"wrap"}
+              justifyContent={"space-around"}
+              alignItems="center"
+              sx={{
+                marginTop: "1rem",
+              }}
             >
-              User
-            </Button>
-            {/* </Grid>
-            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
-            <Button
-              sx={{ margin: "1rem" }}
-              variant="contained"
-              color="secondary"
-              component={NavLink}
-              to="/professional"
-            >
-              Professional
-            </Button>
-            {/* </Grid>
-            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
-            <Button
-              sx={{ margin: "1rem" }}
-              variant="contained"
-              color="secondary"
-              component={NavLink}
-              to="/manager"
-            >
-              Manager
-            </Button>
-            {/* </Grid>
-            <Grid item sx={{ margin: "1rem" }} xs={12} sm={6} md={3}> */}
-            <Button
-              sx={{ margin: "1rem" }}
-              variant="contained"
-              color="secondary"
-              component={NavLink}
-              to="/admin"
-            >
-              Admin
-            </Button>
-            {/* </Grid> */}
-          </Grid>
-          {/* </Grid> */}
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/user"
+              >
+                <BloodtypeIcon sx={{ marginRight: "10px" }} />
+                Tomar medida
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/user"
+              >
+                <MedicationIcon sx={{ marginRight: "10px" }} />
+                Dosis
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/professional"
+              >
+                <NotesIcon sx={{ marginRight: "10px" }} />
+                Observaciones
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/professional"
+              >
+                <MedicalInformationIcon sx={{ marginRight: "10px" }} />
+                Historial
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/admin"
+              >
+                <ReportProblemIcon sx={{ marginRight: "10px" }} />
+                Alertas
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/manager"
+              >
+                <PeopleAltIcon sx={{ marginRight: "10px" }} />
+                Listado de pacientes
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/admin"
+              >
+                <PeopleOutlineIcon sx={{ marginRight: "10px" }} />
+                Listado de profesionales
+              </Button>
+              <Button
+                sx={{ margin: "1rem" }}
+                variant="contained"
+                color="secondary"
+                component={NavLink}
+                to="/admin"
+              >
+                <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
+                Admin
+              </Button>
+            </Grid>
+          )}
+          {isMediumScreen && (
+            <Grid item md={1} textAlign={"center"} marginTop={3}>
+              <CustomUserIcon onClick={toggleDrawerUser} />
+            </Grid>
+          )}
         </Grid>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <CustomMenuIcon onClick={toggleDrawerMenu} />
+        {!isMediumScreen && (
+          <Toolbar sx={{ justifyContent: "space-between" }}>
+            <CustomMenuIcon onClick={toggleDrawerMenu} />
 
-          <div>Navbar</div>
-          <CustomUserIcon onClick={toggleDrawerUser} />
-        </Toolbar>
+            <div>Navbar</div>
+            <CustomUserIcon onClick={toggleDrawerUser} />
+          </Toolbar>
+        )}
       </AppBar>
 
-      {/**Drawers for mobile version */}
-      <Drawer
-        variant="temporary"
-        anchor="left"
-        open={drawerMenuOpen}
-        onClose={toggleDrawerMenu}
-        ModalProps={{ keepMounted: true }}
-        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
-      >
-        {" "}
-        <IconButton
-          color="inherit"
-          aria-label="Close drawer"
-          onClick={toggleDrawerMenu}
-          style={{ marginLeft: "auto" }}
-        >
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
-        </IconButton>
-        <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
-          Navegación
-        </Typography>
-        <List>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app/"
-            onClick={handleMenuClick}
+      {/**Drawers mobile */}
+      {!isMediumScreen && (
+        <>
+          <Drawer
+            variant="temporary"
+            anchor="left"
+            open={drawerMenuOpen}
+            onClose={toggleDrawerMenu}
+            ModalProps={{ keepMounted: true }}
+            PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
           >
-            <ListItemIcon>
-              <HomeIcon style={{ color: "black" }} />
-            </ListItemIcon>
-            <ListItemText primary="Inicio" />
-          </ListItemButton>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app/measurement/add"
-            onClick={handleMenuClick}
+            {" "}
+            <IconButton
+              color="inherit"
+              aria-label="Close drawer"
+              onClick={toggleDrawerMenu}
+              style={{ marginLeft: "auto" }}
+            >
+              <CancelIcon fontSize="large" style={{ color: "red" }} />
+            </IconButton>
+            <Typography
+              sx={{ fontSize: "1.5rem", textDecoration: "underline" }}
+            >
+              Navegación
+            </Typography>
+            <List>
+              <ListItemButton
+                component={NavLink}
+                to="/inr-app/"
+                onClick={handleMenuClick}
+              >
+                <ListItemIcon>
+                  <HomeIcon style={{ color: "black" }} />
+                </ListItemIcon>
+                <ListItemText primary="Inicio" />
+              </ListItemButton>
+              <ListItemButton
+                component={NavLink}
+                to="/inr-app/measurement/add"
+                onClick={handleMenuClick}
+              >
+                <ListItemIcon>
+                  <BloodtypeIcon style={{ color: "firebrick" }} />
+                </ListItemIcon>
+                <ListItemText primary="Añadir medición" />
+              </ListItemButton>
+              {/* Aqui mas links? */}
+            </List>
+          </Drawer>
+          <Drawer
+            variant="temporary"
+            anchor="right"
+            open={drawerUserOpen}
+            onClose={toggleDrawerUser}
+            ModalProps={{ keepMounted: true }}
+            PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
           >
-            <ListItemIcon>
-              <BloodtypeIcon style={{ color: "firebrick" }} />
-            </ListItemIcon>
-            <ListItemText primary="Añadir medición" />
-          </ListItemButton>
-          {/* Aqui mas links? */}
-        </List>
-      </Drawer>
-      <Drawer
-        variant="temporary"
-        anchor="right"
-        open={drawerUserOpen}
-        onClose={toggleDrawerUser}
-        ModalProps={{ keepMounted: true }}
-        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
-      >
-        {" "}
-        <IconButton
-          color="inherit"
-          aria-label="Close drawer"
-          onClick={toggleDrawerUser}
-          style={{ marginLeft: "auto" }}
-        >
-          {/* <CustomCloseIcon onClick={toggleDrawer} /> */}
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
-        </IconButton>
-        <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
-          Navegación
-        </Typography>
-        <List>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app/"
-            onClick={handleUserClick}
-          >
-            <ListItemIcon>
-              <ManageAccountsIcon style={{ color: "black" }} />
-            </ListItemIcon>
-            <ListItemText primary="Perfil" />
-          </ListItemButton>
-          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
-            <ListItemIcon>
-              <LogoutIcon style={{ color: "darkslategrey" }} />
-            </ListItemIcon>
-            <ListItemText primary="Desconectar" />
-          </ListItemButton>
-          {/* Aqui mas links? */}
-        </List>
-      </Drawer>
+            {" "}
+            <IconButton
+              color="inherit"
+              aria-label="Close drawer"
+              onClick={toggleDrawerUser}
+              style={{ marginLeft: "auto" }}
+            >
+              <CancelIcon fontSize="large" style={{ color: "red" }} />
+            </IconButton>
+            <Typography
+              sx={{ fontSize: "1.5rem", textDecoration: "underline" }}
+            >
+              Navegación
+            </Typography>
+            <List>
+              <ListItemButton
+                component={NavLink}
+                to="/inr-app/"
+                onClick={handleUserClick}
+              >
+                <ListItemIcon>
+                  <ManageAccountsIcon style={{ color: "black" }} />
+                </ListItemIcon>
+                <ListItemText primary="Perfil" />
+              </ListItemButton>
+              <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
+                <ListItemIcon>
+                  <LogoutIcon style={{ color: "darkslategrey" }} />
+                </ListItemIcon>
+                <ListItemText primary="Desconectar" />
+              </ListItemButton>
+              {/* Aqui mas links? */}
+            </List>
+          </Drawer>
+        </>
+      )}
     </>
   );
 }
