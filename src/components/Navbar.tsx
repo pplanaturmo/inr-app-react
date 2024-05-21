@@ -30,6 +30,10 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import WarningIcon from "@mui/icons-material/Warning";
+import AdminButton from "./HOCs/AdminButton";
+import ManagerButton from "./HOCs/ManagerButton";
+import ProfessionalButton from "./HOCs/ProfessionalButton";
+import PatientButton from "./HOCs/PatientButton";
 
 export default function Navbar() {
   const isTablet = useMediaQuery("(max-width:900px)");
@@ -57,7 +61,7 @@ export default function Navbar() {
       supervisor: 1,
       rangeInr: 1,
       dosePattern: 1,
-      role: "string",
+      role: "PATIENT",
       accessToken: "string",
       refreshToken: "string",
     });
@@ -96,7 +100,7 @@ export default function Navbar() {
           >
             <ProjectIcon width="4rem" height="4rem" />
           </Grid>
-          {isMediumScreen && (
+          {/* {isMediumScreen && (
             <Grid
               item
               sm={10}
@@ -189,6 +193,117 @@ export default function Navbar() {
                 <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
                 Admin
               </Button>
+            </Grid>
+          )} */}
+          {isMediumScreen && (
+            <Grid
+              item
+              sm={10}
+              md={9}
+              display={"flex"}
+              flexWrap={"wrap"}
+              justifyContent={"space-around"}
+              alignItems="center"
+              sx={{
+                marginTop: "1rem",
+              }}
+            >
+              <PatientButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/user"
+                >
+                  <BloodtypeIcon sx={{ marginRight: "10px" }} />
+                  Tomar medida
+                </Button>
+              </PatientButton>
+              <PatientButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/user"
+                >
+                  <MedicationIcon sx={{ marginRight: "10px" }} />
+                  Dosis
+                </Button>
+              </PatientButton>
+              <PatientButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/professional"
+                >
+                  <NotesIcon sx={{ marginRight: "10px" }} />
+                  Observaciones
+                </Button>
+              </PatientButton>
+              <PatientButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/professional"
+                >
+                  <MedicalInformationIcon sx={{ marginRight: "10px" }} />
+                  Historial
+                </Button>
+              </PatientButton>
+              <ProfessionalButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/admin"
+                >
+                  <ReportProblemIcon sx={{ marginRight: "10px" }} />
+                  Alertas
+                </Button>
+              </ProfessionalButton>
+              <ProfessionalButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/manager"
+                >
+                  <PeopleAltIcon sx={{ marginRight: "10px" }} />
+                  Listado de pacientes
+                </Button>
+              </ProfessionalButton>
+              <ManagerButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/admin"
+                >
+                  <PeopleOutlineIcon sx={{ marginRight: "10px" }} />
+                  Listado de profesionales
+                </Button>
+              </ManagerButton>
+              <AdminButton>
+                <Button
+                  sx={{ margin: "1rem" }}
+                  variant="contained"
+                  color="secondary"
+                  component={NavLink}
+                  to="/admin"
+                >
+                  <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
+                  Admin
+                </Button>
+              </AdminButton>
             </Grid>
           )}
           {isMediumScreen && (
@@ -298,12 +413,12 @@ export default function Navbar() {
           color="inherit"
           aria-label="Close drawer"
           onClick={toggleDrawerUser}
-          style={{ marginLeft: "auto" }}
+          style={{ marginRight: "auto" }}
         >
           <CancelIcon fontSize="large" style={{ color: "red" }} />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
-          Navegación
+          Perfil
         </Typography>
         <List>
           <ListItemButton
