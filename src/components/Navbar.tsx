@@ -375,7 +375,7 @@ export default function Navbar() {
               Navegación
             </Typography>
             <List>
-              <ListItemButton
+              {/* <ListItemButton
                 component={NavLink}
                 to="/inr-app/"
                 onClick={handleMenuClick}
@@ -394,8 +394,173 @@ export default function Navbar() {
                   <BloodtypeIcon style={{ color: "firebrick" }} />
                 </ListItemIcon>
                 <ListItemText primary="Añadir medición" />
-              </ListItemButton>
+              </ListItemButton> */}
               {/* Aqui mas links? */}
+              <ListItemButton
+                component={NavLink}
+                to="/inr-app"
+                onClick={handleMenuClick}
+                sx={{
+                  margin: "1rem",
+                  variant: "contained",
+                  color: "secondary",
+                }}
+              >
+                <ListItemIcon>
+                  <HomeIcon style={{ color: "black" }} />
+                </ListItemIcon>
+                <ListItemText primary="Inicio" />
+              </ListItemButton>
+              <PatientButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/user"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <BloodtypeIcon
+                      sx={{ color: "firebrick", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Tomar medida" />
+                </ListItemButton>
+              </PatientButton>
+              <PatientButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/user"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <MedicationIcon
+                      sx={{ color: "darkgreen", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Dosis" />
+                </ListItemButton>
+              </PatientButton>
+              <PatientButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/professional"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <NotesIcon sx={{ color: "blue", marginRight: "10px" }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Observaciones" />
+                </ListItemButton>
+              </PatientButton>
+              <PatientButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/professional"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <MedicalInformationIcon
+                      sx={{ color: "yellowgreen", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Historial" />
+                </ListItemButton>
+              </PatientButton>
+              <ProfessionalButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/admin"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <ReportProblemIcon
+                      sx={{ color: "firebrick", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Alertas" />
+                </ListItemButton>
+              </ProfessionalButton>
+              <ProfessionalButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/manager"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <PeopleAltIcon
+                      sx={{ color: "firebrick", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Listado de pacientes" />
+                </ListItemButton>
+              </ProfessionalButton>
+              <ManagerButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/admin"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <PeopleOutlineIcon
+                      sx={{ color: "firebrick", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Listado de profesionales" />
+                </ListItemButton>
+              </ManagerButton>
+              <AdminButton>
+                <ListItemButton
+                  component={NavLink}
+                  to="/admin"
+                  onClick={handleMenuClick}
+                  sx={{
+                    margin: "1rem",
+                    variant: "contained",
+                    color: "secondary",
+                  }}
+                >
+                  <ListItemIcon>
+                    <AdminPanelSettingsIcon
+                      sx={{ color: "firebrick", marginRight: "10px" }}
+                    />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin" />
+                </ListItemButton>
+              </AdminButton>
             </List>
           </Drawer>
         </>
