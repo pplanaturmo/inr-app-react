@@ -6,20 +6,22 @@ export async function registerMeasurement(
   data: MeasurementRequest,
   user: UserResponse
 ) {
-  console.log(data);
-  const baseUrl = "http://localhost:8080";
-  const measurementUrl = "/api/measurement/" + user.id;
-  //   console.log(data.integer);
-  //   console.log(data.decimal);
+  // console.log(data);
+  const baseUrl = import.meta.env.VITE_BASE_API_URL;
+  const measurementUrl = "/measurement/create/" + user.id;
+
+  console.log(baseUrl + measurementUrl);
+
   const measurementValue =
     data.measurementInteger + data.measurementDecimal / 10;
-  const body = `{"value":${measurementValue}}`;
+  const body = JSON.stringify({ value: measurementValue });
+
   console.log(body);
 
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${user.accessToken}`,
+      // Authorization: `Bearer ${user.accessToken}`,
     },
   };
 

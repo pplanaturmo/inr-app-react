@@ -40,7 +40,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/user"
+            to="/inr-app/dosages/"
           >
             <MedicationIcon sx={{ marginRight: "10px" }} />
             Dosis
@@ -52,7 +52,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/user"
+            to="/inr-app/measurement/add"
           >
             <BloodtypeIcon sx={{ marginRight: "10px" }} />
             Tomar medida
