@@ -8,6 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
 import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import App from "./App";
+import { SnackbarProvider } from "./context/SnackbarContext";
 
 const themeOptions: ThemeOptions = {
   palette: {
