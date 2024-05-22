@@ -161,7 +161,7 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7}>
+          {/* <Grid item xs={12} sm={9} md={7}>
             <TextField
               required
               id="idCard"
@@ -259,7 +259,7 @@ export default function RegisterPage() {
               }}
             />
             <ErrorMessage>{errors.phone?.message?.toString()}</ErrorMessage>
-          </Grid>
+          </Grid> */}
         </Grid>
         <Grid item xs={12} sm={9} md={7}>
           <TextField

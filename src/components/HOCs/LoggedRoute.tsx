@@ -1,26 +1,21 @@
 import { Navigate, useLocation } from "react-router-dom";
 
 import { ReactNode } from "react";
-import useSessionUser from "../../hooks/useSessionUser";
+import { useAppStore } from "../../store/useAppStore";
 
 interface LoggedRouteProps {
   children: ReactNode;
 }
 
 const LoggedRoute: React.FC<LoggedRouteProps> = ({ children }) => {
-  const user = useSessionUser();
+  const { user } = useAppStore();
   const location = useLocation();
+  const isLogged = user ?? false;
 
-  if (!user) {
+  if (isLogged) {
     return <>{children}</>;
   } else {
-    return (
-      <Navigate
-        to="/inr-app"
-        state={{ from: location }}
-        replace
-      />
-    );
+    return <Navigate to="/inr-app" state={{ from: location }} replace />;
   }
 };
 

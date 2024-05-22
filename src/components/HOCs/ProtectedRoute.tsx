@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useSessionUser from "../../hooks/useSessionUser";
 import { ReactNode } from "react";
+import { useAppStore } from "../../store/useAppStore";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -8,10 +8,8 @@ interface ProtectedRouteProps {
 
 //TODO arreglar despues del testeo
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  // const user = useSessionUser();
-  const user = true;
+  const { user } = useAppStore();
   const location = useLocation();
-
   if (user) {
     return <>{children}</>;
   } else {

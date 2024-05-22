@@ -24,6 +24,7 @@ export default function LoginPage() {
     try {
       const userData = await authenticateUser(data);
       console.log(userData);
+
       setUser(userData);
     } catch (error) {
       console.error(error);
@@ -33,6 +34,25 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const goToRegister = () => {
     navigate("/register", { replace: true });
+  };
+
+  const goToHome = () => {
+    const userData = {
+      id: 1,
+      name: "string",
+      surname: "apellid ods",
+      email: "string",
+      department: 1,
+      supervisor: 1,
+      rangeInr: 1,
+      dosePattern: 1,
+      role: "PATIENT",
+      accessToken: "string",
+      refreshToken: "string",
+    };
+
+    setUser(userData);
+    navigate("/inr-app");
   };
 
   return (
@@ -45,11 +65,7 @@ export default function LoginPage() {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography
-          variant="h6"
-          align="center"
-          margin="dense"
-        >
+        <Typography variant="h6" align="center" margin="dense">
           Iniciar Sesión
         </Typography>
         <Grid
@@ -148,6 +164,11 @@ export default function LoginPage() {
               onClick={goToRegister}
             >
               Registrarse
+            </Button>
+          </Box>
+          <Box mt={3}>
+            <Button variant="contained" color="secondary" onClick={goToHome}>
+              test
             </Button>
           </Box>
         </Box>
