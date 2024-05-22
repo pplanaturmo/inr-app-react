@@ -16,6 +16,8 @@ import AdminButton from "../HOCs/AdminButton";
 import ManagerButton from "../HOCs/ManagerButton";
 import ProfessionalButton from "../HOCs/ProfessionalButton";
 import PatientButton from "../HOCs/PatientButton";
+import InfoIcon from "@mui/icons-material/Info";
+import Groups3Icon from "@mui/icons-material/Groups3";
 
 export default function MiddleButtons() {
   return (
@@ -40,8 +42,8 @@ export default function MiddleButtons() {
             component={NavLink}
             to="/user"
           >
-            <BloodtypeIcon sx={{ marginRight: "10px" }} />
-            Tomar medida
+            <MedicationIcon sx={{ marginRight: "10px" }} />
+            Dosis
           </Button>
         </PatientButton>
         <PatientButton>
@@ -52,8 +54,8 @@ export default function MiddleButtons() {
             component={NavLink}
             to="/user"
           >
-            <MedicationIcon sx={{ marginRight: "10px" }} />
-            Dosis
+            <BloodtypeIcon sx={{ marginRight: "10px" }} />
+            Tomar medida
           </Button>
         </PatientButton>
         <PatientButton>
@@ -76,10 +78,11 @@ export default function MiddleButtons() {
             component={NavLink}
             to="/professional"
           >
-            <MedicalInformationIcon sx={{ marginRight: "10px" }} />
-            Historial
+            <InfoIcon sx={{ marginRight: "10px" }} />
+            Información
           </Button>
         </PatientButton>
+
         <ProfessionalButton>
           <Button
             sx={{ margin: "1rem" }}
@@ -116,6 +119,30 @@ export default function MiddleButtons() {
             Listado de profesionales
           </Button>
         </ManagerButton>
+        <AdminButton>
+          <Button
+            sx={{ margin: "1rem" }}
+            variant="contained"
+            color="secondary"
+            component={NavLink}
+            to="/admin"
+          >
+            <Groups3Icon sx={{ marginRight: "10px" }} />
+            Listado total de usuarios
+          </Button>
+        </AdminButton>
+        <AdminButton>
+          <Button
+            sx={{ margin: "1rem" }}
+            variant="contained"
+            color="secondary"
+            component={NavLink}
+            to="/admin"
+          >
+            <MedicalInformationIcon sx={{ marginRight: "10px" }} />
+            Listado de departamentos
+          </Button>
+        </AdminButton>
         <AdminButton>
           <Button
             sx={{ margin: "1rem" }}

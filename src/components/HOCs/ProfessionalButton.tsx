@@ -10,7 +10,8 @@ const ProfessionalButton: React.FC<ProfessionalButtonProps> = ({
 }) => {
   const user = useSessionUser();
 
-  const isProfessional = user?.role === "PROFESSIONAL";
+  const isProfessional =
+    user?.role === "PROFESSIONAL" || user?.role === "MANAGER";
 
   if (isProfessional) {
     return <>{children}</>;

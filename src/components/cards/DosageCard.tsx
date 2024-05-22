@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { DosageResponse } from "../../types";
 import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
 
 interface DosageCardProps {
   dosage: DosageResponse;

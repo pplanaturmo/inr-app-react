@@ -46,7 +46,7 @@ export default function LoginPage() {
       supervisor: 1,
       rangeInr: 1,
       dosePattern: 1,
-      role: "PATIENT",
+      role: "ADMIN",
       accessToken: "string",
       refreshToken: "string",
     };

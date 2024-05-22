@@ -6,13 +6,19 @@ import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/Home/HomePage";
 import RegisterMeasurementPage from "./pages/Home/RegisterMeasurementPage";
 import PendingDosagesPage from "./pages/Home/PendingDosagesPage";
+import ProtectedRoute from "./components/HOCs/ProtectedRoute";
+import LoggedRoute from "./components/HOCs/LoggedRoute";
 
 function App() {
   return (
     <Routes>
       <Route
         path="/"
-        element={<LoginLayout />}
+        element={
+          <LoggedRoute>
+            <LoginLayout />
+          </LoggedRoute>
+        }
         children={
           <>
             <Route index element={<LoginPage />} />
@@ -22,7 +28,11 @@ function App() {
       />
       <Route
         path="/inr-app/*"
-        element={<MainLayout />}
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
         children={
           <>
             <Route index element={<HomePage />} />

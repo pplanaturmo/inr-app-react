@@ -27,6 +27,7 @@ https://stackoverflow.com/questions/75473709/react-router-v6-breadcrumbs-and-par
 https://www.codementor.io/@anthonyelam/deploying-a-spring-boot-application-with-a-mysql-database-and-front-end-assets-on-aws-or-azure-28dybfehhh
 https://medium.com/@thearaseng/building-a-full-stack-product-app-with-react-spring-boot-and-docker-compose-64a47f4a1080
 
+https://anticoagulado.info/2015/02/18/lugares-donde-ofrezcan-cursos-de-formacion-a-pacientes-en-autocontrol-del-tao-tratamiento-con-anticoagulantes-orales/
 
 para desplegar, serie larga videos 
 https://www.youtube.com/watch?v=YC7NBNICGeY

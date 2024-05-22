@@ -1,41 +1,17 @@
 import AppBar from "@mui/material/AppBar/AppBar";
-import IconButton from "@mui/material/IconButton/IconButton";
-import Toolbar from "@mui/material/Toolbar/Toolbar";
-import { useState } from "react";
-import CustomMenuIcon from "../icon-components/CustomMenuIcon";
-import Drawer from "@mui/material/Drawer/Drawer";
-import List from "@mui/material/List/List";
 
-import ListItemText from "@mui/material/ListItemText/ListItemText";
-import CancelIcon from "@mui/icons-material/Cancel";
-import LogoutIcon from "@mui/icons-material/Logout";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
-import { NavLink } from "react-router-dom";
-import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
-import Button from "@mui/material/Button/Button";
-import BloodtypeIcon from "@mui/icons-material/Bloodtype";
-import HomeIcon from "@mui/icons-material/Home";
+import { useState } from "react";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box, Grid, Typography, useTheme } from "@mui/material";
-import CustomUserIcon from "../icon-components/CustomUserIcon";
+import { Grid, useTheme } from "@mui/material";
 import { useAppStore } from "../../store/useAppStore";
 import ProjectIcon from "../icon-components/ProjectIcon";
-import MedicationIcon from "@mui/icons-material/Medication";
-import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
-import NotesIcon from "@mui/icons-material/Notes";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-import WarningIcon from "@mui/icons-material/Warning";
-import AdminButton from "../HOCs/AdminButton";
-import ManagerButton from "../HOCs/ManagerButton";
-import ProfessionalButton from "../HOCs/ProfessionalButton";
-import PatientButton from "../HOCs/PatientButton";
+
 import MenuDrawer from "./MenuDrawer";
 import MiddleButtons from "./MiddleButtons";
+import UserMenu from "./UserMenu";
+import MobileBar from "./MobileBar";
+import UserDrawer from "./UserDrawer";
 
 export default function Navbar() {
   const isTablet = useMediaQuery("(max-width:900px)");
@@ -89,142 +65,19 @@ export default function Navbar() {
           >
             <ProjectIcon width="4rem" height="4rem" />
           </Grid>
-          {/* {isMediumScreen && (
-            <Grid
-              item
-              sm={10}
-              md={9}
-              display={"flex"}
-              flexWrap={"wrap"}
-              justifyContent={"space-around"}
-              alignItems="center"
-              sx={{
-                marginTop: "1rem",
-              }}
-            >
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/user"
-              >
-                <BloodtypeIcon sx={{ marginRight: "10px" }} />
-                Tomar medida
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/user"
-              >
-                <MedicationIcon sx={{ marginRight: "10px" }} />
-                Dosis
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/professional"
-              >
-                <NotesIcon sx={{ marginRight: "10px" }} />
-                Observaciones
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/professional"
-              >
-                <MedicalInformationIcon sx={{ marginRight: "10px" }} />
-                Historial
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/admin"
-              >
-                <ReportProblemIcon sx={{ marginRight: "10px" }} />
-                Alertas
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/manager"
-              >
-                <PeopleAltIcon sx={{ marginRight: "10px" }} />
-                Listado de pacientes
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/admin"
-              >
-                <PeopleOutlineIcon sx={{ marginRight: "10px" }} />
-                Listado de profesionales
-              </Button>
-              <Button
-                sx={{ margin: "1rem" }}
-                variant="contained"
-                color="secondary"
-                component={NavLink}
-                to="/admin"
-              >
-                <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
-                Admin
-              </Button>
-            </Grid>
-          )} */}
+
           {isMediumScreen && <MiddleButtons></MiddleButtons>}
           {isMediumScreen && (
-            <Grid
-              item
-              sm={1}
-              textAlign={"center"}
-              marginTop={3}
-              display={"flex"}
-              flexDirection={"column"}
-            >
-              <CustomUserIcon onClick={toggleDrawerUser} />
-              <Typography overflow={"hidden"} noWrap>
-                {user?.name}
-              </Typography>
-              <Typography overflow={"hidden"} noWrap>
-                {user?.surname}
-              </Typography>
-            </Grid>
+            <UserMenu toggleDrawerUser={toggleDrawerUser} user={user} />
           )}
         </Grid>
         {!isMediumScreen && (
-          <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              alignItems={"center"}
-              margin={2}
-            >
-              <CustomMenuIcon onClick={toggleDrawerMenu} />
-              <Typography>Menu</Typography>
-            </Box>
-
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              alignItems={"center"}
-              margin={2}
-            >
-              <CustomUserIcon onClick={toggleDrawerUser} />
-            </Box>
-          </Toolbar>
+          <>
+            <MobileBar
+              toggleDrawerMenu={toggleDrawerMenu}
+              toggleDrawerUser={toggleDrawerUser}
+            />
+          </>
         )}
       </AppBar>
 
@@ -239,7 +92,14 @@ export default function Navbar() {
           />
         </>
       )}
-      <Drawer
+      <UserDrawer
+        drawerUserOpen={drawerUserOpen}
+        toggleDrawerUser={toggleDrawerUser}
+        drawerWidth={drawerWidth}
+        handleUserClick={handleUserClick}
+        logoutUser={logoutUser}
+      />
+      {/* <Drawer
         variant="temporary"
         anchor="right"
         open={drawerUserOpen}
@@ -276,9 +136,9 @@ export default function Navbar() {
             </ListItemIcon>
             <ListItemText primary="Desconectar" />
           </ListItemButton>
-          {/* Aqui mas links? */}
+          
         </List>
-      </Drawer>
+      </Drawer> */}
     </>
   );
 }

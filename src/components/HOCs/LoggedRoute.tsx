@@ -10,9 +10,8 @@ interface LoggedRouteProps {
 const LoggedRoute: React.FC<LoggedRouteProps> = ({ children }) => {
   const { user } = useAppStore();
   const location = useLocation();
-  const isLogged = user ?? false;
 
-  if (isLogged) {
+  if (!user) {
     return <>{children}</>;
   } else {
     return <Navigate to="/inr-app" state={{ from: location }} replace />;
