@@ -50,7 +50,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <CssBaseline />
     <ThemeProvider theme={customTheme}>
       <BrowserRouter>
-        <App />
+        <SnackbarProvider>
+          <App />
+        </SnackbarProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../services/AuthenticationService";
 import { useAppStore } from "../../store/useAppStore";
 import { LoginRequest } from "../../types";
+import Snackbar from "@mui/material/Snackbar/Snackbar";
+import { useSnackbar } from "../../context/SnackbarContext";
 
 export default function LoginPage() {
   const {
@@ -34,6 +36,13 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const goToRegister = () => {
     navigate("/register", { replace: true });
+  };
+
+  const { openSnackbar, closeSnackbar, snackbarMessage, snackbarSeverity } =
+    useSnackbar();
+
+  const handleClick = () => {
+    openSnackbar("Hello, world!", "success");
   };
 
   const goToHome = () => {
@@ -170,6 +179,16 @@ export default function LoginPage() {
             <Button variant="contained" color="secondary" onClick={goToHome}>
               test
             </Button>
+          </Box>
+          <Box>
+            <Button onClick={handleClick}>Show Snackbar</Button>
+            <Snackbar
+              open={Boolean(snackbarMessage)}
+              autoHideDuration={6000}
+              onClose={closeSnackbar}
+              message={snackbarMessage}
+              severity={snackbarSeverity}
+            />
           </Box>
         </Box>
       </Box>
