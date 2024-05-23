@@ -20,7 +20,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
     <Card
       variant="outlined"
       sx={{
-        backgroundColor: "secondary.main",
+        backgroundColor: "warning.main",
         color: "white",
       }}
     >
@@ -32,7 +32,11 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
           justifyContent: "center",
         }}
       >
-        <Typography variant="h6" gutterBottom sx={{ fontSize: "1.5rem" }}>
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{ fontSize: "1.5rem" }}
+        >
           Siguiente medida:
         </Typography>
         <Typography

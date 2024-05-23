@@ -11,6 +11,7 @@ import RegisterObservationPage from "../pages/patient/RegisterObservationPage";
 import LoggedRoute from "../components/HOCs/WithSession";
 import ProtectedRoute from "../components/HOCs/WithAuth";
 import InformationPage from "../pages/patient/InformationPage";
+import WithPatient from "../components/HOCs/WithPatient";
 
 export const router = createBrowserRouter([
   {
@@ -43,60 +44,99 @@ export const router = createBrowserRouter([
         index: true,
         element: <PendingDosages />,
       },
-      { path: "/inr-app/dosages/", element: <PendingDosages /> },
-      { path: "/inr-app/measurement/add", element: <RegisterMeasurement /> },
+
+      {
+        path: "/inr-app/dosages/",
+        element: (
+          <WithPatient>
+            <PendingDosages />
+          </WithPatient>
+        ),
+      },
+      {
+        path: "/inr-app/measurement/add",
+        element: (
+          <WithPatient>
+            <RegisterMeasurement />
+          </WithPatient>
+        ),
+      },
 
       {
         path: "/inr-app/observation/add",
-        element: <RegisterObservationPage />,
+        element: (
+          <WithPatient>
+            <RegisterObservationPage />
+          </WithPatient>
+        ),
       },
       {
         path: "/inr-app/information",
-        element: <InformationPage />,
+
+        element: (
+          <WithPatient>
+            <InformationPage />,
+          </WithPatient>
+        ),
       },
     ],
   },
-  // {
-  //   path: "/add-measurement/",
-  //   element: <RegisterMeasurement />,
-  // },
-  // {
-  //   path: "/add-observation",
-  //   element: <RegisterObservationPage />,
-  // },
 ]);
 
-// element: (
-//   <ProtectedRoute>
-//     <MainLayout />
-//   </ProtectedRoute>
-// ),
-// children: [
+// export const router = createBrowserRouter([
 //   {
-//     path: "patient",
+//     path: "/",
 //     element: (
-//       <PatientRoute>
-//         <PatientLayout />
-//       </PatientRoute>
+//       <LoggedRoute>
+//         <LoginLayout />
+//       </LoggedRoute>
 //     ),
 //     children: [
-//       { index: true, element: <PatientDashboard /> },
-//       { path: "dosages", element: <PendingDosages /> },
-//       { path: "measurement/add", element: <RegisterMeasurement /> },
-//       { path: "observation/add", element: <RegisterObservationPage /> },
-//       { path: "information", element: <InformationPage /> },
+//       {
+//         path: "/",
+//         element: <LoginPage />,
+//       },
+//       {
+//         path: "/register",
+//         element: <RegisterPage />,
+//       },
 //     ],
 //   },
 //   {
-//     path: "doctor",
+//     path: "/inr-app",
 //     element: (
-//       <DoctorRoute>
-//         <DoctorLayout />
-//       </DoctorRoute>
+//       <ProtectedRoute>
+//         <MainLayout />
+//       </ProtectedRoute>
 //     ),
 //     children: [
-//       { index: true, element: <DoctorDashboard /> },
-//       // Add doctor-specific routes here
+//       {
+//         path: "patient",
+//         element: (
+//           <PatientRoute>
+//             <PatientLayout />
+//           </PatientRoute>
+//         ),
+//         children: [
+//           { index: true, element: <PatientDashboard /> },
+//           { path: "dosages", element: <PendingDosages /> },
+//           { path: "measurement/add", element: <RegisterMeasurement /> },
+//           { path: "observation/add", element: <RegisterObservationPage /> },
+//           { path: "information", element: <InformationPage /> },
+//         ],
+//       },
+//       {
+//         path: "doctor",
+//         element: (
+//           <DoctorRoute>
+//             <DoctorLayout />
+//           </DoctorRoute>
+//         ),
+//         children: [
+//           { index: true, element: <DoctorDashboard /> },
+//           // Add doctor-specific routes here
+//         ],
+//       },
 //     ],
 //   },
-// ],
+// ]);
