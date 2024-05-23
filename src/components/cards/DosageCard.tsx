@@ -1,17 +1,20 @@
 import React from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
-import { DosageResponse } from "../../types";
+import { Dosage } from "../../types";
 import dayjs from "dayjs";
+import axios from "axios";
 
 interface DosageCardProps {
-  dosage: DosageResponse;
+  dosage: Dosage;
+  setLoading: (isLoading: boolean) => void;
 }
 
-const DosageCard: React.FC<DosageCardProps> = ({ dosage }) => {
+const DosageCard: React.FC<DosageCardProps> = ({ dosage, setLoading }) => {
   const isTaken = dosage.taken;
   const today = dayjs();
   const isToday = dayjs(dosage.date).isSame(today, "day");
   const backgroundColor = isTaken ? "primary.main" : "background.paper";
+
   const date = new Intl.DateTimeFormat("es", {
     weekday: "long",
     month: "long",
@@ -23,19 +26,19 @@ const DosageCard: React.FC<DosageCardProps> = ({ dosage }) => {
 
   // const navigate = useNavigate();
   const setTaken = () => {
-    // setLoading
-    // try {
-    //   const response =  axios.post("/", {
-    //     /* your data */
-    //   });
-    //   console.log(response);
-    //   // Assuming the response contains data needed for the next render
-    //   // Update your component's state here
-    //   // For example, if using useState:
-    //   // setYourState(response.data);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+    setLoading(true);
+    try {
+      const response = axios.post("/", {
+        /* your data */
+      });
+      console.log(response);
+      // Assuming the response contains data needed for the next render
+      // Update your component's state here
+      // For example, if using useState:
+      // setYourState(response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (

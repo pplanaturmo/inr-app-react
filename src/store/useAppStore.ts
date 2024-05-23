@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { DosageResponse, ObservationResponse, UserResponse } from "../types";
+import { Dosage, ObservationResponse, UserResponse } from "../types";
 
 interface AppState {
   user: UserResponse | null;
-  dosageDetails: DosageResponse | null;
-  dosages: DosageResponse[];
+  dosageDetails: Dosage | null;
+  dosages: Dosage[];
   observationDetails: ObservationResponse | null;
   observations: ObservationResponse[];
   loading: boolean;
@@ -13,11 +13,11 @@ interface AppState {
   getUser: () => UserResponse;
   clearUser: () => void;
   isFieldNull: (fieldName: keyof UserResponse) => boolean;
-  setDosageDetails: (dosageDetails: DosageResponse) => void;
-  getDosageDetails: () => DosageResponse;
+  setDosageDetails: (dosageDetails: Dosage) => void;
+  getDosageDetails: () => Dosage;
   clearDosageDetails: () => void;
-  setDosages: (dosages: DosageResponse[]) => void;
-  addDosage: (dosage: DosageResponse) => void;
+  setDosages: (dosages: Dosage[]) => void;
+  addDosage: (dosage: Dosage) => void;
   clearDosages: () => void;
   setObservationDetails: (observationDetails: ObservationResponse) => void;
   getObservationDetails: () => ObservationResponse;
@@ -45,12 +45,11 @@ export const useAppStore = create<AppState>()(
           return !user || user[fieldName] === null;
         },
         clearUser: () => set({ user: null }),
-        setDosageDetails: (dosageDetails: DosageResponse) =>
-          set({ dosageDetails }),
-        getDosageDetails: () => get().dosageDetails ?? ({} as DosageResponse),
+        setDosageDetails: (dosageDetails: Dosage) => set({ dosageDetails }),
+        getDosageDetails: () => get().dosageDetails ?? ({} as Dosage),
         clearDosageDetails: () => set({ dosageDetails: null }),
-        setDosages: (dosages: DosageResponse[]) => set({ dosages }),
-        addDosage: (dosage: DosageResponse) =>
+        setDosages: (dosages: Dosage[]) => set({ dosages }),
+        addDosage: (dosage: Dosage) =>
           set((state) => ({ dosages: [...state.dosages, dosage] })),
         clearDosages: () => set({ dosages: [] }),
         setObservationDetails: (observationDetails: ObservationResponse) =>

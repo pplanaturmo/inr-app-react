@@ -1,5 +1,8 @@
 import axios from "axios";
 import dayjs from "dayjs";
+import { dosageResponseSchema } from "../schemas";
+import { dosageSchema } from "../schemas/dosageSchema";
+import { DosageResponse } from "../types";
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const fetchDosages = async (
@@ -35,15 +38,27 @@ export const fetchDosages = async (
   };
 
   try {
-    const response = await axios.post(
-      await axios.post(baseUrl + dosageBetweenUrl, body, axiosConfig)
+    const { data } = await axios.post(
+      baseUrl + dosageBetweenUrl,
+      body,
+      axiosConfig
     );
-    console.log(response);
-    // setDosages(response.data);
+
+    const dosageList = data
+      .map(dosageResponseSchema.parse)
+      .map((dosage: DosageResponse) => ({
+        ...dosage,
+        date: dayjs(dosage.date).toDate(),
+      }));
+
+    const validDosageList = dosageList.map(dosageSchema.parse);
+
+    setDosages(validDosageList);
+    console.log(validDosageList);
   } catch (error) {
     console.error("Failed to fetch dosages", error);
   } finally {
-    setLoading(false); // Set loading to false after fetching data
+    setLoading(false);
   }
 };
 
