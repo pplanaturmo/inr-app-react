@@ -30,7 +30,8 @@ const themeOptions: ThemeOptions = {
       main: "#0ef11d",
     },
     warning: {
-      main: "#ffff00",
+
+      main: "#efd510",
     },
   },
 };

@@ -12,12 +12,13 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import AdminButton from "../HOCs/AdminButton";
-import ManagerButton from "../HOCs/ManagerButton";
-import ProfessionalButton from "../HOCs/ProfessionalButton";
-import PatientButton from "../HOCs/PatientButton";
+
+import WithProfessional from "../HOCs/WithProfessional";
+import WithPatient from "../HOCs/WithPatient";
 import InfoIcon from "@mui/icons-material/Info";
 import Groups3Icon from "@mui/icons-material/Groups3";
+import WithAdmin from "../HOCs/WithAdmin";
+import WithManager from "../HOCs/WithManager";
 
 export default function MiddleButtons() {
   return (
@@ -34,7 +35,7 @@ export default function MiddleButtons() {
           marginTop: "1rem",
         }}
       >
-        <PatientButton>
+        <WithPatient>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -45,8 +46,8 @@ export default function MiddleButtons() {
             <MedicationIcon sx={{ marginRight: "10px" }} />
             Dosis
           </Button>
-        </PatientButton>
-        <PatientButton>
+        </WithPatient>
+        <WithPatient>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -57,8 +58,8 @@ export default function MiddleButtons() {
             <BloodtypeIcon sx={{ marginRight: "10px" }} />
             Tomar medida
           </Button>
-        </PatientButton>
-        <PatientButton>
+        </WithPatient>
+        <WithPatient>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -69,8 +70,8 @@ export default function MiddleButtons() {
             <NotesIcon sx={{ marginRight: "10px" }} />
             Observaciones
           </Button>
-        </PatientButton>
-        <PatientButton>
+        </WithPatient>
+        <WithPatient>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -81,9 +82,9 @@ export default function MiddleButtons() {
             <InfoIcon sx={{ marginRight: "10px" }} />
             Información
           </Button>
-        </PatientButton>
+        </WithPatient>
 
-        <ProfessionalButton>
+        <WithProfessional>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -94,8 +95,8 @@ export default function MiddleButtons() {
             <ReportProblemIcon sx={{ marginRight: "10px" }} />
             Alertas
           </Button>
-        </ProfessionalButton>
-        <ProfessionalButton>
+        </WithProfessional>
+        <WithProfessional>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -106,8 +107,8 @@ export default function MiddleButtons() {
             <PeopleAltIcon sx={{ marginRight: "10px" }} />
             Listado de pacientes
           </Button>
-        </ProfessionalButton>
-        <ManagerButton>
+        </WithProfessional>
+        <WithManager>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -118,8 +119,8 @@ export default function MiddleButtons() {
             <PeopleOutlineIcon sx={{ marginRight: "10px" }} />
             Listado de profesionales
           </Button>
-        </ManagerButton>
-        <AdminButton>
+        </WithManager>
+        <WithAdmin>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -130,8 +131,8 @@ export default function MiddleButtons() {
             <Groups3Icon sx={{ marginRight: "10px" }} />
             Listado total de usuarios
           </Button>
-        </AdminButton>
-        <AdminButton>
+        </WithAdmin>
+        <WithAdmin>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -142,8 +143,8 @@ export default function MiddleButtons() {
             <MedicalInformationIcon sx={{ marginRight: "10px" }} />
             Listado de departamentos
           </Button>
-        </AdminButton>
-        <AdminButton>
+        </WithAdmin>
+        <WithAdmin>
           <Button
             sx={{ margin: "1rem" }}
             variant="contained"
@@ -154,7 +155,7 @@ export default function MiddleButtons() {
             <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
             Admin
           </Button>
-        </AdminButton>
+        </WithAdmin>
       </Grid>
     </>
   );

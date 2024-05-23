@@ -21,11 +21,12 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-
-import AdminButton from "../HOCs/AdminButton";
-import ManagerButton from "../HOCs/ManagerButton";
-import ProfessionalButton from "../HOCs/ProfessionalButton";
-import PatientButton from "../HOCs/PatientButton";
+import Groups3Icon from "@mui/icons-material/Groups3";
+import WithAdmin from "../HOCs/WithAdmin";
+import WithManager from "../HOCs/WithManager";
+import WithProfessional from "../HOCs/WithProfessional";
+import WithPatient from "../HOCs/WithPatient";
+import InfoIcon from "@mui/icons-material/Info";
 
 type MenuDrawerProps = {
   drawerMenuOpen: boolean;
@@ -63,27 +64,6 @@ export default function MenuDrawer({
           Navegación
         </Typography>
         <List>
-          {/* <ListItemButton
-                component={NavLink}
-                to="/inr-app/"
-                onClick={handleMenuClick}
-              >
-                <ListItemIcon>
-                  <HomeIcon style={{ color: "black" }} />
-                </ListItemIcon>
-                <ListItemText primary="Inicio" />
-              </ListItemButton>
-              <ListItemButton
-                component={NavLink}
-                to="/inr-app/measurement/add"
-                onClick={handleMenuClick}
-              >
-                <ListItemIcon>
-                  <BloodtypeIcon style={{ color: "firebrick" }} />
-                </ListItemIcon>
-                <ListItemText primary="Añadir medición" />
-              </ListItemButton> */}
-          {/* Aqui mas links? */}
           <ListItemButton
             component={NavLink}
             to="/inr-app"
@@ -99,35 +79,12 @@ export default function MenuDrawer({
             </ListItemIcon>
             <ListItemText primary="Inicio" />
           </ListItemButton>
-          <PatientButton>
+          <WithPatient>
             <ListItemButton
               component={NavLink}
-              to="/user"
+              to="/inr-app/dosages/"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
-            >
-              <ListItemIcon>
-                <BloodtypeIcon
-                  sx={{ color: "firebrick", marginRight: "10px" }}
-                />
-              </ListItemIcon>
-              <ListItemText primary="Tomar medida" />
-            </ListItemButton>
-          </PatientButton>
-          <PatientButton>
-            <ListItemButton
-              component={NavLink}
-              to="/user"
-              onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <MedicationIcon
@@ -136,53 +93,58 @@ export default function MenuDrawer({
               </ListItemIcon>
               <ListItemText primary="Dosis" />
             </ListItemButton>
-          </PatientButton>
-          <PatientButton>
+          </WithPatient>
+
+          <WithPatient>
+            <ListItemButton
+              component={NavLink}
+              to="/inr-app/measurement/add"
+              onClick={handleMenuClick}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
+            >
+              <ListItemIcon>
+                <BloodtypeIcon
+                  sx={{ color: "firebrick", marginRight: "10px" }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Tomar medida" />
+            </ListItemButton>
+          </WithPatient>
+
+          <WithPatient>
             <ListItemButton
               component={NavLink}
               to="/professional"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <NotesIcon sx={{ color: "blue", marginRight: "10px" }} />
               </ListItemIcon>
               <ListItemText primary="Observaciones" />
             </ListItemButton>
-          </PatientButton>
-          <PatientButton>
+          </WithPatient>
+
+          <WithPatient>
             <ListItemButton
               component={NavLink}
               to="/professional"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
-                <MedicalInformationIcon
-                  sx={{ color: "yellowgreen", marginRight: "10px" }}
-                />
+                <InfoIcon sx={{ color: "yellowgreen", marginRight: "10px" }} />
               </ListItemIcon>
-              <ListItemText primary="Historial" />
+              <ListItemText primary="Información" />
             </ListItemButton>
-          </PatientButton>
-          <ProfessionalButton>
+          </WithPatient>
+
+          <WithProfessional>
             <ListItemButton
               component={NavLink}
               to="/admin"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <ReportProblemIcon
@@ -191,17 +153,14 @@ export default function MenuDrawer({
               </ListItemIcon>
               <ListItemText primary="Alertas" />
             </ListItemButton>
-          </ProfessionalButton>
-          <ProfessionalButton>
+          </WithProfessional>
+
+          <WithProfessional>
             <ListItemButton
               component={NavLink}
               to="/manager"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <PeopleAltIcon
@@ -210,17 +169,14 @@ export default function MenuDrawer({
               </ListItemIcon>
               <ListItemText primary="Listado de pacientes" />
             </ListItemButton>
-          </ProfessionalButton>
-          <ManagerButton>
+          </WithProfessional>
+
+          <WithManager>
             <ListItemButton
               component={NavLink}
               to="/admin"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <PeopleOutlineIcon
@@ -229,17 +185,44 @@ export default function MenuDrawer({
               </ListItemIcon>
               <ListItemText primary="Listado de profesionales" />
             </ListItemButton>
-          </ManagerButton>
-          <AdminButton>
+          </WithManager>
+
+          <WithAdmin>
             <ListItemButton
               component={NavLink}
               to="/admin"
               onClick={handleMenuClick}
-              sx={{
-                margin: "1rem",
-                variant: "contained",
-                color: "secondary",
-              }}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
+            >
+              <ListItemIcon>
+                <Groups3Icon sx={{ color: "firebrick", marginRight: "10px" }} />
+              </ListItemIcon>
+              <ListItemText primary="Listado total de usuarios" />
+            </ListItemButton>
+          </WithAdmin>
+
+          <WithAdmin>
+            <ListItemButton
+              component={NavLink}
+              to="/admin"
+              onClick={handleMenuClick}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
+            >
+              <ListItemIcon>
+                <MedicalInformationIcon
+                  sx={{ color: "firebrick", marginRight: "10px" }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Listado de departamentos" />
+            </ListItemButton>
+          </WithAdmin>
+
+          <WithAdmin>
+            <ListItemButton
+              component={NavLink}
+              to="/admin"
+              onClick={handleMenuClick}
+              sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
               <ListItemIcon>
                 <AdminPanelSettingsIcon
@@ -248,7 +231,7 @@ export default function MenuDrawer({
               </ListItemIcon>
               <ListItemText primary="Admin" />
             </ListItemButton>
-          </AdminButton>
+          </WithAdmin>
         </List>
       </Drawer>
     </>

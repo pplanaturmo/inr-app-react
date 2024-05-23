@@ -2,8 +2,9 @@ import axios from "axios";
 
 import { LoginRequest, RegisterRequest, UserResponse } from "../types";
 
+const baseUrl = import.meta.env.VITE_BASE_API_URL;
+
 export async function registerUser(data: RegisterRequest) {
-  const baseUrl = "http://localhost:8080";
   const registerUrl = "/api/v1/auth/register";
 
   //TODO poner los nombres correctos de los campos
@@ -36,7 +37,6 @@ export async function registerUser(data: RegisterRequest) {
 }
 
 export async function authenticateUser(data: LoginRequest) {
-  const baseUrl = "http://localhost:8080";
   const registerUrl = "/api/v1/auth/authenticate";
 
   //TODO poner los nombres correctos de los campos

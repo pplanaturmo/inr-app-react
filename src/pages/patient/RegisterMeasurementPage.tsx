@@ -76,8 +76,6 @@ export default function RegisterMeasurementPage() {
 
   const missingNecessaryParameters = isFieldNull("rangeInr");
 
-  // const missingNecessaryParameters = false; //temporal para probar
-
   if (missingNecessaryParameters) {
     return (
       <>
@@ -207,12 +205,12 @@ export default function RegisterMeasurementPage() {
           <DialogContent>
             ¿Quieres añadir una observación relacionada con esta medida?
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleNoConfirmation} color="primary">
+          <DialogActions color="black">
+            <Button onClick={handleNoConfirmation} color="inherit">
               No
             </Button>
-            <Button onClick={handleYesConfirmation} color="primary" autoFocus>
-              Yes
+            <Button onClick={handleYesConfirmation} color="inherit" autoFocus>
+              Sí
             </Button>
           </DialogActions>
         </Dialog>

@@ -348,3 +348,65 @@ export default function Navbar() {
     </>
   );
 }
+
+
+
+function App() {
+  return (
+    <Routes>
+      {/* Logged Routes */}
+      <Route
+        path="/"
+        element={
+          <LoggedRoute>
+            <LoginLayout />
+          </LoggedRoute>
+        }
+      >
+        <Route index element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+      </Route>
+
+      {/* Protected Routes */}
+      <Route
+        path="/inr-app"
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
+        {/* Patient Routes */}
+        <Route
+          path="patient"
+          element={
+            <PatientRoute>
+              <PatientLayout />
+            </PatientRoute>
+          }
+        >
+          <Route index element={<PatientDashboard />} />
+          <Route path="dosages" element={<PendingDosagesPage />} />
+          <Route path="measurement/add" element={<RegisterMeasurementPage />} />
+          <Route path="observation/add" element={<RegisterObservationPage />} />
+          <Route path="information" element={<InformationPage />} />
+        </Route>
+
+        {/* Doctor Routes */}
+        <Route
+          path="doctor"
+          element={
+            <DoctorRoute>
+              <DoctorLayout />
+            </DoctorRoute>
+          }
+        >
+          <Route index element={<DoctorDashboard />} />
+          {/* Add more doctor-specific routes here */}
+        </Route>
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;

@@ -11,19 +11,21 @@ const DosageCard: React.FC<DosageCardProps> = ({ dosage }) => {
   const isTaken = dosage.taken;
   const today = dayjs();
   const isToday = dayjs(dosage.date).isSame(today, "day");
-  const backgroundColor = isTaken ? "success.main" : "primary.main";
-  const formattedDate = new Intl.DateTimeFormat("es", {
+  const backgroundColor = isTaken ? "primary.main" : "background.paper";
+  const date = new Intl.DateTimeFormat("es", {
     weekday: "long",
     month: "long",
     day: "numeric",
     year: "numeric",
   }).format(dosage.date);
 
+  const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
+
   // const navigate = useNavigate();
   const setTaken = () => {
     // setLoading
     // try {
-    //   const response =  axios.post("/your-backend-endpoint", {
+    //   const response =  axios.post("/", {
     //     /* your data */
     //   });
     //   console.log(response);

@@ -1,5 +1,5 @@
 import Spinner from "../../components/Spinner";
-import PendingDosagesPage from "./PendingDosagesPage";
+import PendingDosagesPage from "../patient/PendingDosagesPage";
 
 export default function HomePage() {
   return (

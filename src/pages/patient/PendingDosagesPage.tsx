@@ -9,13 +9,13 @@ import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function PendingDosagesPage() {
-  const { loading, dosages, setLoading, setDosages } = useAppStore();
-
+  const { user, loading, dosages, setLoading, setDosages } = useAppStore();
+  const userId = user?.id;
   useEffect(() => {
     console.log(loading + "1");
     const fetchData = async () => {
       try {
-        await fetchDosages(setLoading, setDosages);
+        await fetchDosages(setLoading, setDosages, userId);
       } catch (error) {
         console.error("Failed to fetch dosages", error);
       }
