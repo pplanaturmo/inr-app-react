@@ -10,10 +10,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function PendingDosagesPage() {
   const { user, loading, dosages, setLoading, setDosages } = useAppStore();
-  const userId = user?.id;
+  // const userId = user?.id;
   const fetchData = async () => {
     try {
-      await fetchDosages(setLoading, setDosages, userId);
+      await fetchDosages(setLoading, setDosages, user);
     } catch (error) {
       console.error("Failed to fetch dosages", error);
     }
@@ -60,27 +60,52 @@ export default function PendingDosagesPage() {
   const boxWidth = isLgUp ? "70%" : isSmUp ? "80%" : "90%";
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          width={boxWidth}
-          mx="auto"
-        >
-          {dosages.map((dosage, index) => (
-            <Box width={"100%"} marginY={2}>
-              <DosageCard key={index} dosage={dosage} setLoading={setLoading} />
+      {
+        loading ? (
+          <Spinner />
+        ) : dosages.length > 0 ? (
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            width={boxWidth}
+            mx="auto"
+          >
+            {dosages.map((dosage, index) => (
+              <Box width="100%" marginY={2} key={index}>
+                <DosageCard
+                  dosage={dosage}
+                  setLoading={setLoading}
+                  setDosages={setDosages}
+                  dosages={dosages}
+                />
+              </Box>
+            ))}
+            <Box width="100%" marginY={2}>
+              <ExpectedDateCard measurementDate={fechaMedida} />
             </Box>
-          ))}
-          <Box width={"100%"} marginY={2}>
-            <ExpectedDateCard measurementDate={fechaMedida} />
           </Box>
-        </Box>
-      )}
+        ) : null
+
+        // <Box
+        //   display="flex"
+        //   flexDirection="column"
+        //   alignItems="center"
+        //   justifyContent="center"
+        //   width={boxWidth}
+        //   mx="auto"
+        // >
+        //   {dosages.map((dosage, index) => (
+        //     <Box width={"100%"} marginY={2}>
+        //       <DosageCard key={index} dosage={dosage} setLoading={setLoading} />
+        //     </Box>
+        //   ))}
+        //   <Box width={"100%"} marginY={2}>
+        //     <ExpectedDateCard measurementDate={fechaMedida} />
+        //   </Box>
+        // </Box>
+      }
     </>
   );
 }

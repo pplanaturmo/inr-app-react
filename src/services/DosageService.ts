@@ -2,7 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { dosageResponseSchema } from "../schemas";
 import { dosageSchema } from "../schemas/dosageSchema";
-import { DosageResponse } from "../types";
+import { Dosage, DosageResponse, UserResponse } from "../types";
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const fetchDosages = async (
@@ -15,7 +15,8 @@ export const fetchDosages = async (
       taken: boolean;
     }[]
   ) => void,
-  userId?: number
+  // userId?: number
+  user: UserResponse | null
 ) => {
   const dosageBetweenUrl = "/dosage/between-dates";
   console.log(baseUrl + dosageBetweenUrl);
@@ -25,7 +26,7 @@ export const fetchDosages = async (
   const formattedFinishingDate = finishingDate.format("YYYY-MM-DD");
   setLoading(true);
   const body = JSON.stringify({
-    userId: userId,
+    userId: user?.id,
     startDate: formattedStartingDate,
     finishDate: formattedFinishingDate,
   });
@@ -33,7 +34,7 @@ export const fetchDosages = async (
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user.accessToken}`,
+      // Authorization: `Bearer ${user?.accessToken}`,
     },
   };
 
@@ -62,14 +63,43 @@ export const fetchDosages = async (
   }
 };
 
-// @NumberFormat
-// @NotNull(message = "User id is required")
-// private Long userId;
+export const updateDoseTaken = async (
+  setLoading: (isLoading: boolean) => void,
+  setDosages: (
+    dosages: {
+      id: number;
+      value: number;
+      date: Date;
+      taken: boolean;
+    }[]
+  ) => void,
+  dosages: Dosage[],
+  dosageId: number
+) => {
+  setLoading(true);
+  try {
+    const dosageUpdate = "/dosage/update";
+    const body = JSON.stringify({
+      id: dosageId,
+      taken: true,
+    });
 
-// @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-// @NotBlank(message = "Start date value is required in format yyyy-MM-dd")
-// private String startDate;
+    const axiosConfig = {
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${user?.accessToken}`,
+      },
+    };
+    console.log(baseUrl + dosageUpdate);
+    console.log(body);
+    await axios.put(baseUrl + dosageUpdate, body, axiosConfig);
 
-// @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-// @NotBlank(message = "Finish date value is required in format yyyy-MM-dd")
-// private String finishDate;
+    const updatedDosages = dosages.map((dosage) =>
+      dosage.id === dosageId ? { ...dosage, taken: true } : dosage
+    );
+    setDosages(updatedDosages);
+    setLoading(false);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};

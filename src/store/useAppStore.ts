@@ -17,12 +17,14 @@ interface AppState {
   getDosageDetails: () => Dosage;
   clearDosageDetails: () => void;
   setDosages: (dosages: Dosage[]) => void;
+  getDosages: () => Dosage[];
   addDosage: (dosage: Dosage) => void;
   clearDosages: () => void;
   setObservationDetails: (observationDetails: ObservationResponse) => void;
   getObservationDetails: () => ObservationResponse;
   clearObservationDetails: () => void;
   setObservations: (observations: ObservationResponse[]) => void;
+  getObservations: () => ObservationResponse[];
   addObservation: (observation: ObservationResponse) => void;
   clearObservations: () => void;
   setLoading: (isLoading: boolean) => void;
@@ -49,6 +51,7 @@ export const useAppStore = create<AppState>()(
         getDosageDetails: () => get().dosageDetails ?? ({} as Dosage),
         clearDosageDetails: () => set({ dosageDetails: null }),
         setDosages: (dosages: Dosage[]) => set({ dosages }),
+        getDosages: () => get().dosages,
         addDosage: (dosage: Dosage) =>
           set((state) => ({ dosages: [...state.dosages, dosage] })),
         clearDosages: () => set({ dosages: [] }),
@@ -59,6 +62,7 @@ export const useAppStore = create<AppState>()(
         clearObservationDetails: () => set({ observationDetails: null }),
         setObservations: (observations: ObservationResponse[]) =>
           set({ observations }),
+        getObservations: () => get().observations,
         addObservation: (observation: ObservationResponse) =>
           set((state) => ({
             observations: [...state.observations, observation],

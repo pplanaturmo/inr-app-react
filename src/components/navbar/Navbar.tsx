@@ -24,12 +24,12 @@ export default function Navbar() {
   const [drawerUserOpen, setDrawerUserOpen] = useState(false);
 
   const [drawerMenuOpen, setDrawerMenuOpen] = useState(false);
-
   const toggleDrawerMenu = () => {
     setDrawerMenuOpen(!drawerMenuOpen);
   };
   const toggleDrawerUser = () => {
     setDrawerUserOpen(!drawerUserOpen);
+    console.log(dosages);
   };
   const handleMenuClick = () => {
     setDrawerMenuOpen(false);
@@ -40,10 +40,22 @@ export default function Navbar() {
   };
 
   // const { clearUser,user } = useAppStore();
-  const { clearUser, user } = useAppStore();
+  const {
+    clearUser,
+    clearDosageDetails,
+    clearDosages,
+    clearObservationDetails,
+    clearObservations,
+    user,
+  } = useAppStore();
+  const dosages = useAppStore((state) => state.getDosages());
 
   const logoutUser = () => {
     clearUser();
+    clearDosageDetails();
+    clearDosages();
+    clearObservationDetails();
+    clearObservations();
   };
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("sm"));

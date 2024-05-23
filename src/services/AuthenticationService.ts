@@ -5,7 +5,7 @@ import { LoginRequest, RegisterRequest, UserResponse } from "../types";
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export async function registerUser(data: RegisterRequest) {
-  const registerUrl = "/api/v1/auth/register";
+  const registerUrl = "/v1/auth/register";
 
   //TODO poner los nombres correctos de los campos
   const formData = {
@@ -37,7 +37,7 @@ export async function registerUser(data: RegisterRequest) {
 }
 
 export async function authenticateUser(data: LoginRequest) {
-  const registerUrl = "/api/v1/auth/authenticate";
+  const registerUrl = "/v1/auth/authenticate";
 
   //TODO poner los nombres correctos de los campos
   const formData = {

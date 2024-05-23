@@ -2,43 +2,56 @@ import React from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { Dosage } from "../../types";
 import dayjs from "dayjs";
-import axios from "axios";
+
+import { updateDoseTaken } from "../../services/DosageService";
 
 interface DosageCardProps {
   dosage: Dosage;
   setLoading: (isLoading: boolean) => void;
+  setDosages: (
+    dosages: {
+      id: number;
+      value: number;
+      date: Date;
+      taken: boolean;
+    }[]
+  ) => void;
+  dosages: Dosage[];
 }
 
-const DosageCard: React.FC<DosageCardProps> = ({ dosage, setLoading }) => {
+const DosageCard: React.FC<DosageCardProps> = ({
+  setLoading,
+  setDosages,
+  dosages,
+  dosage,
+}) => {
   const isTaken = dosage.taken;
   const today = dayjs();
   const isToday = dayjs(dosage.date).isSame(today, "day");
   const backgroundColor = isTaken ? "primary.main" : "background.paper";
 
-  const date = new Intl.DateTimeFormat("es", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(dosage.date);
+  // const date = new Intl.DateTimeFormat("es", {
+  //   weekday: "long",
+  //   month: "long",
+  //   day: "numeric",
+  //   year: "numeric",
+  // }).format(dosage.date);
+  const dateToObject = new Date(dosage.date);
+  const date = isNaN(dateToObject.getTime())
+    ? "Invalid date"
+    : new Intl.DateTimeFormat("es", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }).format(dateToObject);
 
   const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
 
   // const navigate = useNavigate();
   const setTaken = () => {
-    setLoading(true);
-    try {
-      const response = axios.post("/", {
-        /* your data */
-      });
-      console.log(response);
-      // Assuming the response contains data needed for the next render
-      // Update your component's state here
-      // For example, if using useState:
-      // setYourState(response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    console.log("first");
+    updateDoseTaken(setLoading, setDosages, dosages, dosage.id);
   };
 
   return (
@@ -72,7 +85,7 @@ const DosageCard: React.FC<DosageCardProps> = ({ dosage, setLoading }) => {
               A TOMAR HOY
             </Typography>
             <Button
-              onClick={() => setTaken}
+              onClick={() => setTaken()}
               sx={{ margin: "1rem", width: "80%", alignSelf: "center" }}
               variant="contained"
               color="info"

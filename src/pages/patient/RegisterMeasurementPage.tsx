@@ -32,6 +32,7 @@ export default function RegisterMeasurementPage() {
 
   const user: UserResponse = useAppStore((state) => state.getUser());
   const isFieldNull = useAppStore((state) => state.isFieldNull);
+  
 
   const onSubmit = async (data: MeasurementRequest) => {
     try {
