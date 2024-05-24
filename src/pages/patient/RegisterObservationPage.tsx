@@ -15,6 +15,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/L
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/es";
+import { registerObservation } from "../../services/ObservationService";
+import { ObservationRequest, UserResponse } from "../../types";
+import { useAppStore } from "../../store/useAppStore";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterObservationPage() {
   dayjs.locale("es");
@@ -27,14 +31,29 @@ export default function RegisterObservationPage() {
     setCause("");
     setDescription("");
   };
+  const user: UserResponse = useAppStore((state) => state.getUser());
+  const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log({
-      date,
-      cause,
-      description,
-    });
+
+    if (!date) {
+      console.error("Date is required");
+      return;
+    }
+
+    const data: ObservationRequest = {
+      date: date.toDate(),
+      cause: cause as CauseEnum,
+      description: description,
+    };
+
+    try {
+      await registerObservation(data, user);
+      navigate("/inr-app/dosages/", { replace: true });
+    } catch (error) {
+      console.error("Error registering observation:", error);
+    }
   };
 
   return (
@@ -61,7 +80,12 @@ export default function RegisterObservationPage() {
           value={date}
           onChange={(newDate) => setDate(newDate)}
           slots={{
-            textField: (props) => <TextField {...props} fullWidth />,
+            textField: (props) => (
+              <TextField
+                {...props}
+                fullWidth
+              />
+            ),
           }}
           sx={{ backgroundColor: "white" }}
         />
@@ -75,7 +99,10 @@ export default function RegisterObservationPage() {
             sx={{ backgroundColor: "white" }}
           >
             {Object.values(CauseOptions).map((value) => (
-              <MenuItem key={value} value={value}>
+              <MenuItem
+                key={value}
+                value={value}
+              >
                 {value}
               </MenuItem>
             ))}
@@ -95,10 +122,18 @@ export default function RegisterObservationPage() {
         />
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Button variant="outlined" color="primary" onClick={handleClear}>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleClear}
+          >
             Reiniciar formulario
           </Button>
-          <Button variant="contained" color="primary" type="submit">
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
             Enviar observación
           </Button>
         </Box>

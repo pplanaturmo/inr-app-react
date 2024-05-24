@@ -77,7 +77,12 @@ export default function RegisterMeasurementPage() {
     return (
       <>
         <Box>
-          <Typography variant="h6" align="center" margin="dense" width={2 / 3}>
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+            width={2 / 3}
+          >
             Necesita tener asignado un nivel de medicación antes de introducir
             una medida
           </Typography>
@@ -95,7 +100,11 @@ export default function RegisterMeasurementPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h6" align="center" margin="dense">
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+          >
             Añadir medicion
           </Typography>
           <Paper>
@@ -111,7 +120,10 @@ export default function RegisterMeasurementPage() {
               }}
             >
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementInteger"
                     control={control}
@@ -133,7 +145,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
@@ -147,7 +162,10 @@ export default function RegisterMeasurementPage() {
               </Grid>
               <Typography fontSize={"3rem"}> ,</Typography>
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementDecimal"
                     control={control}
@@ -166,7 +184,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
@@ -197,16 +218,26 @@ export default function RegisterMeasurementPage() {
             </Box>
           </Box>
         </Box>
-        <Dialog open={confirmationOpen} onClose={handleConfirmationClose}>
+        <Dialog
+          open={confirmationOpen}
+          onClose={handleConfirmationClose}
+        >
           <DialogTitle>Confirm</DialogTitle>
           <DialogContent>
             ¿Quieres añadir una observación relacionada con esta medida?
           </DialogContent>
           <DialogActions color="black">
-            <Button onClick={handleNoConfirmation} color="inherit">
+            <Button
+              onClick={handleNoConfirmation}
+              color="inherit"
+            >
               No
             </Button>
-            <Button onClick={handleYesConfirmation} color="inherit" autoFocus>
+            <Button
+              onClick={handleYesConfirmation}
+              color="inherit"
+              autoFocus
+            >
               Sí
             </Button>
           </DialogActions>

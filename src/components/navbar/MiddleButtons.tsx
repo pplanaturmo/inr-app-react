@@ -65,7 +65,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/inr-app/observation/add"
+            to="/inr-app/observations/"
           >
             <NotesIcon sx={{ marginRight: "10px" }} />
             Observaciones

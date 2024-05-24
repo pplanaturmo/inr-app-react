@@ -13,9 +13,6 @@ export async function registerUser(data: RegisterRequest) {
     surname: data.surname,
     email: data.email,
     password: data.password,
-    phone: data.phone,
-    idCard: data.idCard,
-    healthCard: data.healthCard,
     dataConsent: data.dataConsent,
   };
 
@@ -39,7 +36,6 @@ export async function registerUser(data: RegisterRequest) {
 export async function authenticateUser(data: LoginRequest) {
   const registerUrl = "/v1/auth/authenticate";
 
-  //TODO poner los nombres correctos de los campos
   const formData = {
     email: data.email,
     password: data.password,
@@ -60,5 +56,4 @@ export async function authenticateUser(data: LoginRequest) {
   const userData: UserResponse = response.data;
   console.log(userData);
   return userData;
-  // return response;
 }

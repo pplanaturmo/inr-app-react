@@ -57,7 +57,10 @@ export default function MenuDrawer({
           onClick={toggleDrawerMenu}
           style={{ marginLeft: "auto" }}
         >
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
+          <CancelIcon
+            fontSize="large"
+            style={{ color: "red" }}
+          />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Navegación
@@ -98,7 +101,7 @@ export default function MenuDrawer({
           <WithPatient>
             <ListItemButton
               component={NavLink}
-              to="/inr-app/observation/add"
+              to="/inr-app/observations/"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >

@@ -12,6 +12,7 @@ import LoggedRoute from "../components/HOCs/WithSession";
 import ProtectedRoute from "../components/HOCs/WithAuth";
 import InformationPage from "../pages/patient/InformationPage";
 import WithPatient from "../components/HOCs/WithPatient";
+import ObservationsPage from "../pages/patient/ObservationsPage";
 
 export const router = createBrowserRouter([
   {
@@ -67,10 +68,10 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/inr-app/observation/add",
+        path: "/inr-app/observations/",
         element: (
           <WithPatient>
-            <RegisterObservationPage />
+            <ObservationsPage />
           </WithPatient>
         ),
       },
@@ -80,6 +81,14 @@ export const router = createBrowserRouter([
         element: (
           <WithPatient>
             <InformationPage />,
+          </WithPatient>
+        ),
+      },
+      {
+        path: "/inr-app/observations/add",
+        element: (
+          <WithPatient>
+            <RegisterObservationPage />
           </WithPatient>
         ),
       },
