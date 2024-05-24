@@ -45,25 +45,6 @@ export default function LoginPage() {
     openSnackbar("Hello, world!", "success");
   };
 
-  const goToHome = () => {
-    const userData = {
-      id: 1,
-      name: "string",
-      surname: "apellid ods",
-      email: "string",
-      department: 1,
-      supervisor: 1,
-      rangeInr: 1,
-      dosePattern: 1,
-      role: "ADMIN",
-      accessToken: "string",
-      refreshToken: "string",
-    };
-
-    setUser(userData);
-    navigate("/inr-app");
-  };
-
   return (
     <>
       <Box
@@ -175,11 +156,7 @@ export default function LoginPage() {
               Registrarse
             </Button>
           </Box>
-          <Box mt={3}>
-            <Button variant="contained" color="secondary" onClick={goToHome}>
-              test
-            </Button>
-          </Box>
+
           <Box>
             <Button onClick={handleClick}>Show Snackbar</Button>
             <Snackbar

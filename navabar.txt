@@ -410,3 +410,107 @@ function App() {
 }
 
 export default App;
+
+
+
+/*
+@RestController
+@Tag(name = "Control de Fechas de medida previstas", description = "Operaciones relacionadas con manejo de fechas de medida previstas")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
+@RequestMapping("/api/expected-dates")
+public class ExpectedMeasurementDateController {
+
+    @Autowired
+    private ExpectedMeasurementDateService expectedMeasurementDateService;
+
+    @Operation(value = "Generate a new expected measurement date", response = ExpectedMeasurementDate.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Expected measurement date created successfully"),
+            @ApiResponse(code = 400, message = "Invalid input")
+    })
+    @PostMapping
+    public ResponseEntity<ExpectedMeasurementDate> createExpectedMeasurementDate(
+            @ApiParam(value = "Number of days from today", required = true) @RequestParam Integer days,
+            @ApiParam(value = "User object", required = true) @RequestBody User user) {
+        expectedMeasurementDateService.generateExpectedMeasurementDate(days, user);
+        return ResponseEntity.status(201).build();
+    }
+
+    @ApiOperation(value = "Get an expected measurement date by ID", response = ExpectedMeasurementDate.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Expected measurement date retrieved successfully"),
+            @ApiResponse(code = 404, message = "Expected measurement date not found")
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<ExpectedMeasurementDate> getExpectedMeasurementDateById(
+            @ApiParam(value = "ID of the expected measurement date", required = true) @PathVariable Long id) {
+        ExpectedMeasurementDate date = expectedMeasurementDateService.findById(id);
+        if (date == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(date);
+    }
+
+    @ApiOperation(value = "Get all expected measurement dates", response = List.class)
+    @ApiResponse(code = 200, message = "List of expected measurement dates retrieved successfully")
+    @GetMapping
+    public ResponseEntity<List<ExpectedMeasurementDate>> getAllExpectedMeasurementDates() {
+        return ResponseEntity.ok(expectedMeasurementDateService.findAll());
+    }
+
+    @ApiOperation(value = "Update an expected measurement date", response = ExpectedMeasurementDate.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Expected measurement date updated successfully"),
+            @ApiResponse(code = 404, message = "Expected measurement date not found")
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<ExpectedMeasurementDate> updateExpectedMeasurementDate(
+            @ApiParam(value = "ID of the expected measurement date", required = true) @PathVariable Long id,
+            @ApiParam(value = "Updated expected measurement date object", required = true) @RequestBody ExpectedMeasurementDate updatedDate) {
+        if (expectedMeasurementDateService.findById(id) == null) {
+            return ResponseEntity.notFound().build();
+        }
+        updatedDate.setId(id);
+        return ResponseEntity.ok(expectedMeasurementDateService.updateExpectedMeasurementDate(updatedDate));
+    }
+
+    @ApiOperation(value = "Delete an expected measurement date", response = Void.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Expected measurement date deleted successfully"),
+            @ApiResponse(code = 404, message = "Expected measurement date not found")
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteExpectedMeasurementDate(
+            @ApiParam(value = "ID of the expected measurement date", required = true) @PathVariable Long id) {
+        if (expectedMeasurementDateService.findById(id) == null) {
+            return ResponseEntity.notFound().build();
+        }
+        expectedMeasurementDateService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(value = "Get expected measurement dates by user ID", response = List.class)
+    @ApiResponse(code = 200, message = "List of expected measurement dates retrieved successfully")
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<ExpectedMeasurementDate>> getExpectedMeasurementDatesByUserId(
+            @ApiParam(value = "ID of the user", required = true) @PathVariable Long userId) {
+        return ResponseEntity.ok(expectedMeasurementDateService.findByUserId(userId));
+    }
+
+    @ApiOperation(value = "Get expected measurement dates by fulfilled status", response = List.class)
+    @ApiResponse(code = 200, message = "List of expected measurement dates retrieved successfully")
+    @GetMapping("/fulfilled")
+    public ResponseEntity<List<ExpectedMeasurementDate>> getExpectedMeasurementDatesByFulfilled(
+            @ApiParam(value = "Fulfilled status", required = true) @RequestParam Boolean fulfilled) {
+        return ResponseEntity.ok(expectedMeasurementDateService.findByFulfilled(fulfilled));
+    }
+
+    @ApiOperation(value = "Get expected measurement dates with mismatched dates", response = List.class)
+    @ApiResponse(code = 200, message = "List of expected measurement dates retrieved successfully")
+    @GetMapping("/mismatched-dates")
+    public ResponseEntity<List<ExpectedMeasurementDate>> getExpectedMeasurementDatesWithMismatchedDates() {
+        return ResponseEntity.ok(expectedMeasurementDateService.findByMismatchedDates());
+    }
+}
+*/

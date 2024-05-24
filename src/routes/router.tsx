@@ -42,7 +42,11 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <PendingDosages />,
+        element: (
+          <WithPatient>
+            <PendingDosages />
+          </WithPatient>
+        ),
       },
 
       {
@@ -82,61 +86,3 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
-
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       <LoggedRoute>
-//         <LoginLayout />
-//       </LoggedRoute>
-//     ),
-//     children: [
-//       {
-//         path: "/",
-//         element: <LoginPage />,
-//       },
-//       {
-//         path: "/register",
-//         element: <RegisterPage />,
-//       },
-//     ],
-//   },
-//   {
-//     path: "/inr-app",
-//     element: (
-//       <ProtectedRoute>
-//         <MainLayout />
-//       </ProtectedRoute>
-//     ),
-//     children: [
-//       {
-//         path: "patient",
-//         element: (
-//           <PatientRoute>
-//             <PatientLayout />
-//           </PatientRoute>
-//         ),
-//         children: [
-//           { index: true, element: <PatientDashboard /> },
-//           { path: "dosages", element: <PendingDosages /> },
-//           { path: "measurement/add", element: <RegisterMeasurement /> },
-//           { path: "observation/add", element: <RegisterObservationPage /> },
-//           { path: "information", element: <InformationPage /> },
-//         ],
-//       },
-//       {
-//         path: "doctor",
-//         element: (
-//           <DoctorRoute>
-//             <DoctorLayout />
-//           </DoctorRoute>
-//         ),
-//         children: [
-//           { index: true, element: <DoctorDashboard /> },
-//           // Add doctor-specific routes here
-//         ],
-//       },
-//     ],
-//   },
-// ]);

@@ -8,7 +8,7 @@ interface CustomMenuIconProps {
 const CustomMenuIcon: React.FC<CustomMenuIconProps> = ({ onClick }) => {
   return (
     <IconButton onClick={onClick}>
-      <MenuIcon />
+      <MenuIcon style={{ color: "white", fontSize: "3rem" }} />
     </IconButton>
   );
 };

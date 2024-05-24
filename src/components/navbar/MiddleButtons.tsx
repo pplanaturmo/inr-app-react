@@ -65,7 +65,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/professional"
+            to="/inr-app/observation/add"
           >
             <NotesIcon sx={{ marginRight: "10px" }} />
             Observaciones
@@ -77,7 +77,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/professional"
+            to="/inr-app/information"
           >
             <InfoIcon sx={{ marginRight: "10px" }} />
             Información

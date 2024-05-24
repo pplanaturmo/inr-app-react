@@ -32,16 +32,12 @@ export default function RegisterMeasurementPage() {
 
   const user: UserResponse = useAppStore((state) => state.getUser());
   const isFieldNull = useAppStore((state) => state.isFieldNull);
-  
 
   const onSubmit = async (data: MeasurementRequest) => {
     try {
-      const response = await registerMeasurement(data, user);
+      await registerMeasurement(data, user);
 
-      //TODO pasar el id de la medida??
       handleConfirmationOpen();
-      console.log("medida registrada");
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +45,7 @@ export default function RegisterMeasurementPage() {
 
   const navigate = useNavigate();
   const goToDosages = () => {
-    navigate("/inr-app/dosages/pending", { replace: true });
+    navigate("/inr-app/dosages/", { replace: true });
   };
   const goToCreateObservation = () => {
     navigate("/inr-app/observation/create", { replace: true });
@@ -193,7 +189,7 @@ export default function RegisterMeasurementPage() {
             <Box mt={3}>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={handleSubmit(onSubmit)}
               >
                 Registrar medida

@@ -13,5 +13,5 @@ export const CauseOptions: { [key in CauseEnum]: string } = {
   [CauseEnum.BLEEDING]: "Sangrado",
   [CauseEnum.DIET]: "Cambio en la dieta",
   [CauseEnum.DRUG]: "Tomar nuevo medicamento",
-  [CauseEnum.OTHER]: "Otras",
+  [CauseEnum.OTHER]: "Otro",
 };

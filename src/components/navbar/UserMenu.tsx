@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid/Grid";
 import CustomUserIcon from "../icon-components/CustomUserIcon";
 import Typography from "@mui/material/Typography/Typography";
+import Box from "@mui/material/Box/Box";
 
 type UserMenuProps = {
   toggleDrawerUser: () => void;
@@ -31,7 +32,9 @@ export default function UserMenu({ toggleDrawerUser, user }: UserMenuProps) {
         display={"flex"}
         flexDirection={"column"}
       >
-        <CustomUserIcon onClick={toggleDrawerUser} />
+        <Box sx={{ borderRadius: "50%" }}>
+          <CustomUserIcon onClick={toggleDrawerUser} />
+        </Box>
         <Typography overflow={"hidden"} noWrap>
           {user?.name}
         </Typography>

@@ -9,6 +9,7 @@ import {
 } from "../schemas";
 import { measurementRequestSchema } from "../schemas/measurementRequestSchema";
 import { dosageSchema } from "../schemas/dosageSchema";
+import { expectedDateSchema } from "../schemas/expectedDateSchema";
 
 // export type RegisterRequest = {
 //   name: string;
@@ -40,3 +41,4 @@ export type ObservationResponse = z.infer<typeof observationRequestSchema>;
 export type MeasurementResponse = z.infer<typeof measurementResponseSchema>;
 export type DosageResponse = z.infer<typeof dosageResponseSchema>;
 export type Dosage = z.infer<typeof dosageSchema>;
+export type ExpectedMeasurementDate = z.infer<typeof expectedDateSchema>;

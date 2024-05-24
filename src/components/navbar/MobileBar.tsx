@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box/Box";
 import Toolbar from "@mui/material/Toolbar/Toolbar";
 import CustomMenuIcon from "../icon-components/CustomMenuIcon";
-import Typography from "@mui/material/Typography/Typography";
 import CustomUserIcon from "../icon-components/CustomUserIcon";
 
 type MobileBarProps = {
@@ -23,7 +22,6 @@ export default function MobileBar({
           margin={2}
         >
           <CustomMenuIcon onClick={toggleDrawerMenu} />
-          <Typography>Menu</Typography>
         </Box>
 
         <Box

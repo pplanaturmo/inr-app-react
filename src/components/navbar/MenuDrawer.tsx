@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
 
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
-import HomeIcon from "@mui/icons-material/Home";
 
 import { Typography } from "@mui/material";
 
@@ -64,21 +63,6 @@ export default function MenuDrawer({
           Navegación
         </Typography>
         <List>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app"
-            onClick={handleMenuClick}
-            sx={{
-              margin: "1rem",
-              variant: "contained",
-              color: "secondary",
-            }}
-          >
-            <ListItemIcon>
-              <HomeIcon style={{ color: "black" }} />
-            </ListItemIcon>
-            <ListItemText primary="Inicio" />
-          </ListItemButton>
           <WithPatient>
             <ListItemButton
               component={NavLink}
@@ -114,7 +98,7 @@ export default function MenuDrawer({
           <WithPatient>
             <ListItemButton
               component={NavLink}
-              to="/professional"
+              to="/inr-app/observation/add"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -128,7 +112,7 @@ export default function MenuDrawer({
           <WithPatient>
             <ListItemButton
               component={NavLink}
-              to="/professional"
+              to="/inr-app/information"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >

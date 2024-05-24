@@ -15,11 +15,15 @@ const themeOptions: ThemeOptions = {
     mode: "light",
     primary: {
       // main: "#b8e6b5",
-      main: "#e6ffe6",
+      // main: "#e6ffe6",
+      // main: "#4CAF50",
+      main: "#00796B",
     },
     secondary: {
       // main: "#6b4de8",
-      main: "#ffe6cc",
+      // main: "#ffe6cc",
+      // main: "#C8E6C9",
+      main: "#B2DFDB",
     },
     info: {
       main: "#ffa726",
@@ -36,7 +40,7 @@ const themeOptions: ThemeOptions = {
     },
     warning: {
       // main: "#ffff00",
-      main: "#b36b00",
+      main: "#FFC107",
     },
   },
 };

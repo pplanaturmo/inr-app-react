@@ -28,7 +28,7 @@ const DosageCard: React.FC<DosageCardProps> = ({
   const isTaken = dosage.taken;
   const today = dayjs();
   const isToday = dayjs(dosage.date).isSame(today, "day");
-  const backgroundColor = isTaken ? "primary.main" : "background.paper";
+  const backgroundColor = isTaken ? "secondary.main" : "background.paper";
 
   // const date = new Intl.DateTimeFormat("es", {
   //   weekday: "long",
@@ -86,9 +86,9 @@ const DosageCard: React.FC<DosageCardProps> = ({
             </Typography>
             <Button
               onClick={() => setTaken()}
-              sx={{ margin: "1rem", width: "80%", alignSelf: "center" }}
+              sx={{ margin: "1rem", width: "12rem", alignSelf: "center" }}
               variant="contained"
-              color="info"
+              color="secondary"
             >
               Marcar como tomada
             </Button>

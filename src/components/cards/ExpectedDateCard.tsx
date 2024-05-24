@@ -1,53 +1,109 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
+import { ExpectedMeasurementDate } from "../../types/index";
 
 interface ExpectedDateCardProps {
-  measurementDate: Date;
+  expectedMeasurementDate: ExpectedMeasurementDate | null;
 }
 
 const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
-  measurementDate,
-}) => {
+  expectedMeasurementDate,
+}: ExpectedDateCardProps) => {
+  let contactDoctor: boolean;
+  let expectedDate: Date;
+  if (expectedMeasurementDate) {
+    contactDoctor = expectedMeasurementDate.contactDoctorASAP;
+    expectedDate = new Date(expectedMeasurementDate.expectedDate);
+  } else {
+    contactDoctor = true;
+    expectedDate = new Date();
+  }
+
   const formattedDate = new Intl.DateTimeFormat("es", {
     weekday: "long",
     month: "long",
     day: "numeric",
     year: "numeric",
   })
-    .format(measurementDate)
+    .format(expectedDate)
     .toLocaleUpperCase();
+
   return (
     <Card
       variant="outlined"
       sx={{
-        backgroundColor: "warning.main",
+        backgroundColor: contactDoctor ? "red" : "warning.main",
         color: "white",
       }}
     >
-      <CardContent
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Typography
-          variant="h6"
-          gutterBottom
-          sx={{ fontSize: "1.5rem" }}
+      {contactDoctor ? (
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          Siguiente medida:
-        </Typography>
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{ fontSize: "2rem", fontWeight: "700" }}
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{ fontSize: "1.5rem", textAlign: "center", fontWeight: "900" }}
+          >
+            CONTACTE CON EL MÉDICO URGENTEMENTE
+          </Typography>
+        </CardContent>
+      ) : (
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "black",
+          }}
         >
-          {formattedDate}
-        </Typography>
-      </CardContent>
+          <Typography variant="h6" gutterBottom sx={{ fontSize: "1.5rem" }}>
+            Siguiente medida:
+          </Typography>
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{ fontSize: "2rem", fontWeight: "700" }}
+          >
+            {formattedDate}
+          </Typography>
+        </CardContent>
+      )}
     </Card>
+
+    // <Card
+    //   variant="outlined"
+    //   sx={{
+    //     backgroundColor: "warning.main",
+    //     color: "white",
+    //   }}
+    // >
+    //   <CardContent
+    //     sx={{
+    //       display: "flex",
+    //       flexDirection: "column",
+    //       alignItems: "center",
+    //       justifyContent: "center",
+    //     }}
+    //   >
+    //     <Typography variant="h6" gutterBottom sx={{ fontSize: "1.5rem" }}>
+    //       Siguiente medida:
+    //     </Typography>
+    //     <Typography
+    //       variant="h5"
+    //       gutterBottom
+    //       sx={{ fontSize: "2rem", fontWeight: "700" }}
+    //     >
+    //       {formattedDate}
+    //     </Typography>
+    //   </CardContent>
+    // </Card>
   );
 };
 

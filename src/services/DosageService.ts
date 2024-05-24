@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { dosageResponseSchema } from "../schemas";
 import { dosageSchema } from "../schemas/dosageSchema";
 import { Dosage, DosageResponse, UserResponse } from "../types";
+
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const fetchDosages = async (
@@ -90,8 +91,7 @@ export const updateDoseTaken = async (
         // Authorization: `Bearer ${user?.accessToken}`,
       },
     };
-    console.log(baseUrl + dosageUpdate);
-    console.log(body);
+
     await axios.put(baseUrl + dosageUpdate, body, axiosConfig);
 
     const updatedDosages = dosages.map((dosage) =>

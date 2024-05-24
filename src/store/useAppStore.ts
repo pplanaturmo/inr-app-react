@@ -1,6 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { Dosage, ObservationResponse, UserResponse } from "../types";
+import {
+  Dosage,
+  ExpectedMeasurementDate,
+  ObservationResponse,
+  UserResponse,
+} from "../types";
 
 interface AppState {
   user: UserResponse | null;
@@ -9,6 +14,7 @@ interface AppState {
   observationDetails: ObservationResponse | null;
   observations: ObservationResponse[];
   loading: boolean;
+  expectedMeasurementDate: ExpectedMeasurementDate | null;
   setUser: (user: UserResponse) => void;
   getUser: () => UserResponse;
   clearUser: () => void;
@@ -28,6 +34,11 @@ interface AppState {
   addObservation: (observation: ObservationResponse) => void;
   clearObservations: () => void;
   setLoading: (isLoading: boolean) => void;
+  setExpectedMeasurementDate: (
+    expectedMeasurementDate: ExpectedMeasurementDate
+  ) => void;
+  getExpectedMeasurementDate: () => ExpectedMeasurementDate;
+  clearExpectedMeasurementDate: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -40,6 +51,7 @@ export const useAppStore = create<AppState>()(
         observationDetails: null,
         observations: [],
         loading: false,
+        expectedMeasurementDate: null,
         setUser: (user: UserResponse) => set({ user }),
         getUser: () => get().user ?? ({} as UserResponse),
         isFieldNull: (fieldName: keyof UserResponse) => {
@@ -69,6 +81,13 @@ export const useAppStore = create<AppState>()(
           })),
         clearObservations: () => set({ observations: [] }),
         setLoading: (isLoading) => set({ loading: isLoading }),
+        setExpectedMeasurementDate: (
+          expectedMeasurementDate: ExpectedMeasurementDate
+        ) => set({ expectedMeasurementDate }),
+        getExpectedMeasurementDate: () =>
+          get().expectedMeasurementDate ?? ({} as ExpectedMeasurementDate),
+        clearExpectedMeasurementDate: () =>
+          set({ expectedMeasurementDate: null }),
       }),
       {
         name: "appStorage",

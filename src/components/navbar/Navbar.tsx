@@ -29,7 +29,6 @@ export default function Navbar() {
   };
   const toggleDrawerUser = () => {
     setDrawerUserOpen(!drawerUserOpen);
-    console.log(dosages);
   };
   const handleMenuClick = () => {
     setDrawerMenuOpen(false);
@@ -48,12 +47,12 @@ export default function Navbar() {
     clearObservations,
     user,
   } = useAppStore();
-  const dosages = useAppStore((state) => state.getDosages());
 
   const logoutUser = () => {
     clearUser();
     clearDosageDetails();
     clearDosages();
+
     clearObservationDetails();
     clearObservations();
   };
@@ -93,7 +92,6 @@ export default function Navbar() {
         )}
       </AppBar>
 
-      {/**Drawers mobile */}
       {!isMediumScreen && (
         <>
           <MenuDrawer
@@ -111,46 +109,6 @@ export default function Navbar() {
         handleUserClick={handleUserClick}
         logoutUser={logoutUser}
       />
-      {/* <Drawer
-        variant="temporary"
-        anchor="right"
-        open={drawerUserOpen}
-        onClose={toggleDrawerUser}
-        ModalProps={{ keepMounted: true }}
-        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
-      >
-        {" "}
-        <IconButton
-          color="inherit"
-          aria-label="Close drawer"
-          onClick={toggleDrawerUser}
-          style={{ marginRight: "auto" }}
-        >
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
-        </IconButton>
-        <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
-          Perfil
-        </Typography>
-        <List>
-          <ListItemButton
-            component={NavLink}
-            to="/inr-app/"
-            onClick={handleUserClick}
-          >
-            <ListItemIcon>
-              <ManageAccountsIcon style={{ color: "black" }} />
-            </ListItemIcon>
-            <ListItemText primary="Perfil" />
-          </ListItemButton>
-          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
-            <ListItemIcon>
-              <LogoutIcon style={{ color: "darkslategrey" }} />
-            </ListItemIcon>
-            <ListItemText primary="Desconectar" />
-          </ListItemButton>
-          
-        </List>
-      </Drawer> */}
     </>
   );
 }
