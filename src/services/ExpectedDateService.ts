@@ -13,9 +13,8 @@ export const fetchExpectedMeasurementDate = async (
   const expectedMeasurementUrl =
     "/expected-measurement-dates/user/" + user?.id + "/last";
   try {
-    console.log(baseUrl + expectedMeasurementUrl);
     const { data } = await axios.get(baseUrl + expectedMeasurementUrl);
-    console.log(data);
+
     setExpectedMeasurementDate(data);
   } catch (error) {
     console.error("Failed to fetch date", error);

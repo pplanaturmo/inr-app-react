@@ -16,8 +16,6 @@ export async function registerUser(data: RegisterRequest) {
     dataConsent: data.dataConsent,
   };
 
-  console.log(formData);
-
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -54,6 +52,6 @@ export async function authenticateUser(data: LoginRequest) {
   );
 
   const userData: UserResponse = response.data;
-  console.log(userData);
+
   return userData;
 }

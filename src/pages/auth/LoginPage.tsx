@@ -7,11 +7,9 @@ import Grid from "@mui/material/Grid/Grid";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import { authenticateUser } from "../../services/AuthenticationService";
+import { authenticateUser } from "../../services/authenticationService";
 import { useAppStore } from "../../store/useAppStore";
 import { LoginRequest } from "../../types";
-import Snackbar from "@mui/material/Snackbar/Snackbar";
-import { useSnackbar } from "../../context/SnackbarContext";
 
 export default function LoginPage() {
   const {
@@ -38,13 +36,6 @@ export default function LoginPage() {
     navigate("/register", { replace: true });
   };
 
-  const { openSnackbar, closeSnackbar, snackbarMessage, snackbarSeverity } =
-    useSnackbar();
-
-  const handleClick = () => {
-    openSnackbar("Hello, world!", "success");
-  };
-
   return (
     <>
       <Box
@@ -55,7 +46,11 @@ export default function LoginPage() {
         justifyContent="center"
         alignItems="center"
       >
-        <Typography variant="h6" align="center" margin="dense">
+        <Typography
+          variant="h6"
+          align="center"
+          margin="dense"
+        >
           Iniciar Sesión
         </Typography>
         <Grid
@@ -155,17 +150,6 @@ export default function LoginPage() {
             >
               Registrarse
             </Button>
-          </Box>
-
-          <Box>
-            <Button onClick={handleClick}>Show Snackbar</Button>
-            <Snackbar
-              open={Boolean(snackbarMessage)}
-              autoHideDuration={6000}
-              onClose={closeSnackbar}
-              message={snackbarMessage}
-              severity={snackbarSeverity}
-            />
           </Box>
         </Box>
       </Box>

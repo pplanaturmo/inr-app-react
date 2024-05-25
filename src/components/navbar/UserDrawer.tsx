@@ -42,15 +42,18 @@ export default function UserDrawer({
           onClick={toggleDrawerUser}
           style={{ marginRight: "auto" }}
         >
-          <CancelIcon fontSize="large" style={{ color: "red" }} />
+          <CancelIcon
+            fontSize="large"
+            style={{ color: "red" }}
+          />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
-          Perfil
+          Opciones de Usuario
         </Typography>
         <List>
           <ListItemButton
             component={NavLink}
-            to="/inr-app/"
+            to="/inr-app/profile"
             onClick={handleUserClick}
           >
             <ListItemIcon>
@@ -58,7 +61,11 @@ export default function UserDrawer({
             </ListItemIcon>
             <ListItemText primary="Perfil" />
           </ListItemButton>
-          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
+          <ListItemButton
+            component={NavLink}
+            to="/"
+            onClick={logoutUser}
+          >
             <ListItemIcon>
               <LogoutIcon style={{ color: "darkslategrey" }} />
             </ListItemIcon>

@@ -25,7 +25,7 @@ export default function MainLayout() {
       >
         <Outlet />
       </Box>
-      <Footer />
+      <Footer layoutType={"main"} />
     </Box>
   );
 }

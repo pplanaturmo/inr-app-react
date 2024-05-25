@@ -3,13 +3,15 @@ import {
   dosageResponseSchema,
   loginRequestSchema,
   measurementResponseSchema,
-  observationRequestSchema,
+  observationSchema,
   registerRequestSchema,
   userSchema,
+  measurementRequestSchema,
+  dosageSchema,
+  expectedDateSchema,
+  observationResponseSchema,
 } from "../schemas";
-import { measurementRequestSchema } from "../schemas/measurementRequestSchema";
-import { dosageSchema } from "../schemas/dosageSchema";
-import { expectedDateSchema } from "../schemas/expectedDateSchema";
+import { Dayjs } from "dayjs";
 
 export type RegisterRequest = z.infer<typeof registerRequestSchema>;
 export type RegisterData = Pick<
@@ -23,10 +25,17 @@ export type RegisterData = Pick<
   | "idCard"
   | "dataConsent"
 >;
+
+export type ObservationForm = {
+  date: Dayjs;
+  cause: string;
+  description: string;
+};
 export type LoginRequest = z.infer<typeof loginRequestSchema>;
 export type UserResponse = z.infer<typeof userSchema>;
 export type MeasurementRequest = z.infer<typeof measurementRequestSchema>;
-export type ObservationResponse = z.infer<typeof observationRequestSchema>;
+export type Observation = z.infer<typeof observationSchema>;
+export type ObservationResponse = z.infer<typeof observationResponseSchema>;
 export type ObservationRequest = Omit<ObservationResponse, "id">;
 export type MeasurementResponse = z.infer<typeof measurementResponseSchema>;
 export type DosageResponse = z.infer<typeof dosageResponseSchema>;

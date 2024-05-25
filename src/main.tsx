@@ -14,32 +14,24 @@ const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
     primary: {
-      // main: "#b8e6b5",
-      // main: "#e6ffe6",
-      // main: "#4CAF50",
-      main: "#00796B",
+      // main: "#00796B",
+      main: "#157a6e",
     },
     secondary: {
-      // main: "#6b4de8",
-      // main: "#ffe6cc",
-      // main: "#C8E6C9",
-      main: "#B2DFDB",
+      // main: "#B2DFDB",
+      main: "#d8fefa",
     },
     info: {
-      main: "#ffa726",
+      main: "#cfe76a",
     },
     background: {
-      // default: "#e4dfdf",
       default: "#f2f2f2",
-
-      // paper: "rgba(251,242,242,0.86)",
       paper: "#ffffff",
     },
     success: {
       main: "#0ef11d",
     },
     warning: {
-      // main: "#ffff00",
       main: "#FFC107",
     },
   },

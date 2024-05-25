@@ -129,7 +129,7 @@ export default function MenuDrawer({
           <WithProfessional>
             <ListItemButton
               component={NavLink}
-              to="/admin"
+              to="/inr-app/alerts"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -145,7 +145,7 @@ export default function MenuDrawer({
           <WithProfessional>
             <ListItemButton
               component={NavLink}
-              to="/manager"
+              to="/inr-app/patients"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -161,7 +161,7 @@ export default function MenuDrawer({
           <WithManager>
             <ListItemButton
               component={NavLink}
-              to="/admin"
+              to="/inr-app/professionals"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -177,7 +177,7 @@ export default function MenuDrawer({
           <WithAdmin>
             <ListItemButton
               component={NavLink}
-              to="/admin"
+              to="/inr-app/users-list"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -191,7 +191,7 @@ export default function MenuDrawer({
           <WithAdmin>
             <ListItemButton
               component={NavLink}
-              to="/admin"
+              to="/inr-app/departments"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >
@@ -207,7 +207,7 @@ export default function MenuDrawer({
           <WithAdmin>
             <ListItemButton
               component={NavLink}
-              to="/admin"
+              to="/inr-app/admin"
               onClick={handleMenuClick}
               sx={{ margin: "1rem", variant: "contained", color: "secondary" }}
             >

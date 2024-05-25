@@ -26,7 +26,7 @@ export default function LoginLayout() {
         />
         <Outlet />
 
-        <Footer />
+        <Footer layoutType={"login"} />
       </Box>
     </>
   );

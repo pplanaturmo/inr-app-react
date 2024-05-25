@@ -7,7 +7,7 @@ export enum CauseEnum {
   OTHER = "OTHER",
 }
 
-export const CauseOptions: { [key in CauseEnum]: string } = {
+export const causeOptions: { [key in CauseEnum]: string } = {
   [CauseEnum.NO_DOSE]: "Olvido de dosis",
   [CauseEnum.DOUBLE_DOSE]: "Toma doble de dosis",
   [CauseEnum.BLEEDING]: "Sangrado",

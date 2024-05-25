@@ -90,7 +90,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/admin"
+            to="/inr-app/alerts"
           >
             <ReportProblemIcon sx={{ marginRight: "10px" }} />
             Alertas
@@ -102,7 +102,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/manager"
+            to="/inr-app/patients"
           >
             <PeopleAltIcon sx={{ marginRight: "10px" }} />
             Listado de pacientes
@@ -114,7 +114,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/admin"
+            to="/inr-app/professionals"
           >
             <PeopleOutlineIcon sx={{ marginRight: "10px" }} />
             Listado de profesionales
@@ -126,7 +126,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/admin"
+            to="/inr-app/users-list"
           >
             <Groups3Icon sx={{ marginRight: "10px" }} />
             Listado total de usuarios
@@ -138,7 +138,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/admin"
+            to="/inr-app/departments"
           >
             <MedicalInformationIcon sx={{ marginRight: "10px" }} />
             Listado de departamentos
@@ -150,7 +150,7 @@ export default function MiddleButtons() {
             variant="contained"
             color="secondary"
             component={NavLink}
-            to="/admin"
+            to="/inr-app/admin"
           >
             <AdminPanelSettingsIcon sx={{ marginRight: "10px" }} />
             Admin

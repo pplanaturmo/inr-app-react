@@ -7,12 +7,22 @@ import RegisterMeasurement from "../pages/patient/RegisterMeasurementPage";
 import PendingDosages from "../pages/patient/PendingDosagesPage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
-import RegisterObservationPage from "../pages/patient/RegisterObservationPage";
 import LoggedRoute from "../components/HOCs/WithSession";
 import ProtectedRoute from "../components/HOCs/WithAuth";
 import InformationPage from "../pages/patient/InformationPage";
 import WithPatient from "../components/HOCs/WithPatient";
 import ObservationsPage from "../pages/patient/ObservationsPage";
+import LoginLegalWarning from "../pages/auth/LoginLegalWarning";
+import LegalWarning from "../components/LegalWarning";
+import WithProfessional from "../components/HOCs/WithProfessional";
+import AlertsPage from "../pages/professional/AlertsPage";
+import PatientsPage from "../pages/professional/PatientsPage";
+import ProfessionalsPage from "../pages/manager/ProfessionalsPage";
+import WithManager from "../components/HOCs/WithManager";
+import WithAdmin from "../components/HOCs/WithAdmin";
+import UserListPage from "../pages/admin/UserListPage";
+import DepartmentsListPage from "../pages/admin/DepartmentsListPage";
+import ProfilePage from "../pages/auth/ProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +41,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <RegisterPage />,
       },
+      {
+        path: "/legal-warning",
+        element: <LoginLegalWarning />,
+      },
     ],
   },
   {
@@ -41,6 +55,10 @@ export const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
+      {
+        path: "/inr-app/legal-warning",
+        element: <LegalWarning />,
+      },
       {
         index: true,
         element: (
@@ -77,7 +95,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "/inr-app/information",
-
         element: (
           <WithPatient>
             <InformationPage />,
@@ -85,12 +102,56 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/inr-app/observations/add",
+        path: "/inr-app/alerts",
         element: (
-          <WithPatient>
-            <RegisterObservationPage />
-          </WithPatient>
+          <WithProfessional>
+            <AlertsPage />,
+          </WithProfessional>
         ),
+      },
+      {
+        path: "/inr-app/patients",
+        element: (
+          <WithProfessional>
+            <PatientsPage />,
+          </WithProfessional>
+        ),
+      },
+      {
+        path: "/inr-app/professionals",
+        element: (
+          <WithManager>
+            <ProfessionalsPage />,
+          </WithManager>
+        ),
+      },
+      {
+        path: "/inr-app/users-list",
+        element: (
+          <WithAdmin>
+            <UserListPage />,
+          </WithAdmin>
+        ),
+      },
+      {
+        path: "/inr-app/departments",
+        element: (
+          <WithAdmin>
+            <DepartmentsListPage />,
+          </WithAdmin>
+        ),
+      },
+      {
+        path: "/inr-app/admin",
+        element: (
+          <WithAdmin>
+            <InformationPage />,
+          </WithAdmin>
+        ),
+      },
+      {
+        path: "/inr-app/profile",
+        element: <ProfilePage />,
       },
     ],
   },

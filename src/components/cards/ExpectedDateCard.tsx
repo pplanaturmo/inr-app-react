@@ -28,15 +28,43 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
     .format(expectedDate)
     .toLocaleUpperCase();
 
+  const noExpectedDateRetrieved = expectedMeasurementDate?.expectedDate == null;
+
   return (
     <Card
       variant="outlined"
       sx={{
-        backgroundColor: contactDoctor ? "red" : "warning.main",
+        backgroundColor: noExpectedDateRetrieved
+          ? "info.main"
+          : contactDoctor
+          ? "red"
+          : "warning.main",
         color: "white",
       }}
     >
-      {contactDoctor ? (
+      {noExpectedDateRetrieved ? (
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              fontSize: "1.5rem",
+              textAlign: "center",
+              fontWeight: "900",
+              color: "black",
+            }}
+          >
+            No hay ninguna medición almacenada
+          </Typography>
+        </CardContent>
+      ) : contactDoctor ? (
         <CardContent
           sx={{
             display: "flex",
@@ -63,7 +91,11 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
             color: "black",
           }}
         >
-          <Typography variant="h6" gutterBottom sx={{ fontSize: "1.5rem" }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{ fontSize: "1.5rem" }}
+          >
             Siguiente medida:
           </Typography>
           <Typography
@@ -76,34 +108,6 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
         </CardContent>
       )}
     </Card>
-
-    // <Card
-    //   variant="outlined"
-    //   sx={{
-    //     backgroundColor: "warning.main",
-    //     color: "white",
-    //   }}
-    // >
-    //   <CardContent
-    //     sx={{
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       alignItems: "center",
-    //       justifyContent: "center",
-    //     }}
-    //   >
-    //     <Typography variant="h6" gutterBottom sx={{ fontSize: "1.5rem" }}>
-    //       Siguiente medida:
-    //     </Typography>
-    //     <Typography
-    //       variant="h5"
-    //       gutterBottom
-    //       sx={{ fontSize: "2rem", fontWeight: "700" }}
-    //     >
-    //       {formattedDate}
-    //     </Typography>
-    //   </CardContent>
-    // </Card>
   );
 };
 

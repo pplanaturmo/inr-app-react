@@ -3,7 +3,7 @@ import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import {
   Dosage,
   ExpectedMeasurementDate,
-  ObservationResponse,
+  Observation,
   UserResponse,
 } from "../types";
 
@@ -11,8 +11,8 @@ interface AppState {
   user: UserResponse | null;
   dosageDetails: Dosage | null;
   dosages: Dosage[];
-  observationDetails: ObservationResponse | null;
-  observations: ObservationResponse[];
+  observationDetails: Observation | null;
+  observations: Observation[];
   loading: boolean;
   expectedMeasurementDate: ExpectedMeasurementDate | null;
   setUser: (user: UserResponse) => void;
@@ -26,12 +26,12 @@ interface AppState {
   getDosages: () => Dosage[];
   addDosage: (dosage: Dosage) => void;
   clearDosages: () => void;
-  setObservationDetails: (observationDetails: ObservationResponse) => void;
-  getObservationDetails: () => ObservationResponse;
+  setObservationDetails: (observationDetails: Observation) => void;
+  getObservationDetails: () => Observation;
   clearObservationDetails: () => void;
-  setObservations: (observations: ObservationResponse[]) => void;
-  getObservations: () => ObservationResponse[];
-  addObservation: (observation: ObservationResponse) => void;
+  setObservations: (observations: Observation[]) => void;
+  getObservations: () => Observation[];
+  addObservation: (observation: Observation) => void;
   clearObservations: () => void;
   setLoading: (isLoading: boolean) => void;
   setExpectedMeasurementDate: (
@@ -67,15 +67,14 @@ export const useAppStore = create<AppState>()(
         addDosage: (dosage: Dosage) =>
           set((state) => ({ dosages: [...state.dosages, dosage] })),
         clearDosages: () => set({ dosages: [] }),
-        setObservationDetails: (observationDetails: ObservationResponse) =>
+        setObservationDetails: (observationDetails: Observation) =>
           set({ observationDetails }),
         getObservationDetails: () =>
-          get().observationDetails ?? ({} as ObservationResponse),
+          get().observationDetails ?? ({} as Observation),
         clearObservationDetails: () => set({ observationDetails: null }),
-        setObservations: (observations: ObservationResponse[]) =>
-          set({ observations }),
+        setObservations: (observations: Observation[]) => set({ observations }),
         getObservations: () => get().observations,
-        addObservation: (observation: ObservationResponse) =>
+        addObservation: (observation: Observation) =>
           set((state) => ({
             observations: [...state.observations, observation],
           })),

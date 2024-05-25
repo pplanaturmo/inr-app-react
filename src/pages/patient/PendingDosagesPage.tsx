@@ -2,12 +2,12 @@ import Box from "@mui/material/Box/Box";
 import Spinner from "../../components/Spinner";
 import { useAppStore } from "../../store/useAppStore";
 import DosageCard from "../../components/cards/DosageCard";
-import { fetchDosages } from "../../services/DosageService";
+import { fetchDosages } from "../../services/dosageService";
 import { useEffect } from "react";
 import ExpectedDateCard from "../../components/cards/ExpectedDateCard";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { fetchExpectedMeasurementDate } from "../../services/ExpectedDateService";
+import { fetchExpectedMeasurementDate } from "../../services/expectedDateService";
 
 export default function PendingDosagesPage() {
   const {
@@ -19,7 +19,7 @@ export default function PendingDosagesPage() {
     setDosages,
     setExpectedMeasurementDate,
   } = useAppStore();
-  // const userId = user?.id;
+
   const fetchData = async () => {
     try {
       await fetchDosages(setLoading, setDosages, user);
@@ -28,7 +28,6 @@ export default function PendingDosagesPage() {
         setExpectedMeasurementDate,
         user
       );
-      console.log(expectedMeasurementDate);
     } catch (error) {
       console.error("Failed to fetch dosages", error);
     }
@@ -40,12 +39,12 @@ export default function PendingDosagesPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const fechaMedida = new Date("2024-04-30T16:15:00Z");
   const theme = useTheme();
   const isLgUp = useMediaQuery(theme.breakpoints.up("lg"));
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
-  const boxWidth = isLgUp ? "70%" : isSmUp ? "80%" : "90%";
+  const boxWidth = isLgUp ? "60%" : isSmUp ? "70%" : "80%";
+
   return (
     <>
       {loading ? (
@@ -60,7 +59,11 @@ export default function PendingDosagesPage() {
           mx="auto"
         >
           {dosages.map((dosage, index) => (
-            <Box width="100%" marginY={2} key={index}>
+            <Box
+              width="100%"
+              marginY={2}
+              key={index}
+            >
               <DosageCard
                 dosage={dosage}
                 setLoading={setLoading}
@@ -69,14 +72,20 @@ export default function PendingDosagesPage() {
               />
             </Box>
           ))}
-          <Box width="100%" marginY={2}>
+          <Box
+            width="100%"
+            marginY={2}
+          >
             <ExpectedDateCard
               expectedMeasurementDate={expectedMeasurementDate}
             />
           </Box>
         </Box>
       ) : (
-        <Box width="100%" marginY={2}>
+        <Box
+          width="100%"
+          marginY={2}
+        >
           <ExpectedDateCard expectedMeasurementDate={expectedMeasurementDate} />
         </Box>
       )}

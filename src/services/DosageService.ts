@@ -20,7 +20,7 @@ export const fetchDosages = async (
   user: UserResponse | null
 ) => {
   const dosageBetweenUrl = "/dosage/between-dates";
-  console.log(baseUrl + dosageBetweenUrl);
+
   const startingDate = dayjs();
   const finishingDate = startingDate.add(7, "day");
   const formattedStartingDate = startingDate.format("YYYY-MM-DD");
@@ -56,7 +56,6 @@ export const fetchDosages = async (
     const validDosageList = dosageList.map(dosageSchema.parse);
 
     setDosages(validDosageList);
-    console.log(validDosageList);
   } catch (error) {
     console.error("Failed to fetch dosages", error);
   } finally {
