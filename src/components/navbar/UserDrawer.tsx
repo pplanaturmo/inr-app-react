@@ -33,7 +33,14 @@ export default function UserDrawer({
         open={drawerUserOpen}
         onClose={toggleDrawerUser}
         ModalProps={{ keepMounted: true }}
-        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
+        PaperProps={{
+          style: {
+            width: drawerWidth,
+            textAlign: "center",
+            height: "auto",
+            maxHeight: "100%",
+          },
+        }}
       >
         {" "}
         <IconButton

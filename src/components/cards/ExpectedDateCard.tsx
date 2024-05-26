@@ -73,6 +73,14 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
             justifyContent: "center",
           }}
         >
+          {" "}
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{ fontSize: "1.5rem", textAlign: "center", fontWeight: "900" }}
+          >
+            MEDIDA PELIGROSAMENTE ALTA
+          </Typography>
           <Typography
             variant="h4"
             gutterBottom

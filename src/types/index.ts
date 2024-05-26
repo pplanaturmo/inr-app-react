@@ -10,6 +10,7 @@ import {
   dosageSchema,
   expectedDateSchema,
   observationResponseSchema,
+  alertResponseSchema,
 } from "../schemas";
 import { Dayjs } from "dayjs";
 
@@ -41,3 +42,4 @@ export type MeasurementResponse = z.infer<typeof measurementResponseSchema>;
 export type DosageResponse = z.infer<typeof dosageResponseSchema>;
 export type Dosage = z.infer<typeof dosageSchema>;
 export type ExpectedMeasurementDate = z.infer<typeof expectedDateSchema>;
+export type AlertResponse = z.infer<typeof alertResponseSchema>;

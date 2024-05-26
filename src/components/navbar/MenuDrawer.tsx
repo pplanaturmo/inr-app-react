@@ -48,14 +48,23 @@ export default function MenuDrawer({
         open={drawerMenuOpen}
         onClose={toggleDrawerMenu}
         ModalProps={{ keepMounted: true }}
-        PaperProps={{ style: { width: drawerWidth, textAlign: "center" } }}
+        PaperProps={{
+          style: {
+            width: drawerWidth,
+            textAlign: "center",
+            height: "auto",
+            maxHeight: "100%",
+          },
+        }}
       >
         {" "}
         <IconButton
           color="inherit"
           aria-label="Close drawer"
           onClick={toggleDrawerMenu}
-          style={{ marginLeft: "auto" }}
+          style={{
+            marginLeft: "auto",
+          }}
         >
           <CancelIcon
             fontSize="large"
