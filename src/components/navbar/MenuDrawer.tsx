@@ -52,8 +52,6 @@ export default function MenuDrawer({
           style: {
             width: drawerWidth,
             textAlign: "center",
-            height: "auto",
-            maxHeight: "100%",
           },
         }}
       >

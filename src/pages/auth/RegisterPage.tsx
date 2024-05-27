@@ -99,7 +99,12 @@ export default function RegisterPage() {
         alignItems="center"
         width={"100%"}
       >
-        <Typography variant="h4" align="center" margin="dense" marginBottom={2}>
+        <Typography
+          variant="h4"
+          align="center"
+          margin="dense"
+          marginBottom={2}
+        >
           Registrarse en la aplicación
         </Typography>
 
@@ -110,7 +115,13 @@ export default function RegisterPage() {
           alignItems="center"
           width={"100%"}
         >
-          <Grid item xs={12} sm={9} md={7} width={fieldWidth}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            width={fieldWidth}
+          >
             <TextField
               required
               id="name"
@@ -142,7 +153,13 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.name?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} width={fieldWidth}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            width={fieldWidth}
+          >
             <TextField
               required
               id="surname"
@@ -174,7 +191,13 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <TextField
               required
               id="email"
@@ -210,7 +233,13 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <Controller
               name="rangeInr"
               control={control}
@@ -229,14 +258,20 @@ export default function RegisterPage() {
                     sx={{ backgroundColor: "white", width: "100%" }}
                   >
                     {rangeInrList.map((range) => (
-                      <MenuItem key={range.id} value={range.id}>
+                      <MenuItem
+                        key={range.id}
+                        value={range.id}
+                      >
                         {range.description}. Rango terapéutico: {range.minLevel}
                         -{range.maxLevel}
                       </MenuItem>
                     ))}
                   </Select>
                   {fieldState.error && (
-                    <Typography variant="body2" color="error">
+                    <Typography
+                      variant="body2"
+                      color="error"
+                    >
                       {fieldState.error.message}
                     </Typography>
                   )}
@@ -245,7 +280,13 @@ export default function RegisterPage() {
             />
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <Controller
               name="dosePattern"
               control={control}
@@ -266,7 +307,10 @@ export default function RegisterPage() {
                     sx={{ backgroundColor: "white", width: "100%" }}
                   >
                     {dosePatternList.map((pattern) => (
-                      <MenuItem key={pattern.id} value={pattern.id}>
+                      <MenuItem
+                        key={pattern.id}
+                        value={pattern.id}
+                      >
                         <Typography
                           display={"flex"}
                           flexWrap={"wrap"}
@@ -279,7 +323,10 @@ export default function RegisterPage() {
                     ))}
                   </Select>
                   {fieldState.error && (
-                    <Typography variant="body2" color="error">
+                    <Typography
+                      variant="body2"
+                      color="error"
+                    >
                       {fieldState.error.message}
                     </Typography>
                   )}
@@ -288,7 +335,13 @@ export default function RegisterPage() {
             />
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <TextField
               required
               id="password"
@@ -326,7 +379,13 @@ export default function RegisterPage() {
             <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: "80%" }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: "80%" }}
+          >
             <TextField
               required
               id="confirmPassword"
@@ -364,7 +423,13 @@ export default function RegisterPage() {
             </ErrorMessage>
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <FormControlLabel
               control={
                 <Controller
@@ -386,7 +451,13 @@ export default function RegisterPage() {
               label="Acepto que se procesen mis datos de forma anónima para fines estadísticos"
             />
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <FormControlLabel
               control={
                 <Controller
@@ -436,8 +507,16 @@ export default function RegisterPage() {
               Registrar usuario
             </Button>
           </Box>
-          <Box mt={3} display="flex" justifyContent="center">
-            <Button variant="contained" color="primary" onClick={goToLogin}>
+          <Box
+            mt={3}
+            display="flex"
+            justifyContent="center"
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={goToLogin}
+            >
               Volver
             </Button>
           </Box>

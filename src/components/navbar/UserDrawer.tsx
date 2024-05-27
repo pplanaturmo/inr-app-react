@@ -37,8 +37,6 @@ export default function UserDrawer({
           style: {
             width: drawerWidth,
             textAlign: "center",
-            height: "auto",
-            maxHeight: "100%",
           },
         }}
       >

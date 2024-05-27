@@ -7,9 +7,10 @@ import Grid from "@mui/material/Grid/Grid";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import { authenticateUser } from "../../services/authenticationService";
+
 import { useAppStore } from "../../store/useAppStore";
 import { LoginRequest } from "../../types";
+import { authenticateUser } from "../../services/authenticationService";
 
 export default function LoginPage() {
   const {
@@ -47,7 +48,11 @@ export default function LoginPage() {
         alignItems="center"
         width={"90%"}
       >
-        <Typography variant="h6" align="center" margin="dense">
+        <Typography
+          variant="h6"
+          align="center"
+          margin="dense"
+        >
           Iniciar Sesión
         </Typography>
         <Grid

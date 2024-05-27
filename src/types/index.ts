@@ -23,8 +23,8 @@ export type RegisterData = Pick<
   | "surname"
   | "email"
   | "password"
-  | "rangeInrId"
-  | "dosePatternId"
+  | "rangeInr"
+  | "dosePattern"
   | "dataConsent"
 >;
 
