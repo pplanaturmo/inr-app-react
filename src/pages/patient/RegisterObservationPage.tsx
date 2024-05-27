@@ -8,17 +8,18 @@ import MenuItem from "@mui/material/MenuItem/MenuItem";
 import TextField from "@mui/material/TextField/TextField";
 import Button from "@mui/material/Button/Button";
 
-import { CauseEnum, causeOptions } from "../../constants/causeOptions";
 import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/LocalizationProvider";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/es";
-import { registerObservation } from "../../services/observationService";
+
 import { ObservationForm, UserResponse } from "../../types";
 import { useAppStore } from "../../store/useAppStore";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
+import { registerObservation } from "../../services/observationService";
+import { CauseEnum, causeOptions } from "../../constants/causeOptions";
 
 export default function RegisterObservationPage() {
   dayjs.locale("es");
@@ -76,11 +77,7 @@ export default function RegisterObservationPage() {
               onChange={(newDate: Dayjs | null) => field.onChange(newDate)}
               slots={{
                 textField: (props) => (
-                  <TextField
-                    {...props}
-                    fullWidth
-                    required
-                  />
+                  <TextField {...props} fullWidth required />
                 ),
               }}
               sx={{ backgroundColor: "white" }}
@@ -93,10 +90,7 @@ export default function RegisterObservationPage() {
         control={control}
         rules={{ required: "El motivo es obligatorio" }}
         render={({ field, fieldState }) => (
-          <FormControl
-            fullWidth
-            error={!!fieldState.error}
-          >
+          <FormControl fullWidth error={!!fieldState.error}>
             <InputLabel id="cause-label">Motivo</InputLabel>
             <Select
               {...field}
@@ -107,19 +101,13 @@ export default function RegisterObservationPage() {
               onChange={(event) => field.onChange(event.target.value)}
             >
               {Object.keys(causeOptions).map((key) => (
-                <MenuItem
-                  key={key}
-                  value={key}
-                >
+                <MenuItem key={key} value={key}>
                   {causeOptions[key as CauseEnum]}
                 </MenuItem>
               ))}
             </Select>
             {fieldState.error && (
-              <Typography
-                variant="body2"
-                color="error"
-              >
+              <Typography variant="body2" color="error">
                 {fieldState.error.message}
               </Typography>
             )}
@@ -145,18 +133,10 @@ export default function RegisterObservationPage() {
         )}
       />
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => reset()}
-        >
+        <Button variant="outlined" color="primary" onClick={() => reset()}>
           Reiniciar formulario
         </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
+        <Button variant="contained" color="primary" type="submit">
           Enviar observación
         </Button>
       </Box>

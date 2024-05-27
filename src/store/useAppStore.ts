@@ -2,8 +2,10 @@ import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import {
   Dosage,
+  DosePatternResponse,
   ExpectedMeasurementDate,
   Observation,
+  RangeInrResponse,
   UserResponse,
 } from "../types";
 
@@ -15,6 +17,8 @@ interface AppState {
   observations: Observation[];
   loading: boolean;
   expectedMeasurementDate: ExpectedMeasurementDate | null;
+  rangeInrList: RangeInrResponse[];
+  dosePatternList: DosePatternResponse[];
   setUser: (user: UserResponse) => void;
   getUser: () => UserResponse;
   clearUser: () => void;
@@ -39,6 +43,12 @@ interface AppState {
   ) => void;
   getExpectedMeasurementDate: () => ExpectedMeasurementDate;
   clearExpectedMeasurementDate: () => void;
+  setRangeInrList: (rangeInrList: RangeInrResponse[]) => void;
+  getRangeInrList: () => RangeInrResponse[];
+  clearRangeInrList: () => void;
+  setDosePatternList: (dosePatternList: DosePatternResponse[]) => void;
+  getDosePatternList: () => DosePatternResponse[];
+  clearDosePatternList: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -52,6 +62,8 @@ export const useAppStore = create<AppState>()(
         observations: [],
         loading: false,
         expectedMeasurementDate: null,
+        rangeInrList: [],
+        dosePatternList: [],
         setUser: (user: UserResponse) => set({ user }),
         getUser: () => get().user ?? ({} as UserResponse),
         isFieldNull: (fieldName: keyof UserResponse) => {
@@ -87,6 +99,14 @@ export const useAppStore = create<AppState>()(
           get().expectedMeasurementDate ?? ({} as ExpectedMeasurementDate),
         clearExpectedMeasurementDate: () =>
           set({ expectedMeasurementDate: null }),
+        setRangeInrList: (rangeInrList: RangeInrResponse[]) =>
+          set({ rangeInrList }),
+        getRangeInrList: () => get().rangeInrList,
+        clearRangeInrList: () => set({ rangeInrList: [] }),
+        setDosePatternList: (dosePatternList: DosePatternResponse[]) =>
+          set({ dosePatternList }),
+        getDosePatternList: () => get().dosePatternList,
+        clearDosePatternList: () => set({ dosePatternList: [] }),
       }),
       {
         name: "appStorage",

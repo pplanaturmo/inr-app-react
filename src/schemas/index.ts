@@ -7,6 +7,8 @@ export * from "./measurementRequestSchema";
 export * from "./measurementResponseSchema";
 export * from "./observationResponseSchema";
 export * from "./observationSchema";
+export * from "./dosePatternResponseSchema";
+export * from "./rangeInrResponseSchema";
 export * from "./registerRequestSchema";
 export * from "./roleSchema";
 export * from "./userSchema";

@@ -5,8 +5,7 @@ export const registerRequestSchema = z.object({
   surname: z.string(),
   email: z.string().email(),
   password: z.string(),
-  idCard: z.string(),
-  healthCard: z.string(),
-  phone: z.number(),
-  dataConsent: z.string(),
+  rangeInr: z.number(),
+  dosePattern: z.number(),
+  dataConsent: z.boolean(),
 });

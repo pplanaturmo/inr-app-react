@@ -45,12 +45,9 @@ export default function LoginPage() {
         flexDirection={"column"}
         justifyContent="center"
         alignItems="center"
+        width={"90%"}
       >
-        <Typography
-          variant="h6"
-          align="center"
-          margin="dense"
-        >
+        <Typography variant="h6" align="center" margin="dense">
           Iniciar Sesión
         </Typography>
         <Grid

@@ -11,6 +11,8 @@ import {
   expectedDateSchema,
   observationResponseSchema,
   alertResponseSchema,
+  rangeInrSchema,
+  dosePatternSchema,
 } from "../schemas";
 import { Dayjs } from "dayjs";
 
@@ -21,9 +23,8 @@ export type RegisterData = Pick<
   | "surname"
   | "email"
   | "password"
-  | "phone"
-  | "healthCard"
-  | "idCard"
+  | "rangeInrId"
+  | "dosePatternId"
   | "dataConsent"
 >;
 
@@ -43,3 +44,5 @@ export type DosageResponse = z.infer<typeof dosageResponseSchema>;
 export type Dosage = z.infer<typeof dosageSchema>;
 export type ExpectedMeasurementDate = z.infer<typeof expectedDateSchema>;
 export type AlertResponse = z.infer<typeof alertResponseSchema>;
+export type RangeInrResponse = z.infer<typeof rangeInrSchema>;
+export type DosePatternResponse = z.infer<typeof dosePatternSchema>;
