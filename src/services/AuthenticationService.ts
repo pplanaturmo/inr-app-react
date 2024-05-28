@@ -43,7 +43,7 @@ export async function registerUser(data: RegisterRequest) {
 }
 
 export async function authenticateUser(data: LoginRequest) {
-  const registerUrl = "/v1/auth/authenticate";
+  const authUrl = "/v1/auth/authenticate";
 
   const formData = {
     email: data.email,
@@ -56,11 +56,9 @@ export async function authenticateUser(data: LoginRequest) {
     },
   };
 
-  const response = await axios.post(
-    baseUrl + registerUrl,
-    formData,
-    axiosConfig
-  );
+  console.log(baseUrl + authUrl);
+  console.log(formData);
+  const response = await axios.post(baseUrl + authUrl, formData, axiosConfig);
 
   const userData: UserResponse = response.data;
 
