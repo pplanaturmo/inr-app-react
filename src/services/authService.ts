@@ -25,7 +25,7 @@ export async function registerUser(data: RegisterRequest) {
     password: data.password,
     dataConsent: data.dataConsent,
   };
-  console.log(formData);
+
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -153,7 +153,6 @@ export async function fetchDosePatterns(
       }));
     const validDosePatternList = dosePatternList.map(dosePatternSchema.parse);
     setDosePatternList(validDosePatternList);
-    console.log(validDosePatternList);
   } catch (error) {
     toast.warning("No se ha podido conectar con el servidor", {
       transition: Zoom,

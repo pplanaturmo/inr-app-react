@@ -2,6 +2,7 @@ import ListItemText from "@mui/material/ListItemText/ListItemText";
 import CancelIcon from "@mui/icons-material/Cancel";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ListItemIcon from "@mui/material/ListItemIcon/ListItemIcon";
 import { NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton/ListItemButton";
@@ -66,6 +67,19 @@ export default function UserDrawer({
             </ListItemIcon>
             <ListItemText primary="Perfil" />
           </ListItemButton>
+          <ListItemButton
+            component="a"
+            href="https://www.calameo.com/read/007693286d7f6db23ec8d"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleUserClick}
+          >
+            <ListItemIcon>
+              <MenuBookIcon style={{ color: "black" }} />
+            </ListItemIcon>
+            <ListItemText primary="Manual de Usuario" />
+          </ListItemButton>
+
           <ListItemButton
             component={NavLink}
             to="/"
