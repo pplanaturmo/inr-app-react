@@ -8,6 +8,7 @@ import {
   UserResponse,
 } from "../types";
 import { dosePatternSchema, rangeInrSchema } from "../schemas";
+import { Bounce, toast } from "react-toastify";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
@@ -56,12 +57,20 @@ export async function authenticateUser(data: LoginRequest) {
     },
   };
 
-  console.log(baseUrl + authUrl);
-  console.log(formData);
+  toast("Usuario conectado", {
+    position: "top-center",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+  });
   const response = await axios.post(baseUrl + authUrl, formData, axiosConfig);
-
+  console.log(response);
   const userData: UserResponse = response.data;
-
   return userData;
 }
 

@@ -7,18 +7,17 @@ import "@fontsource/roboto/700.css";
 import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
 import { RouterProvider } from "react-router-dom";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
-import { SnackbarProvider } from "./context/SnackbarContext";
+
 import { router } from "./routes/router";
+import { ToastContainer } from "react-toastify";
 
 const themeOptions: ThemeOptions = {
   palette: {
     mode: "light",
     primary: {
-      // main: "#00796B",
       main: "#157a6e",
     },
     secondary: {
-      // main: "#B2DFDB",
       main: "#d8fefa",
     },
     info: {
@@ -43,22 +42,19 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline />
     <ThemeProvider theme={customTheme}>
-      <SnackbarProvider>
-        <RouterProvider router={router} />
-      </SnackbarProvider>
+      <RouterProvider router={router} />
     </ThemeProvider>
+    <ToastContainer
+      position="top-center"
+      autoClose={1500}
+      hideProgressBar={false}
+      newestOnTop
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
   </React.StrictMode>
 );
-
-// ReactDOM.createRoot(document.getElementById("root")!).render(
-//   <React.StrictMode>
-//     <CssBaseline />
-//     <ThemeProvider theme={customTheme}>
-//       <BrowserRouter>
-//         <SnackbarProvider>
-//           <App />
-//         </SnackbarProvider>
-//       </BrowserRouter>
-//     </ThemeProvider>
-//   </React.StrictMode>
-// );
