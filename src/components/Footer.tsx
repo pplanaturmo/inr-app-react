@@ -26,31 +26,13 @@ export default function Footer({ layoutType }: FooterProps) {
       }}
       component="footer"
     >
-      <Grid
-        container
-        justifyContent="space-around"
-        alignItems="space-around"
-      >
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Typography
-            variant="h6"
-            gutterBottom
-            align="center"
-          >
+      <Grid container justifyContent="space-around" alignItems="space-around">
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="h6" gutterBottom align="center">
             <Link>Contacta con nosotros</Link>
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
+        <Grid item xs={12} sm={6} md={4}>
           <Typography
             variant="body1"
             gutterBottom
@@ -60,75 +42,29 @@ export default function Footer({ layoutType }: FooterProps) {
             Sanguinius INR
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Typography
-            variant="body2"
-            gutterBottom
-            align="center"
-          >
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="body2" gutterBottom align="center">
             Dirección: 123 Calle Baal, Cartago, Delenda Est
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Typography
-            variant="body2"
-            gutterBottom
-            align="center"
-          >
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="body2" gutterBottom align="center">
             Teléfono: +34 555 456 7890
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Typography
-            variant="body2"
-            gutterBottom
-            align="center"
-          ></Typography>
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="body2" gutterBottom align="center"></Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
-          <Typography
-            variant="body2"
-            gutterBottom
-            align="center"
-          >
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="body2" gutterBottom align="center">
             Follow us on: Facebook | Twitter | Instagram
           </Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          paddingTop={4}
-        >
-          <Typography
-            variant="h6"
-            align="center"
-          >
+        <Grid item xs={12} paddingTop={4}>
+          <Typography variant="h6" align="center">
             © {new Date().getFullYear()} Sanguinius INR. All rights reserved.
           </Typography>
-          <Box
-            mt={1}
-            sx={{ textAlign: "center" }}
-          >
+          <Box mt={1} sx={{ textAlign: "center" }}>
             <Link
               color="secondary"
               sx={{ textAlign: "center", color: "white" }}
