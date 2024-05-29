@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAppStore } from "../../store/useAppStore";
 import { LoginRequest } from "../../types";
-import { authenticateUser } from "../../services/authenticationService";
+import { authenticateUser } from "../../services/authService";
 
 export default function LoginPage() {
   const {
@@ -25,8 +25,9 @@ export default function LoginPage() {
     try {
       const userData = await authenticateUser(data);
       console.log(userData);
-
-      setUser(userData);
+      if (userData) {
+        setUser(userData);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -48,11 +49,7 @@ export default function LoginPage() {
         alignItems="center"
         width={"90%"}
       >
-        <Typography
-          variant="h6"
-          align="center"
-          margin="dense"
-        >
+        <Typography variant="h6" align="center" margin="dense">
           Iniciar Sesión
         </Typography>
         <Grid

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { MeasurementRequest, UserResponse } from "../types";
+import { Zoom, toast } from "react-toastify";
 
 export async function registerMeasurement(
   data: MeasurementRequest,
@@ -20,11 +21,35 @@ export async function registerMeasurement(
     },
   };
 
-  const response = await axios.post(
-    baseUrl + measurementUrl,
-    body,
-    axiosConfig
-  );
+  // const response = await axios.post(
+  //   baseUrl + measurementUrl,
+  //   body,
+  //   axiosConfig
+  // );
 
-  return response;
+  // return response;
+
+  try {
+    const response = await axios.post(
+      baseUrl + measurementUrl,
+      body,
+      axiosConfig
+    );
+    toast.success("Medida registrada correctamente", {
+      transition: Zoom,
+    });
+
+    return response;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+      console.log(`${error.response.data.message || error.response.status}`);
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
+  }
 }

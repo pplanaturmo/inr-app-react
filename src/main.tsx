@@ -7,9 +7,9 @@ import "@fontsource/roboto/700.css";
 import CssBaseline from "@mui/material/CssBaseline/CssBaseline";
 import { RouterProvider } from "react-router-dom";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
-
-import { router } from "./routes/router";
 import { ToastContainer } from "react-toastify";
+import { router } from "./routes/router";
+import "react-toastify/dist/ReactToastify.css";
 
 const themeOptions: ThemeOptions = {
   palette: {

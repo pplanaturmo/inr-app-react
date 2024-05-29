@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { dosageResponseSchema } from "../schemas";
 import { dosageSchema } from "../schemas/dosageSchema";
 import { Dosage, DosageResponse, UserResponse } from "../types";
+import { Zoom, toast } from "react-toastify";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
@@ -58,6 +59,9 @@ export const fetchDosages = async (
     setDosages(validDosageList);
   } catch (error) {
     console.error("Failed to fetch dosages", error);
+    toast.warning("No se ha podido conectar con el servidor", {
+      transition: Zoom,
+    });
   } finally {
     setLoading(false);
   }
@@ -92,13 +96,24 @@ export const updateDoseTaken = async (
     };
 
     await axios.put(baseUrl + dosageUpdate, body, axiosConfig);
-
+    toast.success("Toma almacenada correctamente", {
+      transition: Zoom,
+    });
     const updatedDosages = dosages.map((dosage) =>
       dosage.id === dosageId ? { ...dosage, taken: true } : dosage
     );
     setDosages(updatedDosages);
-    setLoading(false);
   } catch (error) {
-    console.error("Error:", error);
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
+  } finally {
+    setLoading(false);
   }
 };
