@@ -8,6 +8,7 @@ import {
 } from "../types";
 import { observationResponseSchema, observationSchema } from "../schemas";
 import dayjs from "dayjs";
+import { Zoom, toast } from "react-toastify";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 export async function registerObservation(
@@ -31,12 +32,29 @@ export async function registerObservation(
     },
   };
 
-  const response = await axios.post(
-    baseUrl + observationUrl,
-    body,
-    axiosConfig
-  );
-  return response;
+  try {
+    const response = await axios.post(
+      baseUrl + observationUrl,
+      body,
+      axiosConfig
+    );
+    toast.success("Observación registrada correctamente", {
+      transition: Zoom,
+    });
+
+    return response;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+      console.log(`${error.response.data.message || error.response.status}`);
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
+  }
 }
 
 export const fetchObservations = async (
@@ -61,13 +79,28 @@ export const fetchObservations = async (
       .map((observation: ObservationResponse) => ({
         ...observation,
         date: dayjs(observation.date).toDate(),
+        updatedAt: dayjs(observation.updatedAt).toDate(),
       }));
 
-    const validObservationsList = observationList.map(observationSchema.parse);
+    const validObservationsList: Observation[] = observationList.map(
+      observationSchema.parse
+    );
+    const sortedObservationsList: Observation[] = validObservationsList.sort(
+      (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime()
+    );
 
-    setObservations(validObservationsList);
+    setObservations(sortedObservationsList);
   } catch (error) {
-    console.error("Failed to fetch observations", error);
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+      console.log(`${error.response.data.message || error.response.status}`);
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
   } finally {
     setLoading(false);
   }

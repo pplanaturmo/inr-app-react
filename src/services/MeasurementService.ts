@@ -21,14 +21,6 @@ export async function registerMeasurement(
     },
   };
 
-  // const response = await axios.post(
-  //   baseUrl + measurementUrl,
-  //   body,
-  //   axiosConfig
-  // );
-
-  // return response;
-
   try {
     const response = await axios.post(
       baseUrl + measurementUrl,

@@ -9,8 +9,6 @@ interface ObservationCardProps {
 }
 
 const ObservationCard: React.FC<ObservationCardProps> = ({ observation }) => {
-  console.log(observation.date);
-
   dayjs.locale("es");
 
   const esDate = dayjs(observation.date).format("dddd, DD [de] MMMM [de] YYYY");
@@ -36,10 +34,7 @@ const ObservationCard: React.FC<ObservationCardProps> = ({ observation }) => {
         >
           Motivo:
         </Typography>
-        <Typography
-          variant="h6"
-          gutterBottom
-        >
+        <Typography variant="h6" gutterBottom>
           {formattedCause}
         </Typography>
         <Typography
@@ -49,17 +44,11 @@ const ObservationCard: React.FC<ObservationCardProps> = ({ observation }) => {
         >
           Fecha de la observación:
         </Typography>
-        <Typography
-          variant="h6"
-          gutterBottom
-        >
+        <Typography variant="h6" gutterBottom>
           {formattedDate}
         </Typography>
 
-        <Typography
-          variant="h6"
-          sx={{ textDecoration: "underline" }}
-        >
+        <Typography variant="h6" sx={{ textDecoration: "underline" }}>
           Descripción:
         </Typography>
         <Typography variant="body1">{observation.description}</Typography>

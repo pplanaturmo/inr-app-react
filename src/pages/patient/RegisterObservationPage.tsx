@@ -21,7 +21,15 @@ import { Controller, useForm } from "react-hook-form";
 import { registerObservation } from "../../services/observationService";
 import { CauseEnum, causeOptions } from "../../constants/causeOptions";
 
-export default function RegisterObservationPage() {
+type props = {
+  handleClose: () => void;
+  fetchData: () => Promise<void>;
+};
+
+export default function RegisterObservationPage({
+  handleClose,
+  fetchData,
+}: props) {
   dayjs.locale("es");
 
   const now = dayjs();
@@ -40,8 +48,10 @@ export default function RegisterObservationPage() {
   const onSubmit = async (data: ObservationForm) => {
     try {
       await registerObservation(data, user);
-      navigate("/inr-app/dosages/", { replace: true });
-      reset(); // Clear the form after successful submission
+      fetchData();
+      handleClose();
+      reset();
+      navigate("/inr-app/observations/", { replace: true });
     } catch (error) {
       console.error("Error registering observation:", error);
     }

@@ -5,4 +5,5 @@ export const observationSchema = z.object({
   date: z.date(),
   cause: z.string(),
   description: z.string(),
+  updatedAt: z.date(),
 });

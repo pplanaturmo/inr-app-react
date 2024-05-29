@@ -64,15 +64,13 @@ export default function ObservationsPage() {
         >
           Añadir Observacion
         </Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          fullWidth
-          maxWidth="md"
-        >
+        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
           <DialogTitle>Añadir Observación</DialogTitle>
           <DialogContent>
-            <RegisterObservationPage />
+            <RegisterObservationPage
+              handleClose={handleClose}
+              fetchData={fetchData}
+            />
           </DialogContent>
         </Dialog>
       </Box>
@@ -87,22 +85,15 @@ export default function ObservationsPage() {
           width={boxWidth}
           mx="auto"
         >
-          {observations.map((observation, index) => (
-            <Box
-              width="100%"
-              marginY={2}
-              key={index}
-            >
+          {observations.reverse().map((observation, index) => (
+            <Box width="100%" marginY={2} key={index}>
               <ObservationCard observation={observation} />
             </Box>
           ))}
         </Box>
       ) : (
-        <Box
-          width="100%"
-          marginY={2}
-        >
-          <Typography>No hay observaciones registradas</Typography>
+        <Box width="100%" marginY={2} textAlign={"center"}>
+          <Typography variant="h6">No hay observaciones registradas</Typography>
         </Box>
       )}
     </>
