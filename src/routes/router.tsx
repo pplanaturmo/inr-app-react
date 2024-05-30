@@ -23,6 +23,7 @@ import WithAdmin from "../components/HOCs/WithAdmin";
 import UserListPage from "../pages/admin/UserListPage";
 import DepartmentsListPage from "../pages/admin/DepartmentsListPage";
 import ProfilePage from "../pages/auth/ProfilePage";
+import Admin from "../pages/admin/Admin";
 
 export const router = createBrowserRouter([
   {
@@ -145,7 +146,7 @@ export const router = createBrowserRouter([
         path: "/inr-app/admin",
         element: (
           <WithAdmin>
-            <InformationPage />,
+            <Admin />,
           </WithAdmin>
         ),
       },

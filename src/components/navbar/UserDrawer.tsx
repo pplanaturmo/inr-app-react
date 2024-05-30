@@ -10,6 +10,7 @@ import Drawer from "@mui/material/Drawer/Drawer";
 import IconButton from "@mui/material/IconButton/IconButton";
 import Typography from "@mui/material/Typography/Typography";
 import List from "@mui/material/List/List";
+import { userManualLink } from "../../constants/internalLinks";
 
 type UserDrawerProps = {
   drawerUserOpen: boolean;
@@ -48,10 +49,7 @@ export default function UserDrawer({
           onClick={toggleDrawerUser}
           style={{ marginRight: "auto" }}
         >
-          <CancelIcon
-            fontSize="large"
-            style={{ color: "red" }}
-          />
+          <CancelIcon fontSize="large" style={{ color: "red" }} />
         </IconButton>
         <Typography sx={{ fontSize: "1.5rem", textDecoration: "underline" }}>
           Opciones de Usuario
@@ -69,7 +67,7 @@ export default function UserDrawer({
           </ListItemButton>
           <ListItemButton
             component="a"
-            href="https://www.calameo.com/read/007693286d7f6db23ec8d"
+            href={userManualLink}
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleUserClick}
@@ -80,11 +78,7 @@ export default function UserDrawer({
             <ListItemText primary="Manual de Usuario" />
           </ListItemButton>
 
-          <ListItemButton
-            component={NavLink}
-            to="/"
-            onClick={logoutUser}
-          >
+          <ListItemButton component={NavLink} to="/" onClick={logoutUser}>
             <ListItemIcon>
               <LogoutIcon style={{ color: "darkslategrey" }} />
             </ListItemIcon>
