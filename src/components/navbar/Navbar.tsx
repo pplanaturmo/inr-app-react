@@ -44,6 +44,10 @@ export default function Navbar() {
     clearDosages,
     clearObservationDetails,
     clearObservations,
+    clearAlerts,
+    clearDosePatternList,
+    clearExpectedMeasurementDate,
+    clearRangeInrList,
     user,
   } = useAppStore();
 
@@ -51,9 +55,12 @@ export default function Navbar() {
     clearUser();
     clearDosageDetails();
     clearDosages();
-
     clearObservationDetails();
     clearObservations();
+    clearAlerts();
+    clearDosePatternList();
+    clearExpectedMeasurementDate();
+    clearRangeInrList();
   };
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("sm"));
@@ -73,18 +80,12 @@ export default function Navbar() {
             md={1}
             sx={{ margin: "2rem", display: "flex", justifyContent: "center" }}
           >
-            <ProjectIcon
-              width="4rem"
-              height="4rem"
-            />
+            <ProjectIcon width="4rem" height="4rem" />
           </Grid>
 
           {isMediumScreen && <MiddleButtons></MiddleButtons>}
           {isMediumScreen && (
-            <UserMenu
-              toggleDrawerUser={toggleDrawerUser}
-              user={user}
-            />
+            <UserMenu toggleDrawerUser={toggleDrawerUser} user={user} />
           )}
         </Grid>
         {!isMediumScreen && (

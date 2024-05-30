@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import {
+  AlertResponse,
   Dosage,
   DosePatternResponse,
   ExpectedMeasurementDate,
@@ -19,6 +20,7 @@ interface AppState {
   expectedMeasurementDate: ExpectedMeasurementDate | null;
   rangeInrList: RangeInrResponse[];
   dosePatternList: DosePatternResponse[];
+  alerts: AlertResponse[];
   setUser: (user: UserResponse) => void;
   getUser: () => UserResponse;
   clearUser: () => void;
@@ -49,6 +51,9 @@ interface AppState {
   setDosePatternList: (dosePatternList: DosePatternResponse[]) => void;
   getDosePatternList: () => DosePatternResponse[];
   clearDosePatternList: () => void;
+  setAlerts: (alerts: AlertResponse[]) => void;
+  getAlerts: () => AlertResponse[];
+  clearAlerts: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -64,6 +69,7 @@ export const useAppStore = create<AppState>()(
         expectedMeasurementDate: null,
         rangeInrList: [],
         dosePatternList: [],
+        alerts: [],
         setUser: (user: UserResponse) => set({ user }),
         getUser: () => get().user ?? ({} as UserResponse),
         isFieldNull: (fieldName: keyof UserResponse) => {
@@ -107,6 +113,9 @@ export const useAppStore = create<AppState>()(
           set({ dosePatternList }),
         getDosePatternList: () => get().dosePatternList,
         clearDosePatternList: () => set({ dosePatternList: [] }),
+        setAlerts: (alerts: AlertResponse[]) => set({ alerts }),
+        getAlerts: () => get().alerts,
+        clearAlerts: () => set({ alerts: [] }),
       }),
       {
         name: "appStorage",

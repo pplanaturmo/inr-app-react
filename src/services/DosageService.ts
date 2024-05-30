@@ -9,15 +9,8 @@ const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const fetchDosages = async (
   setLoading: (isLoading: boolean) => void,
-  setDosages: (
-    dosages: {
-      id: number;
-      value: number;
-      date: Date;
-      taken: boolean;
-    }[]
-  ) => void,
-  // userId?: number
+  setDosages: (dosages: Dosage[]) => void,
+
   user: UserResponse | null
 ) => {
   const dosageBetweenUrl = "/dosage/between-dates";
@@ -26,7 +19,6 @@ export const fetchDosages = async (
   const finishingDate = startingDate.add(7, "day");
   const formattedStartingDate = startingDate.format("YYYY-MM-DD");
   const formattedFinishingDate = finishingDate.format("YYYY-MM-DD");
-  setLoading(true);
   const body = JSON.stringify({
     userId: user?.id,
     startDate: formattedStartingDate,
@@ -41,6 +33,7 @@ export const fetchDosages = async (
   };
 
   try {
+    setLoading(true);
     const { data } = await axios.post(
       baseUrl + dosageBetweenUrl,
       body,
