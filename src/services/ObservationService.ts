@@ -23,7 +23,7 @@ export async function registerObservation(
     cause: data.cause,
     description: data.description,
   });
-  
+
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -62,7 +62,6 @@ export const fetchObservations = async (
   user: UserResponse | null
 ) => {
   const getObservationsUrl = "/observation/user/" + user?.id;
- 
 
   const axiosConfig = {
     headers: {

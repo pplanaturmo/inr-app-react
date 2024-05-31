@@ -9,8 +9,8 @@ export const userSchema = z.object({
   supervisor: z.number(),
   rangeInr: z.number(),
   dosePattern: z.number(),
-  // roles: z.array(z.string()),
   role: z.string(),
+  dataConsent: z.boolean(),
   accessToken: z.string(),
   refreshToken: z.string(),
 });

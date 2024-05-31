@@ -12,7 +12,7 @@ import ProtectedRoute from "../components/HOCs/WithAuth";
 import InformationPage from "../pages/patient/InformationPage";
 import WithPatient from "../components/HOCs/WithPatient";
 import ObservationsPage from "../pages/patient/ObservationsPage";
-import LoginLegalWarning from "../pages/auth/LoginLegalWarning";
+import LoginLegalWarning from "../pages/auth/LoginLegalWarningPage";
 import LegalWarning from "../components/LegalWarning";
 import WithProfessional from "../components/HOCs/WithProfessional";
 import AlertsPage from "../pages/professional/AlertsPage";
@@ -24,6 +24,8 @@ import UserListPage from "../pages/admin/UserListPage";
 import DepartmentsListPage from "../pages/admin/DepartmentsListPage";
 import ProfilePage from "../pages/auth/ProfilePage";
 import Admin from "../pages/admin/Admin";
+import UpdateProfilePage from "../pages/auth/UpdateProfilePage";
+import UpdatePasswordPage from "../pages/auth/UpdatePasswordPage";
 
 export const router = createBrowserRouter([
   {
@@ -153,6 +155,14 @@ export const router = createBrowserRouter([
       {
         path: "/inr-app/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/inr-app/profile/update",
+        element: <UpdateProfilePage />,
+      },
+      {
+        path: "/inr-app/profile/password",
+        element: <UpdatePasswordPage />,
       },
     ],
   },

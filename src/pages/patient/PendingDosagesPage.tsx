@@ -20,6 +20,26 @@ export default function PendingDosagesPage() {
     setExpectedMeasurementDate,
   } = useAppStore();
 
+  // const fetchData = useMemo(() =>
+  //   async () => {
+  //   try {
+  //     await fetchDosages(setLoading, setDosages, user);
+  //     await fetchExpectedMeasurementDate(
+  //       setLoading,
+  //       setExpectedMeasurementDate,
+  //       user
+  //     );
+  //   } catch (error) {
+  //     console.error("Failed to fetch dosages", error);
+  //   }
+  // }, [])
+
+  // useEffect(() => {
+  //   fetchData();
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [fetchData]);
+
   const fetchData = async () => {
     try {
       await fetchDosages(setLoading, setDosages, user);
@@ -59,11 +79,7 @@ export default function PendingDosagesPage() {
           mx="auto"
         >
           {dosages.map((dosage, index) => (
-            <Box
-              width="100%"
-              marginY={2}
-              key={index}
-            >
+            <Box width="100%" marginY={2} key={index}>
               <DosageCard
                 dosage={dosage}
                 setLoading={setLoading}
@@ -72,20 +88,14 @@ export default function PendingDosagesPage() {
               />
             </Box>
           ))}
-          <Box
-            width="100%"
-            marginY={2}
-          >
+          <Box width="100%" marginY={2}>
             <ExpectedDateCard
               expectedMeasurementDate={expectedMeasurementDate}
             />
           </Box>
         </Box>
       ) : (
-        <Box
-          width="100%"
-          marginY={2}
-        >
+        <Box width="100%" marginY={2}>
           <ExpectedDateCard expectedMeasurementDate={expectedMeasurementDate} />
         </Box>
       )}

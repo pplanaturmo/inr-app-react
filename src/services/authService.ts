@@ -5,6 +5,7 @@ import {
   LoginRequest,
   RangeInrResponse,
   RegisterRequest,
+  UpdateRequest,
   UserResponse,
 } from "../types";
 import { dosePatternSchema, rangeInrSchema } from "../schemas";
@@ -32,14 +33,6 @@ export async function registerUser(data: RegisterRequest) {
     },
   };
 
-  // const response = await axios.post(
-  //   baseUrl + registerUrl,
-  //   formData,
-  //   axiosConfig
-  // );
-  // const userData: UserResponse = response.data;
-
-  // return userData;
   try {
     const response = await axios.post(
       baseUrl + registerUrl,
@@ -65,6 +58,57 @@ export async function registerUser(data: RegisterRequest) {
   }
 }
 
+export async function updateUser(
+  setLoading: (isLoading: boolean) => void,
+  data: UpdateRequest,
+  userId: number | undefined
+) {
+  const updateUrl = "/user/" + userId;
+
+  const formData = {
+    name: data.name,
+    surname: data.surname,
+    email: data.email,
+    rangeInr: data.rangeInr,
+    dosePattern: data.dosePattern,
+  };
+
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  console.log(baseUrl + updateUrl);
+  console.log(formData);
+  try {
+    setLoading(true);
+    const response = await axios.put(
+      baseUrl + updateUrl,
+      formData,
+      axiosConfig
+    );
+    toast.success("Usuario actualizado correctamente", {
+      transition: Zoom,
+    });
+
+    const userData: UserResponse = response.data;
+    return userData;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
+  } finally {
+    setLoading(false);
+  }
+}
+
 export async function authenticateUser(data: LoginRequest) {
   const authUrl = "/v1/auth/authenticate";
 
@@ -83,11 +127,13 @@ export async function authenticateUser(data: LoginRequest) {
     const response = await axios.post(baseUrl + authUrl, formData, axiosConfig);
 
     toast.success("Usuario conectado correctamente", {
-      autoClose: 600,
+      autoClose: 500,
       transition: Bounce,
     });
 
     const userData: UserResponse = response.data;
+    console.log(userData);
+
     return userData;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
