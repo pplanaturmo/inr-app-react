@@ -18,7 +18,7 @@ import { ObservationForm, UserResponse } from "../../types";
 import { useAppStore } from "../../store/useAppStore";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
-import { registerObservation } from "../../services/observationService";
+import { registerObservation } from "../../services/observationsService";
 import { CauseEnum, causeOptions } from "../../constants/causeOptions";
 
 type props = {
@@ -87,7 +87,11 @@ export default function RegisterObservationPage({
               onChange={(newDate: Dayjs | null) => field.onChange(newDate)}
               slots={{
                 textField: (props) => (
-                  <TextField {...props} fullWidth required />
+                  <TextField
+                    {...props}
+                    fullWidth
+                    required
+                  />
                 ),
               }}
               sx={{ backgroundColor: "white" }}
@@ -100,7 +104,10 @@ export default function RegisterObservationPage({
         control={control}
         rules={{ required: "El motivo es obligatorio" }}
         render={({ field, fieldState }) => (
-          <FormControl fullWidth error={!!fieldState.error}>
+          <FormControl
+            fullWidth
+            error={!!fieldState.error}
+          >
             <InputLabel id="cause-label">Motivo</InputLabel>
             <Select
               {...field}
@@ -111,13 +118,19 @@ export default function RegisterObservationPage({
               onChange={(event) => field.onChange(event.target.value)}
             >
               {Object.keys(causeOptions).map((key) => (
-                <MenuItem key={key} value={key}>
+                <MenuItem
+                  key={key}
+                  value={key}
+                >
                   {causeOptions[key as CauseEnum]}
                 </MenuItem>
               ))}
             </Select>
             {fieldState.error && (
-              <Typography variant="body2" color="error">
+              <Typography
+                variant="body2"
+                color="error"
+              >
                 {fieldState.error.message}
               </Typography>
             )}
@@ -143,10 +156,18 @@ export default function RegisterObservationPage({
         )}
       />
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button variant="outlined" color="primary" onClick={() => reset()}>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => reset()}
+        >
           Reiniciar formulario
         </Button>
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
           Enviar observación
         </Button>
       </Box>

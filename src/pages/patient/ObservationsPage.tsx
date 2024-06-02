@@ -7,7 +7,7 @@ import RegisterObservationPage from "./RegisterObservationPage";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box/Box";
 import { useAppStore } from "../../store/useAppStore";
-import { fetchObservations } from "../../services/observationService";
+import { fetchObservations } from "../../services/observationsService";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Spinner from "../../components/Spinner";
@@ -64,7 +64,12 @@ export default function ObservationsPage() {
         >
           Añadir Observacion
         </Button>
-        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          fullWidth
+          maxWidth="md"
+        >
           <DialogTitle>Añadir Observación</DialogTitle>
           <DialogContent>
             <RegisterObservationPage
@@ -86,13 +91,21 @@ export default function ObservationsPage() {
           mx="auto"
         >
           {observations.reverse().map((observation, index) => (
-            <Box width="100%" marginY={2} key={index}>
+            <Box
+              width="100%"
+              marginY={2}
+              key={index}
+            >
               <ObservationCard observation={observation} />
             </Box>
           ))}
         </Box>
       ) : (
-        <Box width="100%" marginY={2} textAlign={"center"}>
+        <Box
+          width="100%"
+          marginY={2}
+          textAlign={"center"}
+        >
           <Typography variant="h6">No hay observaciones registradas</Typography>
         </Box>
       )}
