@@ -1,3 +1,5 @@
+//para arreglar fetchdata si hay tiempo
+
 // import { useEffect, useMemo } from "react";
 // import { fetchObservations } from "../services/observationService";
 // import { useAppStore } from "../store/useAppStore";

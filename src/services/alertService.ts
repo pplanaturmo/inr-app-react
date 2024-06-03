@@ -25,7 +25,6 @@ export const fetchAlerts = async (
     setLoading(true);
     const { data } = await axios.get(baseUrl + pendingAlertsUrl, axiosConfig);
 
-    console.log(data);
     const alertList = data
       .map(alertResponseSchema.parse)
       .map((alert: AlertResponse) => ({

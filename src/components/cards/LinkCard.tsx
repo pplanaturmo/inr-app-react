@@ -43,7 +43,6 @@ export default function LinkCard({ title, link, description }: LinkCardProps) {
             color="inherit"
             fontSize={"1rem"}
           >
-            {/* {link} */}
             Acceder al recurso
           </Link>
         </Typography>

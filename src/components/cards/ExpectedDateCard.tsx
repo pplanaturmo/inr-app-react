@@ -18,7 +18,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
     contactDoctor = true;
     expectedDate = new Date();
   }
-  console.log(contactDoctor);
+ 
   const formattedDate = new Intl.DateTimeFormat("es", {
     weekday: "long",
     month: "long",

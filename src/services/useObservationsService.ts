@@ -1,3 +1,5 @@
+//Hook para viewmodel, si hay tiempo de arreglar los fetchData
+
 // import { useState } from "react";
 // import { useAppStore } from "../store/useAppStore";
 

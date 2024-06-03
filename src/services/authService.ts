@@ -79,8 +79,6 @@ export async function updateUser(
     },
   };
 
-  console.log(baseUrl + updateUrl);
-  console.log(formData);
   try {
     setLoading(true);
     const response = await axios.put(
@@ -132,7 +130,6 @@ export async function authenticateUser(data: LoginRequest) {
     });
 
     const userData: UserResponse = response.data;
-    console.log(userData);
 
     return userData;
   } catch (error) {

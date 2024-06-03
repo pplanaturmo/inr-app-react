@@ -38,7 +38,6 @@ export default function UpdateProfilePage() {
     useAppStore();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
     const validatedData = updateUserSchema.parse(data);
     try {
       const userData = await updateUser(setLoading, validatedData, user?.id);
@@ -60,7 +59,7 @@ export default function UpdateProfilePage() {
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   const fieldWidth = isLgUp ? "50%" : isSmUp ? "70%" : "90%";
-  console.log(user?.dataConsent);
+
   return (
     <>
       {" "}

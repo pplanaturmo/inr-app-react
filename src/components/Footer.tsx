@@ -3,15 +3,16 @@ import Box from "@mui/material/Box/Box";
 import Grid from "@mui/material/Grid/Grid";
 import Link from "@mui/material/Link/Link";
 import Typography from "@mui/material/Typography/Typography";
+import useTheme from "@mui/material/styles/useTheme";
+import { useLocation, Link as RouterLink } from "react-router-dom";
 
-type FooterProps = {
-  layoutType: string;
-};
+export default function Footer() {
+  const location = useLocation();
+  const legalLink = location.pathname.startsWith("/inr-app")
+    ? "/inr-app/legal"
+    : "/legal";
 
-export default function Footer({ layoutType }: FooterProps) {
-  const legalLink =
-    layoutType === "login" ? "/legal-warning" : "/inr-app/legal-warning";
-
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -22,14 +23,16 @@ export default function Footer({ layoutType }: FooterProps) {
         backgroundColor: "#3c3c3c",
         display: "flex",
         justifyContent: "center",
-        color: "white",
+        color: theme.palette.secondary.main,
       }}
       component="footer"
     >
       <Grid container justifyContent="space-around" alignItems="space-around">
         <Grid item xs={12} sm={6} md={4}>
           <Typography variant="h6" gutterBottom align="center">
-            <Link>Contacta con nosotros</Link>
+            <Link sx={{ color: theme.palette.secondary.main }}>
+              Contacta con nosotros
+            </Link>
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -37,7 +40,7 @@ export default function Footer({ layoutType }: FooterProps) {
             variant="body1"
             gutterBottom
             align="center"
-            sx={{ fontWeight: "900" }}
+            sx={{ fontWeight: "900", fontSize: "2rem", color: "#F7DCDC" }}
           >
             Sanguinius INR
           </Typography>
@@ -65,13 +68,15 @@ export default function Footer({ layoutType }: FooterProps) {
             © {new Date().getFullYear()} Sanguinius INR. All rights reserved.
           </Typography>
           <Box mt={1} sx={{ textAlign: "center" }}>
-            <Link
-              color="secondary"
-              sx={{ textAlign: "center", color: "white" }}
-              href={legalLink}
+            <RouterLink
+              to={legalLink}
+              style={{
+                textDecoration: "underline",
+                color: theme.palette.warning.main,
+              }}
             >
               Aviso Legal y Política de protección de datos
-            </Link>
+            </RouterLink>
           </Box>
         </Grid>
       </Grid>

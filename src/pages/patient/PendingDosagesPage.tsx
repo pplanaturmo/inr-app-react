@@ -20,26 +20,6 @@ export default function PendingDosagesPage() {
     setExpectedMeasurementDate,
   } = useAppStore();
 
-  // const fetchData = useMemo(() =>
-  //   async () => {
-  //   try {
-  //     await fetchDosages(setLoading, setDosages, user);
-  //     await fetchExpectedMeasurementDate(
-  //       setLoading,
-  //       setExpectedMeasurementDate,
-  //       user
-  //     );
-  //   } catch (error) {
-  //     console.error("Failed to fetch dosages", error);
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   fetchData();
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [fetchData]);
-
   const fetchData = async () => {
     try {
       await fetchDosages(setLoading, setDosages, user);

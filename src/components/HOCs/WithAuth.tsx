@@ -6,7 +6,6 @@ interface WithAuthProps {
   children: ReactNode;
 }
 
-//TODO arreglar despues del testeo
 const WithAuth: React.FC<WithAuthProps> = ({ children }) => {
   const { user } = useAppStore();
   const location = useLocation();

@@ -84,7 +84,6 @@ export default function UserDrawer({
             </ListItemIcon>
             <ListItemText primary="Desconectar" />
           </ListItemButton>
-          {/* Aqui mas links? */}
         </List>
       </Drawer>
     </>

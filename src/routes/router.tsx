@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         element: <RegisterPage />,
       },
       {
-        path: "/legal-warning",
+        path: "/legal",
         element: <LoginLegalWarning />,
       },
     ],
@@ -58,10 +58,6 @@ export const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
-      {
-        path: "/inr-app/legal-warning",
-        element: <LegalWarning />,
-      },
       {
         index: true,
         element: (
@@ -163,6 +159,10 @@ export const router = createBrowserRouter([
       {
         path: "/inr-app/profile/password",
         element: <UpdatePasswordPage />,
+      },
+      {
+        path: "/inr-app/legal",
+        element: <LegalWarning />,
       },
     ],
   },

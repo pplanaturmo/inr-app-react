@@ -42,7 +42,6 @@ const DosageCard: React.FC<DosageCardProps> = ({
 
   const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
 
-  // const navigate = useNavigate();
   const setTaken = () => {
     updateDoseTaken(setLoading, setDosages, dosages, dosage.id);
   };
