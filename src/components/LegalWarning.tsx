@@ -12,49 +12,28 @@ export default function LegalWarning() {
         my={6}
         mx="auto"
       >
-        <Typography
-          my={2}
-          variant="h4"
-        >
+        <Typography my={2} variant="h4">
           Aviso legal y política de privacidad
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           1. ¿QUIÉN ES EL RESPONSABLE DEL TRATAMIENTO?
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           De conformidad con la normativa vigente, se informa al interesado, de
           que los datos facilitados serán tratados por Sanguinius INR, cuyos
           datos de contacto son los siguientes:
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Sanguinius INR Dirección: 123 Calle Baal, Cartago, Delenda Est
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           {" "}
           Teléfono: +34 555 456 7890
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Email: sanguiniusInr@medicalclinic.com
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Cuando los usuarios faciliten datos personales a través de los
           formularios de la página web de la INR-Sanguinius y sus landing pages,
           sus datos personales serán tratados para las siguientes finalidades:
@@ -94,10 +73,7 @@ export default function LegalWarning() {
           rehabilitación cardiaca, que serán publicados en la Página Web
           titularidad de la INR-Sanguinius.
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Adicionalmente sus datos serán utilizado para proporcionarle
           información personalizada sobre proyectos, servicios, campañas,
           eventos en los que participe u organice INR-Sanguinius salvo que se
@@ -110,23 +86,14 @@ export default function LegalWarning() {
           actualizados.
         </Typography>
 
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           2. ¿CON QUÉ FINALIDAD SE TRATARÁN SUS DATOS PERSONALES Y DURANTE
           CUÁNTO TIEMPO?
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           3. ¿CUÁL ES LA LEGITIMACIÓN DEL TRATAMIENTO DE LOS DATOS?
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Con carácter general, sus datos así como los resultantes de elaborar
           informes personalizados sobre su actividad con INR-Sanguinius, serán
           tratados sobre la base de consentimiento expreso del usuario, que
@@ -146,16 +113,10 @@ export default function LegalWarning() {
           oponerse a la recepción de dichas comunicaciones en cualquier momento
           en el correo electrónico secretario@inr-sanguinius.es
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           4. ¿CUALES SON LAS CATEGORIAS DE DATOS PERSONALES QUE SE TRATARÁN?
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           En virtud de su consentimiento, la INR-Sanguinius podrá tratar las
           siguientes categorías de datos personales: Datos identificativos:
           nombre, apellidos, DNI, teléfono, dirección postal, dirección de
@@ -169,16 +130,10 @@ export default function LegalWarning() {
           establecidos en nuestra página web y sus subdominios.
         </Typography>
 
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           5. DATOS PERSONALES DE MENORES DE EDAD
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           INR-Sanguinius informa a los usuarios que, para proceder al
           tratamiento de datos personales de menores de 14 años, será necesario
           el consentimiento de los padres, tutores o de aquellos quienes
@@ -194,16 +149,10 @@ export default function LegalWarning() {
           menor.
         </Typography>
 
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           6. DATOS PERSONALES DE TERCEROS
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Cuando los usuarios faciliten datos personales de familiares, amigos,
           parejas o cualesquiera otros terceros relacionados con el usuario,
           deben comprometerse a informar de la política de privacidad de
@@ -211,32 +160,20 @@ export default function LegalWarning() {
           el consentimiento de estos terceros para el tratamiento de sus datos
           personales.
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           7. SEGURIDAD DE LOS DATOS
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
-          La INR-Sanguinius tiene implantadas las medidas de índole técnica y
+        <Typography my={2} variant="body1">
+          INR-Sanguinius tiene implantadas las medidas de índole técnica y
           organizativas necesarias que garanticen la seguridad de sus datos y
           eviten su alteración, pérdida, tratamiento o acceso no autorizado,
           habida cuenta del estado de la tecnología, la naturaleza de los datos
           almacenados y los riesgos a que están expuestos
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           8. ¿QUIÉNES SON LOS DESTINATARIOS DE LOS DATOS DEL INTERESADO?
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Sus datos personales podrán ser comunicados a las siguientes
           entidades: A las entidades colaboradoras u organizadoras de
           actividades organizadas por INR-Sanguinius o cualesquiera otros
@@ -253,59 +190,43 @@ export default function LegalWarning() {
           asociación, sus redes sociales, entidades colaboradoras, así como
           medios de comunicación.
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           9. DONACIONES ONLINE
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           A través de nuestro Portal Web los usuarios, pueden realizar
           donaciones, destinadas a apoyar proyectos. Durante este proceso de
           donación, INR-Sanguinius no obtiene datos personales de los usuarios
           que deciden realizar una donación, salvo las siguientes excepciones:
           El usuario decida libremente incluir sus datos personales (Nombre,
-          Apellidos, Documento de Identidad, Código Postal, Correo electrónico y
-          Teléfono). Cuando la cantidad de la donación sea igual o superior a
-          100 euros (en cumplimiento del artículo 42 del Real Decreto 304/2014,
-          por el que se aprueba el Reglamento de la Ley 10/2010, de 28 de abril,
-          de Prevención de Blanqueo de Capitales y Financiación del Terrorismo)
-          en este supuesto y siguiendo con el cumplimento de la citada norma, se
-          conservarán sus datos personales incluidos en los documentos o
-          registros que acrediten la aplicación de fondos en los diferentes
-          proyectos, durante un plazo de diez años. Cuando el usuario solicite
-          la emisión del certificado fiscal Asimismo, informamos a los
-          interesados que sus datos personales incluidos en los documentos o
-          registros que acrediten la aplicación de fondos en los diferentes
-          proyectos, estarán a disposición del Protectorado, de la Comisión de
-          Vigilancia de Actividades de Financiación del Terrorismo, de la
-          Comisión de Prevención de Blanqueo de Capitales e Infracciones
+          Apellidos, Correo electrónico ) Cuando la cantidad de la donación sea
+          igual o superior a 100 euros (en cumplimiento del artículo 42 del Real
+          Decreto 304/2014, por el que se aprueba el Reglamento de la Ley
+          10/2010, de 28 de abril, de Prevención de Blanqueo de Capitales y
+          Financiación del Terrorismo) en este supuesto y siguiendo con el
+          cumplimento de la citada norma, se conservarán sus datos personales
+          incluidos en los documentos o registros que acrediten la aplicación de
+          fondos en los diferentes proyectos, durante un plazo de diez años.
+          Cuando el usuario solicite la emisión del certificado fiscal Asimismo,
+          informamos a los interesados que sus datos personales incluidos en los
+          documentos o registros que acrediten la aplicación de fondos en los
+          diferentes proyectos, estarán a disposición del Protectorado, de la
+          Comisión de Vigilancia de Actividades de Financiación del Terrorismo,
+          de la Comisión de Prevención de Blanqueo de Capitales e Infracciones
           Monetarias o de sus órganos de apoyo, así como de los órganos
           administrativos o judiciales con competencias en el ámbito de la
           prevención o persecución del blanqueo de capitales o del terrorismo.
         </Typography>
-        <Typography
-          my={2}
-          variant="h5"
-        >
+        <Typography my={2} variant="h5">
           10. ¿QUÉ DERECHOS TIENE EL INTERESADO?
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           El interesado tiene derecho a: Obtener confirmación acerca de si en
           INR-Sanguinius se están tratando datos personales que le conciernen o
           no. Acceder a sus datos personales. Rectificar los datos inexactos o
           incompletos.
         </Typography>
-        <Typography
-          my={2}
-          variant="body1"
-        >
+        <Typography my={2} variant="body1">
           Solicitar la cancelación de sus datos cuando, entre otros motivos, los
           datos ya no sean necesarios para los fines para los que fueron
           recogidos. A la oposición o limitación del tratamiento de sus datos
@@ -313,11 +234,11 @@ export default function LegalWarning() {
           la portabilidad de sus datos A revocar el consentimiento prestado Sin
           perjuicio de lo anterior, el interesado podrá ponerse en contacto con
           el delegado de protección de datos de INR-Sanguinius a través de la
-          dirección postal, Calle Isla Graciosa 7 Portal LC, CP 50015, Zaragoza,
-          o bien a través del correo electrónico secretario@inr-sanguinius.es
-          Asimismo, cuando el interesado considere que no se ha dado efectividad
-          al ejercicio de sus derechos, podrá presentar una reclamación ante la
-          Agencia Española de Protección de Datos.
+          dirección postal, 123 Calle Baal, Cartago, Delenda Est o bien a través
+          del correo electrónico secretario@inr-sanguinius.es Asimismo, cuando
+          el interesado considere que no se ha dado efectividad al ejercicio de
+          sus derechos, podrá presentar una reclamación ante la Agencia Española
+          de Protección de Datos.
         </Typography>
       </Box>
     </>
