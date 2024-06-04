@@ -24,7 +24,7 @@ export default function LoginPage() {
   const onSubmit: SubmitHandler<LoginRequest> = async (data) => {
     try {
       const userData = await authenticateUser(data);
-      console.log(userData);
+
       if (userData) {
         setUser(userData);
       }
@@ -49,11 +49,7 @@ export default function LoginPage() {
         alignItems="center"
         width={"90%"}
       >
-        <Typography
-          variant="h6"
-          align="center"
-          margin="dense"
-        >
+        <Typography variant="h6" align="center" margin="dense">
           Iniciar Sesión
         </Typography>
         <Grid

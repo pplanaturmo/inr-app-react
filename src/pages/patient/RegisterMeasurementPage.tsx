@@ -17,6 +17,7 @@ import Dialog from "@mui/material/Dialog/Dialog";
 import DialogTitle from "@mui/material/DialogTitle/DialogTitle";
 import DialogContent from "@mui/material/DialogContent/DialogContent";
 import DialogActions from "@mui/material/DialogActions/DialogActions";
+import useTheme from "@mui/material/styles/useTheme";
 
 export default function RegisterMeasurementPage() {
   const {
@@ -29,45 +30,63 @@ export default function RegisterMeasurementPage() {
       measurementDecimal: 5,
     },
   });
-
+  const theme = useTheme();
   const user: UserResponse = useAppStore((state) => state.getUser());
   const isFieldNull = useAppStore((state) => state.isFieldNull);
 
-  const onSubmit = async (data: MeasurementRequest) => {
-    try {
-      await registerMeasurement(data, user);
+  // const onSubmit = async (data: MeasurementRequest) => {
+  //   try {
+  //     console.log(data);
+  //     await registerMeasurement(data, user);
 
-      handleConfirmationOpen();
-    } catch (error) {
-      console.error(error);
-    }
+  //     handleConfirmationOpen();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  const onSubmit = (data: MeasurementRequest) => {
+    handleConfirmationOpen(data);
+  };
+
+  const initialFormData: MeasurementRequest = {
+    measurementInteger: 0,
+    measurementDecimal: 0,
   };
 
   const navigate = useNavigate();
   const goToDosages = () => {
     navigate("/inr-app/dosages/", { replace: true });
   };
-  const goToCreateObservation = () => {
-    navigate("/inr-app/observation/create", { replace: true });
-  };
+  // const goToCreateObservation = () => {
+  //   navigate("/inr-app/observation/create", { replace: true });
+  // };
 
   const [confirmationOpen, setConfirmationOpen] = useState(false);
+  const [formData, setFormData] = useState<MeasurementRequest>(initialFormData);
 
-  const handleConfirmationOpen = () => {
+  const handleConfirmationOpen = (data: MeasurementRequest) => {
+    setFormData(data);
     setConfirmationOpen(true);
   };
 
   const handleConfirmationClose = () => {
+    setFormData(initialFormData);
     setConfirmationOpen(false);
   };
 
-  const handleYesConfirmation = () => {
-    goToCreateObservation();
+  const handleYesConfirmation = async () => {
+    try {
+      console.log(formData);
+      await registerMeasurement(formData, user);
+      goToDosages();
+    } catch (error) {
+      console.error(error);
+    }
+
     handleConfirmationClose();
   };
 
   const handleNoConfirmation = () => {
-    goToDosages();
     handleConfirmationClose();
   };
 
@@ -77,12 +96,7 @@ export default function RegisterMeasurementPage() {
     return (
       <>
         <Box>
-          <Typography
-            variant="h6"
-            align="center"
-            margin="dense"
-            width={2 / 3}
-          >
+          <Typography variant="h6" align="center" margin="dense" width={2 / 3}>
             Necesita tener asignado un nivel de medicación antes de introducir
             una medida
           </Typography>
@@ -100,11 +114,7 @@ export default function RegisterMeasurementPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography
-            variant="h6"
-            align="center"
-            margin="dense"
-          >
+          <Typography variant="h6" align="center" margin="dense">
             Añadir medicion
           </Typography>
           <Paper>
@@ -120,10 +130,7 @@ export default function RegisterMeasurementPage() {
               }}
             >
               <Grid item>
-                <FormControl
-                  fullWidth
-                  margin="none"
-                >
+                <FormControl fullWidth margin="none">
                   <Controller
                     name="measurementInteger"
                     control={control}
@@ -145,10 +152,7 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem
-                            key={value}
-                            value={value}
-                          >
+                          <MenuItem key={value} value={value}>
                             {value}
                           </MenuItem>
                         ))}
@@ -162,10 +166,7 @@ export default function RegisterMeasurementPage() {
               </Grid>
               <Typography fontSize={"3rem"}> ,</Typography>
               <Grid item>
-                <FormControl
-                  fullWidth
-                  margin="none"
-                >
+                <FormControl fullWidth margin="none">
                   <Controller
                     name="measurementDecimal"
                     control={control}
@@ -184,10 +185,7 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem
-                            key={value}
-                            value={value}
-                          >
+                          <MenuItem key={value} value={value}>
                             {value}
                           </MenuItem>
                         ))}
@@ -218,18 +216,16 @@ export default function RegisterMeasurementPage() {
             </Box>
           </Box>
         </Box>
-        <Dialog
-          open={confirmationOpen}
-          onClose={handleConfirmationClose}
-        >
-          <DialogTitle>Confirm</DialogTitle>
+        <Dialog open={confirmationOpen} onClose={handleConfirmationClose}>
+          <DialogTitle>Confirmar medida</DialogTitle>
           <DialogContent>
-            ¿Quieres añadir una observación relacionada con esta medida?
+            ¿Es correcta la medida {formData.measurementInteger},
+            {formData.measurementDecimal}?
           </DialogContent>
           <DialogActions color="black">
             <Button
               onClick={handleNoConfirmation}
-              color="inherit"
+              sx={{ color: "white", backgroundColor: theme.palette.error.main }}
             >
               No
             </Button>
@@ -237,6 +233,10 @@ export default function RegisterMeasurementPage() {
               onClick={handleYesConfirmation}
               color="inherit"
               autoFocus
+              sx={{
+                color: "white",
+                backgroundColor: theme.palette.primary.main,
+              }}
             >
               Sí
             </Button>

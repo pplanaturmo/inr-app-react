@@ -39,6 +39,7 @@ export default function UpdateProfilePage() {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const validatedData = updateUserSchema.parse(data);
+    console.log(validatedData);
     try {
       const userData = await updateUser(setLoading, validatedData, user?.id);
       if (userData) {
