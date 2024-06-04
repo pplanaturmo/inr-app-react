@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography/Typography";
 import Box from "@mui/material/Box/Box";
 import ProfileCard from "../../components/cards/ProfileCard";
 import { useAppStore } from "../../store/useAppStore";
-import { fetchDosePatterns, fetchRangeInr } from "../../services/authService";
+import { fetchDosePatterns, fetchRangeInr } from "../../services/userService";
 import { useEffect } from "react";
 import Spinner from "../../components/Spinner";
 
@@ -24,24 +24,24 @@ export default function ProfilePage() {
   }, []);
   if (!user) {
     return <Typography variant="h6">No user data available</Typography>;
+  } else {
+    return (
+      <>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            width={"80%"}
+            mx="auto"
+          >
+            <ProfileCard user={user!} />
+          </Box>
+        )}
+      </>
+    );
   }
-
-  return (
-    <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          width={"80%"}
-          mx="auto"
-        >
-          <ProfileCard />
-        </Box>
-      )}
-    </>
-  );
 }

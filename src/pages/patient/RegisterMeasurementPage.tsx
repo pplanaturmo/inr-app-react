@@ -34,16 +34,6 @@ export default function RegisterMeasurementPage() {
   const user: UserResponse = useAppStore((state) => state.getUser());
   const isFieldNull = useAppStore((state) => state.isFieldNull);
 
-  // const onSubmit = async (data: MeasurementRequest) => {
-  //   try {
-  //     console.log(data);
-  //     await registerMeasurement(data, user);
-
-  //     handleConfirmationOpen();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   const onSubmit = (data: MeasurementRequest) => {
     handleConfirmationOpen(data);
   };
@@ -57,9 +47,6 @@ export default function RegisterMeasurementPage() {
   const goToDosages = () => {
     navigate("/inr-app/dosages/", { replace: true });
   };
-  // const goToCreateObservation = () => {
-  //   navigate("/inr-app/observation/create", { replace: true });
-  // };
 
   const [confirmationOpen, setConfirmationOpen] = useState(false);
   const [formData, setFormData] = useState<MeasurementRequest>(initialFormData);
@@ -70,13 +57,12 @@ export default function RegisterMeasurementPage() {
   };
 
   const handleConfirmationClose = () => {
-    setFormData(initialFormData);
     setConfirmationOpen(false);
+    setFormData(initialFormData);
   };
 
   const handleYesConfirmation = async () => {
     try {
-      console.log(formData);
       await registerMeasurement(formData, user);
       goToDosages();
     } catch (error) {
@@ -96,7 +82,12 @@ export default function RegisterMeasurementPage() {
     return (
       <>
         <Box>
-          <Typography variant="h6" align="center" margin="dense" width={2 / 3}>
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+            width={2 / 3}
+          >
             Necesita tener asignado un nivel de medicación antes de introducir
             una medida
           </Typography>
@@ -114,7 +105,11 @@ export default function RegisterMeasurementPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h6" align="center" margin="dense">
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+          >
             Añadir medicion
           </Typography>
           <Paper>
@@ -130,7 +125,10 @@ export default function RegisterMeasurementPage() {
               }}
             >
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementInteger"
                     control={control}
@@ -152,7 +150,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
@@ -166,7 +167,10 @@ export default function RegisterMeasurementPage() {
               </Grid>
               <Typography fontSize={"3rem"}> ,</Typography>
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementDecimal"
                     control={control}
@@ -185,7 +189,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
@@ -216,30 +223,45 @@ export default function RegisterMeasurementPage() {
             </Box>
           </Box>
         </Box>
-        <Dialog open={confirmationOpen} onClose={handleConfirmationClose}>
+        <Dialog
+          open={confirmationOpen}
+          onClose={handleConfirmationClose}
+          sx={{ fontSize: "2rem" }}
+        >
           <DialogTitle>Confirmar medida</DialogTitle>
           <DialogContent>
             ¿Es correcta la medida {formData.measurementInteger},
             {formData.measurementDecimal}?
           </DialogContent>
           <DialogActions color="black">
-            <Button
-              onClick={handleNoConfirmation}
-              sx={{ color: "white", backgroundColor: theme.palette.error.main }}
-            >
-              No
-            </Button>
-            <Button
-              onClick={handleYesConfirmation}
-              color="inherit"
-              autoFocus
+            <Box
               sx={{
-                color: "white",
-                backgroundColor: theme.palette.primary.main,
+                display: "flex",
+                justifyContent: "space-around",
+                width: "100%",
               }}
             >
-              Sí
-            </Button>
+              <Button
+                onClick={handleNoConfirmation}
+                sx={{
+                  color: "white",
+                  backgroundColor: theme.palette.error.main,
+                }}
+              >
+                No
+              </Button>
+              <Button
+                onClick={handleYesConfirmation}
+                color="inherit"
+                autoFocus
+                sx={{
+                  color: "white",
+                  backgroundColor: theme.palette.primary.main,
+                }}
+              >
+                Sí
+              </Button>
+            </Box>
           </DialogActions>
         </Dialog>
       </>

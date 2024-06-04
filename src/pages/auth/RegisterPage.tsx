@@ -13,11 +13,7 @@ import Checkbox from "@mui/material/Checkbox/Checkbox";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 
-import {
-  fetchDosePatterns,
-  fetchRangeInr,
-  registerUser,
-} from "../../services/authService";
+import { registerUser } from "../../services/authService";
 import Button from "@mui/material/Button/Button";
 import { registerRequestSchema } from "../../schemas";
 import { useAppStore } from "../../store/useAppStore";
@@ -29,6 +25,7 @@ import MenuItem from "@mui/material/MenuItem/MenuItem";
 import { formatNumberArray } from "../../utils/numberFormat";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { fetchDosePatterns, fetchRangeInr } from "../../services/userService";
 
 export default function RegisterPage() {
   const {
@@ -37,7 +34,19 @@ export default function RegisterPage() {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm({});
+  } = useForm({
+    defaultValues: {
+      name: "",
+      surname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      rangeInr: "",
+      dosePattern: "",
+      dataConsent: false,
+      acceptTerms: false,
+    },
+  });
 
   const password = watch("password");
 
@@ -98,7 +107,12 @@ export default function RegisterPage() {
         alignItems="center"
         width={"100%"}
       >
-        <Typography variant="h4" align="center" margin="dense" marginBottom={2}>
+        <Typography
+          variant="h4"
+          align="center"
+          margin="dense"
+          marginBottom={2}
+        >
           Registrarse en la aplicación
         </Typography>
 
@@ -109,7 +123,13 @@ export default function RegisterPage() {
           alignItems="center"
           width={"100%"}
         >
-          <Grid item xs={12} sm={9} md={7} width={fieldWidth}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            width={fieldWidth}
+          >
             <TextField
               required
               id="name"
@@ -141,7 +161,13 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.name?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} width={fieldWidth}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            width={fieldWidth}
+          >
             <TextField
               required
               id="surname"
@@ -152,7 +178,7 @@ export default function RegisterPage() {
               {...register("surname", {
                 required: "Los apellidos son obligatorios",
               })}
-              error={errors.surnames ? true : false}
+              error={errors.surname ? true : false}
               InputProps={{
                 sx: {
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
@@ -171,9 +197,15 @@ export default function RegisterPage() {
                 },
               }}
             />
-            <ErrorMessage>{errors.surnames?.message?.toString()}</ErrorMessage>
+            <ErrorMessage>{errors.surname?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <TextField
               required
               id="email"
@@ -209,7 +241,13 @@ export default function RegisterPage() {
             />
             <ErrorMessage>{errors.email?.message?.toString()}</ErrorMessage>
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <Controller
               name="rangeInr"
               control={control}
@@ -227,15 +265,32 @@ export default function RegisterPage() {
                     label="Rango de INR"
                     sx={{ backgroundColor: "white", width: "100%" }}
                   >
+                    <MenuItem
+                      disabled
+                      value={""}
+                    >
+                      <Typography
+                        variant="subtitle1"
+                        color="textSecondary"
+                      >
+                        Seleccione un rango terapéutico
+                      </Typography>
+                    </MenuItem>
                     {rangeInrList.map((range) => (
-                      <MenuItem key={range.id} value={range.id}>
+                      <MenuItem
+                        key={range.id}
+                        value={range.id}
+                      >
                         {range.description}. Rango terapéutico: {range.minLevel}
                         -{range.maxLevel}
                       </MenuItem>
                     ))}
                   </Select>
                   {fieldState.error && (
-                    <Typography variant="body2" color="error">
+                    <Typography
+                      variant="body2"
+                      color="error"
+                    >
                       {fieldState.error.message}
                     </Typography>
                   )}
@@ -244,7 +299,13 @@ export default function RegisterPage() {
             />
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <Controller
               name="dosePattern"
               control={control}
@@ -264,14 +325,28 @@ export default function RegisterPage() {
                     label="Patrón de Dosificación"
                     sx={{ backgroundColor: "white", width: "100%" }}
                   >
+                    <MenuItem
+                      disabled
+                      value={""}
+                    >
+                      <Typography
+                        variant="subtitle1"
+                        color="textSecondary"
+                      >
+                        Seleccione un patrón de dosificación
+                      </Typography>
+                    </MenuItem>
                     {dosePatternList.map((pattern) => (
-                      <MenuItem key={pattern.id} value={pattern.id}>
+                      <MenuItem
+                        key={pattern.id}
+                        value={pattern.id}
+                      >
                         <Typography
                           display={"flex"}
                           flexWrap={"wrap"}
                           width={"100%"}
                         >
-                          Nivel:{pattern.level} - Medicamento:{pattern.drug} -
+                          Nivel: {pattern.level} - Medicamento: {pattern.drug} -
                           Patrón: ( {formatNumberArray(pattern.patternValue)} )
                         </Typography>
                       </MenuItem>
@@ -290,7 +365,13 @@ export default function RegisterPage() {
             />
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <TextField
               required
               id="password"
@@ -328,7 +409,13 @@ export default function RegisterPage() {
             <ErrorMessage>{errors.password?.message?.toString()}</ErrorMessage>
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: "80%" }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: "80%" }}
+          >
             <TextField
               required
               id="confirmPassword"
@@ -366,7 +453,13 @@ export default function RegisterPage() {
             </ErrorMessage>
           </Grid>
 
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <FormControlLabel
               control={
                 <Controller
@@ -388,7 +481,13 @@ export default function RegisterPage() {
               label="Acepto que se procesen mis datos de forma anónima para fines estadísticos"
             />
           </Grid>
-          <Grid item xs={12} sm={9} md={7} sx={{ width: fieldWidth }}>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={7}
+            sx={{ width: fieldWidth }}
+          >
             <FormControlLabel
               control={
                 <Controller
@@ -438,8 +537,16 @@ export default function RegisterPage() {
               Registrar usuario
             </Button>
           </Box>
-          <Box mt={3} display="flex" justifyContent="center">
-            <Button variant="contained" color="primary" onClick={goToLogin}>
+          <Box
+            mt={3}
+            display="flex"
+            justifyContent="center"
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={goToLogin}
+            >
               Volver
             </Button>
           </Box>

@@ -1,5 +1,9 @@
 import Card from "@mui/material/Card/Card";
-import { DosePatternResponse, RangeInrResponse } from "../../types";
+import {
+  DosePatternResponse,
+  RangeInrResponse,
+  UserResponse,
+} from "../../types";
 import Typography from "@mui/material/Typography/Typography";
 import CardContent from "@mui/material/CardContent/CardContent";
 import Box from "@mui/material/Box/Box";
@@ -10,13 +14,12 @@ import { UserRole, roleOptions } from "../../constants/UserRole";
 import Button from "@mui/material/Button/Button";
 import { NavLink } from "react-router-dom";
 
-export default function ProfileCard() {
-  const {
-    user,
+type ProfileCardProps = {
+  user: UserResponse;
+};
 
-    rangeInrList,
-    dosePatternList,
-  } = useAppStore();
+export default function ProfileCard({ user }: ProfileCardProps) {
+  const { rangeInrList, dosePatternList } = useAppStore();
 
   const theme = useTheme();
   const titleStyle = {
@@ -34,7 +37,11 @@ export default function ProfileCard() {
     return <Typography variant="h6">No hay datos del usuario</Typography>;
   }
   return (
-    <Box display="flex" justifyContent="center" alignItems="center">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Card
         sx={{
           borderRadius: "16px",
@@ -46,25 +53,37 @@ export default function ProfileCard() {
       >
         <CardContent>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Nombre:
             </Typography>
             <Typography variant="h6">{user?.name}</Typography>
           </Box>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Apellidos:
             </Typography>
             <Typography variant="h6">{user?.surname}</Typography>
           </Box>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Correo Electrónico:
             </Typography>
             <Typography variant="h6">{user?.email}</Typography>
           </Box>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Rango de Inr:
             </Typography>
             <Typography variant="h6">
@@ -74,7 +93,10 @@ export default function ProfileCard() {
             </Typography>
           </Box>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Patrón de dosificación:
             </Typography>
             <Typography variant="h6">Nivel:{userDosePattern?.level}</Typography>
@@ -88,7 +110,10 @@ export default function ProfileCard() {
             </Typography>
           </Box>
           <Box m={2}>
-            <Typography variant="h5" sx={titleStyle}>
+            <Typography
+              variant="h5"
+              sx={titleStyle}
+            >
               Función:
             </Typography>
             <Typography variant="h6">
@@ -118,7 +143,10 @@ export default function ProfileCard() {
                 <Typography>datos</Typography>
               </Button>
             </Box>
-            <Box m={3} width={"auto"}>
+            <Box
+              m={3}
+              width={"auto"}
+            >
               <Button
                 variant="contained"
                 component={NavLink}
