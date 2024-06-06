@@ -18,7 +18,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
     contactDoctor = true;
     expectedDate = new Date();
   }
- 
+
   const formattedDate = new Intl.DateTimeFormat("es", {
     weekday: "long",
     month: "long",
@@ -40,6 +40,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
           ? "red"
           : "warning.main",
         color: "white",
+        border: "2px solid black",
       }}
     >
       {noExpectedDateRetrieved ? (

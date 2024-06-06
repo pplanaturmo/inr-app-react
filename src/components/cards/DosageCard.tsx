@@ -41,7 +41,7 @@ const DosageCard: React.FC<DosageCardProps> = ({
       }).format(dateToObject);
 
   const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-
+  const noDose = dosage.value === 0;
   const setTaken = () => {
     updateDoseTaken(setLoading, setDosages, dosages, dosage.id);
   };
@@ -82,9 +82,11 @@ const DosageCard: React.FC<DosageCardProps> = ({
           variant="h6"
           gutterBottom
         >
-          {dosage.value * 4}mg
+          {noDose ? "Sin dosis hoy" : `${dosage.value * 4}mg`}
         </Typography>
-        {isTaken ? (
+        {noDose ? (
+          ""
+        ) : isTaken || dosage.value === 0 ? (
           <Typography variant="h5">TOMADA</Typography>
         ) : isToday ? (
           <>

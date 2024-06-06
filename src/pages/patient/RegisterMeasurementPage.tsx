@@ -18,6 +18,7 @@ import DialogTitle from "@mui/material/DialogTitle/DialogTitle";
 import DialogContent from "@mui/material/DialogContent/DialogContent";
 import DialogActions from "@mui/material/DialogActions/DialogActions";
 import useTheme from "@mui/material/styles/useTheme";
+import NoPatternWarning from "../../components/cards/NoPatternWarning";
 
 export default function RegisterMeasurementPage() {
   const {
@@ -76,21 +77,22 @@ export default function RegisterMeasurementPage() {
     handleConfirmationClose();
   };
 
-  const missingNecessaryParameters = isFieldNull("rangeInr");
-
+  const missingNecessaryParameters =
+    isFieldNull("dosePattern") || user.dosePattern < 0;
+  console.log(user);
+  console.log(missingNecessaryParameters);
   if (missingNecessaryParameters) {
     return (
       <>
-        <Box>
-          <Typography
-            variant="h6"
-            align="center"
-            margin="dense"
-            width={2 / 3}
-          >
-            Necesita tener asignado un nivel de medicación antes de introducir
-            una medida
-          </Typography>
+        <Box
+          px={3}
+          py={2}
+          display={"flex"}
+          flexDirection={"column"}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <NoPatternWarning />
         </Box>
       </>
     );

@@ -7,6 +7,7 @@ export async function registerMeasurement(
   data: MeasurementRequest,
   user: UserResponse
 ) {
+  const tooDangerousValue = 7;
   const baseUrl = import.meta.env.VITE_BASE_API_URL;
   const measurementUrl = "/measurement/create/" + user.id;
 
@@ -14,6 +15,9 @@ export async function registerMeasurement(
     data.measurementInteger + data.measurementDecimal / 10;
   const body = JSON.stringify({ value: measurementValue });
 
+  if (measurementValue > tooDangerousValue) {
+    user.dosePattern = -1;
+  }
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
