@@ -1,9 +1,10 @@
 import React from "react";
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Dosage } from "../../types";
 import dayjs from "dayjs";
 
 import { updateDoseTaken } from "../../services/dosageService";
+import Pill from "../icon-components/Pill";
 
 interface DosageCardProps {
   dosage: Dosage;
@@ -76,13 +77,16 @@ const DosageCard: React.FC<DosageCardProps> = ({
           variant="body1"
           gutterBottom
         >
-          Valor de la dosis:
+          Valor de la dosis:{" "}
+          {noDose ? "Sin dosis hoy" : `${dosage.value * 4}mg`}
         </Typography>
         <Typography
           variant="h6"
           gutterBottom
         >
-          {noDose ? "Sin dosis hoy" : `${dosage.value * 4}mg`}
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Pill dose={dosage.value} />
+          </Box>
         </Typography>
         {noDose ? (
           ""
