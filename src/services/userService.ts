@@ -77,8 +77,7 @@ export async function updatePassword(
       "Content-Type": "application/json",
     },
   };
-  console.log(formData);
-  console.log(baseUrl + updateUrl);
+
   try {
     setLoading(true);
     const response = await axios.put(
