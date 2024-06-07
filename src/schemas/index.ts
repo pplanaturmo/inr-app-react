@@ -11,5 +11,6 @@ export * from "./dosePatternResponseSchema";
 export * from "./rangeInrResponseSchema";
 export * from "./registerRequestSchema";
 export * from "./roleSchema";
+export * from "./updatePasswordSchema";
 export * from "./updateUserSchema";
 export * from "./userSchema";

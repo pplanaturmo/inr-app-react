@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   DosePatternResponse,
   RangeInrResponse,
+  UpdatdePassword,
   UpdateRequest,
   UserResponse,
 } from "../types";
@@ -55,6 +56,53 @@ export async function updateUser(
         transition: Zoom,
       });
     }
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function updatePassword(
+  setLoading: (isLoading: boolean) => void,
+  data: UpdatdePassword,
+  userId: number | undefined
+) {
+  const updateUrl = "/user/" + userId + "/password";
+
+  const formData = {
+    newPassword: data.password,
+  };
+
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  console.log(formData);
+  console.log(baseUrl + updateUrl);
+  try {
+    setLoading(true);
+    const response = await axios.put(
+      baseUrl + updateUrl,
+      formData,
+      axiosConfig
+    );
+    toast.success("Usuario actualizado correctamente", {
+      transition: Bounce,
+    });
+
+    const userData: UserResponse = response.data;
+    return userData;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      toast.error(`${error.response.data.message || error.response.status}`, {
+        transition: Zoom,
+      });
+    } else {
+      toast.warning("No se ha podido conectar con el servidor", {
+        transition: Zoom,
+      });
+    }
+    setLoading(false);
   } finally {
     setLoading(false);
   }

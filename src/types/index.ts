@@ -14,6 +14,7 @@ import {
   rangeInrSchema,
   dosePatternSchema,
   updateUserSchema,
+  updatePasswordSchema,
 } from "../schemas";
 import { Dayjs } from "dayjs";
 
@@ -48,3 +49,4 @@ export type AlertResponse = z.infer<typeof alertResponseSchema>;
 export type RangeInrResponse = z.infer<typeof rangeInrSchema>;
 export type DosePatternResponse = z.infer<typeof dosePatternSchema>;
 export type UpdateRequest = z.infer<typeof updateUserSchema>;
+export type UpdatdePassword = z.infer<typeof updatePasswordSchema>;
