@@ -10,7 +10,7 @@ export default function AlertsPage() {
   const { loading, alerts, setLoading, setAlerts } = useAppStore();
   useEffect(() => {
     fetchAlerts(setLoading, setAlerts);
-    console.log("useEffect de alerts");
+ 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

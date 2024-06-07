@@ -79,8 +79,7 @@ export default function RegisterMeasurementPage() {
 
   const missingNecessaryParameters =
     isFieldNull("dosePattern") || user.dosePattern < 0;
-  console.log(user);
-  console.log(missingNecessaryParameters);
+
   if (missingNecessaryParameters) {
     return (
       <>
@@ -107,7 +106,11 @@ export default function RegisterMeasurementPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h6" align="center" margin="dense">
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+          >
             Añadir medicion
           </Typography>
           <Paper>
@@ -123,7 +126,10 @@ export default function RegisterMeasurementPage() {
               }}
             >
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementInteger"
                     control={control}
@@ -145,7 +151,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
@@ -159,7 +168,10 @@ export default function RegisterMeasurementPage() {
               </Grid>
               <Typography fontSize={"3rem"}> ,</Typography>
               <Grid item>
-                <FormControl fullWidth margin="none">
+                <FormControl
+                  fullWidth
+                  margin="none"
+                >
                   <Controller
                     name="measurementDecimal"
                     control={control}
@@ -178,7 +190,10 @@ export default function RegisterMeasurementPage() {
                         }}
                       >
                         {[...Array(10).keys()].map((value) => (
-                          <MenuItem key={value} value={value}>
+                          <MenuItem
+                            key={value}
+                            value={value}
+                          >
                             {value}
                           </MenuItem>
                         ))}
