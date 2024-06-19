@@ -11,6 +11,6 @@ export const userSchema = z.object({
   dosePattern: z.number(),
   role: z.string(),
   dataConsent: z.boolean(),
-  accessToken: z.string(),
-  refreshToken: z.string(),
+  access_token: z.string(),
+  refresh_token: z.string(),
 });

@@ -59,8 +59,13 @@ export default function PendingDosagesPage() {
           mx="auto"
         >
           {dosages.map((dosage, index) => (
-            <Box width="100%" marginY={2} key={index}>
+            <Box
+              width="100%"
+              marginY={2}
+              key={index}
+            >
               <DosageCard
+                user={user}
                 dosage={dosage}
                 setLoading={setLoading}
                 setDosages={setDosages}
@@ -68,14 +73,20 @@ export default function PendingDosagesPage() {
               />
             </Box>
           ))}
-          <Box width="100%" marginY={2}>
+          <Box
+            width="100%"
+            marginY={2}
+          >
             <ExpectedDateCard
               expectedMeasurementDate={expectedMeasurementDate}
             />
           </Box>
         </Box>
       ) : (
-        <Box width="100%" marginY={2}>
+        <Box
+          width="100%"
+          marginY={2}
+        >
           <ExpectedDateCard expectedMeasurementDate={expectedMeasurementDate} />
         </Box>
       )}

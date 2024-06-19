@@ -5,12 +5,13 @@ import { useAppStore } from "../../store/useAppStore";
 import { useEffect } from "react";
 import Spinner from "../../components/Spinner";
 import AlertCard from "../../components/cards/AlertCard";
+import Paper from "@mui/material/Paper/Paper";
 
 export default function AlertsPage() {
-  const { loading, alerts, setLoading, setAlerts } = useAppStore();
+  const { user, loading, alerts, setLoading, setAlerts } = useAppStore();
   useEffect(() => {
-    fetchAlerts(setLoading, setAlerts);
- 
+    fetchAlerts(user, setLoading, setAlerts);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -27,11 +28,24 @@ export default function AlertsPage() {
             width={"80%"}
             mx="auto"
           >
-            <Typography>Página de alertas</Typography>
-
+            <Paper sx={{ margin: "1rem", maxWidth: "18rem" }}>
+              <Typography
+                variant="h6"
+                align="center"
+                margin="dense"
+                padding={2}
+              >
+                ALERTAS PENDIENTES DE REVISIÓN
+              </Typography>
+            </Paper>
             {alerts.map((alert, index) => (
-              <Box width="100%" marginY={2} key={index}>
+              <Box
+                width="100%"
+                marginY={2}
+                key={index}
+              >
                 <AlertCard
+                  user={user}
                   alert={alert}
                   setLoading={setLoading}
                   alerts={alerts}

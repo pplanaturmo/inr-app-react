@@ -15,9 +15,9 @@ const baseUrl = import.meta.env.VITE_BASE_API_URL;
 export async function updateUser(
   setLoading: (isLoading: boolean) => void,
   data: UpdateRequest,
-  userId: number | undefined
+  user: UserResponse | null
 ) {
-  const updateUrl = "/user/" + userId;
+  const updateUrl = "/user/" + user?.id;
 
   const formData = {
     name: data.name,
@@ -30,6 +30,7 @@ export async function updateUser(
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
 
@@ -64,9 +65,9 @@ export async function updateUser(
 export async function updatePassword(
   setLoading: (isLoading: boolean) => void,
   data: UpdatdePassword,
-  userId: number | undefined
+  user: UserResponse | null
 ) {
-  const updateUrl = "/user/" + userId + "/password";
+  const updateUrl = "/user/" + user?.id + "/password";
 
   const formData = {
     newPassword: data.password,
@@ -75,6 +76,7 @@ export async function updatePassword(
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
 
@@ -140,6 +142,7 @@ export async function fetchDosePatterns(
 
   try {
     setLoading(true);
+
     const { data } = await axios.get(baseUrl + allDosePatternsUrl);
 
     const dosePatternList = data

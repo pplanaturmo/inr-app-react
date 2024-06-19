@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl/FormControl";
 import InputLabel from "@mui/material/InputLabel/InputLabel";
 import Select from "@mui/material/Select/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import TextField from "@mui/material/TextField/TextField";
+
 import Button from "@mui/material/Button/Button";
 
 import dayjs, { Dayjs } from "dayjs";
@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { registerObservation } from "../../services/observationsService";
 import { CauseEnum, causeOptions } from "../../constants/causeOptions";
+import TextField from "@mui/material/TextField/TextField";
 
 type props = {
   handleClose: () => void;
@@ -94,6 +95,22 @@ export default function RegisterObservationPage({
                   />
                 ),
               }}
+              // renderInput={(
+              //   params: JSX.IntrinsicAttributes & {
+              //     variant?: TextFieldVariants | undefined;
+              //   } & Omit<
+              //       | FilledTextFieldProps
+              //       | OutlinedTextFieldProps
+              //       | StandardTextFieldProps,
+              //       "variant"
+              //     >
+              // ) => (
+              //   <TextField
+              //     {...params}
+              //     fullWidth
+              //     required
+              //   />
+              // )}
               sx={{ backgroundColor: "white" }}
             />
           </LocalizationProvider>

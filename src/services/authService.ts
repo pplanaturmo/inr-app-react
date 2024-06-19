@@ -36,6 +36,7 @@ export async function registerUser(data: RegisterRequest) {
     });
 
     const userData: UserResponse = response.data;
+
     return userData;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {

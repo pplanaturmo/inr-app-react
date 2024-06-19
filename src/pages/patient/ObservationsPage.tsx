@@ -12,7 +12,7 @@ import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Spinner from "../../components/Spinner";
 import ObservationCard from "../../components/cards/ObservationCard";
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 export default function ObservationsPage() {
   const [open, setOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function ObservationsPage() {
           color="secondary"
           onClick={handleOpen}
         >
-          Añadir Observacion
+          Añadir Observación
         </Button>
         <Dialog
           open={open}
@@ -105,8 +105,21 @@ export default function ObservationsPage() {
           width="100%"
           marginY={2}
           textAlign={"center"}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
         >
-          <Typography variant="h6">No hay observaciones registradas</Typography>
+          <Paper sx={{ margin: "1rem", maxWidth: "14rem" }}>
+            <Typography
+              variant="h6"
+              align="center"
+              margin="dense"
+              sx={{ padding: "1rem" }}
+            >
+              NO HAY OBSERVACIONES REGISTRADAS
+            </Typography>
+          </Paper>
         </Box>
       )}
     </>

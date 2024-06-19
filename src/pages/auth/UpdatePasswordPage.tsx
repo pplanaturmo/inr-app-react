@@ -15,24 +15,7 @@ import TextField from "@mui/material/TextField/TextField";
 import { updatePasswordSchema } from "../../schemas";
 import { updatePassword } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
-
-// export default function UpdatePasswordPage() {
-//   return (
-//     <>
-//       <Box
-//         display="flex"
-//         flexDirection="column"
-//         alignItems="center"
-//         justifyContent="center"
-//         width={"80%"}
-//         mx="auto"
-//       >
-//         <Typography>Actualización de contraseña</Typography>
-//         <UnderConstruction />
-//       </Box>
-//     </>
-//   );
-// }
+import Paper from "@mui/material/Paper/Paper";
 
 export default function UpdatePasswordPage() {
   const {
@@ -54,7 +37,7 @@ export default function UpdatePasswordPage() {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const validatedData = updatePasswordSchema.parse(data);
     try {
-      await updatePassword(setLoading, validatedData, user?.id);
+      await updatePassword(setLoading, validatedData, user);
       goToProfile();
     } catch (error) {
       console.error(error);
@@ -82,15 +65,16 @@ export default function UpdatePasswordPage() {
         alignItems="center"
         width={"100%"}
       >
-        <Typography
-          variant="h4"
-          align="center"
-          margin="dense"
-          marginBottom={2}
-        >
-          Actualizar contraseña
-        </Typography>
-
+        <Paper sx={{ margin: "1rem", maxWidth: "18rem" }}>
+          <Typography
+            variant="h6"
+            align="center"
+            margin="dense"
+            padding={2}
+          >
+            ACTUALIZAR CONTRASEÑA
+          </Typography>
+        </Paper>
         <Grid
           container
           spacing={2}
@@ -108,7 +92,7 @@ export default function UpdatePasswordPage() {
             <TextField
               required
               id="password"
-              label="Contraseña"
+              label="Nueva contraseña"
               type="password"
               fullWidth
               margin="dense"
@@ -152,7 +136,7 @@ export default function UpdatePasswordPage() {
             <TextField
               required
               id="confirmPassword"
-              label="Confirmar Contraseña"
+              label="Confirmar nueva contraseña"
               type="password"
               fullWidth
               margin="dense"

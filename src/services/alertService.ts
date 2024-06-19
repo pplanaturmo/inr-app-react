@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { AlertResponse } from "../types";
+import { AlertResponse, UserResponse } from "../types";
 import dayjs from "dayjs";
 import { Zoom, toast } from "react-toastify";
 import { alertResponseSchema } from "../schemas";
@@ -9,6 +9,7 @@ import { alertSchema } from "../schemas/alertSchema";
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const fetchAlerts = async (
+  user: UserResponse | null,
   setLoading: (isLoading: boolean) => void,
   setAlerts: (alert: AlertResponse[]) => void
 ) => {
@@ -17,7 +18,7 @@ export const fetchAlerts = async (
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user?.accessToken}`,
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
 
@@ -42,7 +43,6 @@ export const fetchAlerts = async (
       });
       console.log(`${error.response.data.message || error.response.status}`);
     } else {
-      console.log(error);
       toast.warning("No se ha podido conectar con el servidor", {
         transition: Zoom,
       });
@@ -53,6 +53,7 @@ export const fetchAlerts = async (
 };
 
 export const updateAlertReviewed = async (
+  user: UserResponse | null,
   alertId: number,
   alerts: AlertResponse[],
   setAlerts: (alerts: AlertResponse[]) => void,
@@ -68,7 +69,7 @@ export const updateAlertReviewed = async (
     const axiosConfig = {
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${user?.accessToken}`,
+        Authorization: `Bearer ${user?.access_token}`,
       },
     };
 

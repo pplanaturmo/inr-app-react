@@ -352,14 +352,14 @@ export default function RegisterPage() {
                       </MenuItem>
                     ))}
                   </Select>
-                  {/* {fieldState.error && (
+                  {fieldState.error && (
                     <Typography
                       variant="body2"
                       color="error"
                     >
                       {fieldState.error.message}
                     </Typography>
-                  )} */}
+                  )}
                 </FormControl>
               )}
             />

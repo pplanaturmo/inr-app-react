@@ -10,7 +10,6 @@ const baseUrl = import.meta.env.VITE_BASE_API_URL;
 export const fetchDosages = async (
   setLoading: (isLoading: boolean) => void,
   setDosages: (dosages: Dosage[]) => void,
-
   user: UserResponse | null
 ) => {
   const dosageBetweenUrl = "/dosage/between-dates";
@@ -28,7 +27,7 @@ export const fetchDosages = async (
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user?.accessToken}`,
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
 
@@ -71,7 +70,8 @@ export const updateDoseTaken = async (
     }[]
   ) => void,
   dosages: Dosage[],
-  dosageId: number
+  dosageId: number,
+  user: UserResponse | null
 ) => {
   setLoading(true);
   try {
@@ -84,7 +84,7 @@ export const updateDoseTaken = async (
     const axiosConfig = {
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${user?.accessToken}`,
+        Authorization: `Bearer ${user?.access_token}`,
       },
     };
 

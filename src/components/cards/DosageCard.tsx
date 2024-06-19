@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
-import { Dosage } from "../../types";
+import { Dosage, UserResponse } from "../../types";
 import dayjs from "dayjs";
 
 import { updateDoseTaken } from "../../services/dosageService";
@@ -18,6 +18,7 @@ interface DosageCardProps {
     }[]
   ) => void;
   dosages: Dosage[];
+  user: UserResponse | null;
 }
 
 const DosageCard: React.FC<DosageCardProps> = ({
@@ -25,6 +26,7 @@ const DosageCard: React.FC<DosageCardProps> = ({
   setDosages,
   dosages,
   dosage,
+  user,
 }) => {
   const isTaken = dosage.taken;
   const today = dayjs();
@@ -44,7 +46,7 @@ const DosageCard: React.FC<DosageCardProps> = ({
   const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
   const noDose = dosage.value === 0;
   const setTaken = () => {
-    updateDoseTaken(setLoading, setDosages, dosages, dosage.id);
+    updateDoseTaken(setLoading, setDosages, dosages, dosage.id, user);
   };
 
   return (
@@ -84,9 +86,13 @@ const DosageCard: React.FC<DosageCardProps> = ({
           variant="h6"
           gutterBottom
         >
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Pill dose={dosage.value} />
-          </Box>
+          {isTaken ? (
+            ""
+          ) : (
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Pill dose={dosage.value} />
+            </Box>
+          )}
         </Typography>
         {noDose ? (
           ""

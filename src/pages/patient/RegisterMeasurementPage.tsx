@@ -106,13 +106,16 @@ export default function RegisterMeasurementPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography
-            variant="h6"
-            align="center"
-            margin="dense"
-          >
-            Añadir medicion
-          </Typography>
+          <Paper sx={{ margin: "1rem" }}>
+            <Typography
+              variant="h6"
+              align="center"
+              margin="dense"
+              sx={{ paddingX: "1rem" }}
+            >
+              AÑADIR MEDICIÓN
+            </Typography>
+          </Paper>
           <Paper>
             <Grid
               container

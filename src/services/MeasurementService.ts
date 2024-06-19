@@ -21,7 +21,7 @@ export async function registerMeasurement(
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user.accessToken}`,
+      Authorization: `Bearer ${user.access_token}`,
     },
   };
 

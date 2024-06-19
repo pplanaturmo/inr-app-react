@@ -27,7 +27,7 @@ export async function registerObservation(
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user.accessToken}`,
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
 
@@ -66,7 +66,7 @@ export const fetchObservations = async (
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
-      // Authorization: `Bearer ${user?.accessToken}`,
+      Authorization: `Bearer ${user?.access_token}`,
     },
   };
   try {

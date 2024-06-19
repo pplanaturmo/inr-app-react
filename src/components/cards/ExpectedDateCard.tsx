@@ -62,7 +62,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
               color: "black",
             }}
           >
-            No hay ninguna medición almacenada
+            NO HAY NINGUNA MEDICIÓN ALMACENADA
           </Typography>
         </CardContent>
       ) : contactDoctor ? (
@@ -105,7 +105,7 @@ const ExpectedDateCard: React.FC<ExpectedDateCardProps> = ({
             gutterBottom
             sx={{ fontSize: "1.5rem" }}
           >
-            Siguiente medida:
+            SIGUIENTE MEDIDA:
           </Typography>
           <Typography
             variant="h5"

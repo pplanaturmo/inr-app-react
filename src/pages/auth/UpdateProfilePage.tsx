@@ -26,6 +26,7 @@ import { formatNumberArray } from "../../utils/numberFormat";
 import Spinner from "../../components/Spinner";
 import { updateUserSchema } from "../../schemas/updateUserSchema";
 import { updateUser } from "../../services/userService";
+import Paper from "@mui/material/Paper/Paper";
 
 export default function UpdateProfilePage() {
   const {
@@ -35,17 +36,13 @@ export default function UpdateProfilePage() {
     formState: { errors },
   } = useForm({});
 
-  const { user, loading, rangeInrList, dosePatternList, setUser, setLoading } =
+  const { user, loading, rangeInrList, dosePatternList, setLoading } =
     useAppStore();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const validatedData = updateUserSchema.parse(data);
     try {
-      const userData = await updateUser(setLoading, validatedData, user?.id);
-      if (userData) {
-        setUser(userData);
-        goToProfile();
-      }
+      await updateUser(setLoading, validatedData, user);
     } catch (error) {
       console.error(error);
     }
@@ -77,14 +74,16 @@ export default function UpdateProfilePage() {
           alignItems="center"
           width={"100%"}
         >
-          <Typography
-            variant="h4"
-            align="center"
-            margin="dense"
-            marginBottom={2}
-          >
-            Actualizar datos de usuario
-          </Typography>
+          <Paper sx={{ margin: "1rem", maxWidth: "18rem" }}>
+            <Typography
+              variant="h6"
+              align="center"
+              margin="dense"
+              padding={2}
+            >
+              ACTUALIZAR DATOS DE USUARIO
+            </Typography>
+          </Paper>
 
           <Grid
             container
