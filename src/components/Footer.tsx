@@ -42,17 +42,17 @@ export default function Footer() {
             align="center"
             sx={{ fontWeight: "900", fontSize: "2rem", color: "#F7DCDC" }}
           >
-            Sanguinius INR
+            Aplicación INR
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Typography variant="body2" gutterBottom align="center">
-            Dirección: 123 Calle Baal, Cartago, Delenda Est
+            Dirección: 123 Calle Aleatoria, Cartago, Delenda Est
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Typography variant="body2" gutterBottom align="center">
-            Teléfono: +34 555 456 7890
+            Teléfono: +34 555 555 555
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -60,12 +60,12 @@ export default function Footer() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Typography variant="body2" gutterBottom align="center">
-            Follow us on: Facebook | Twitter | Instagram
+            Siguenos: Facebook | Twitter | Instagram
           </Typography>
         </Grid>
         <Grid item xs={12} paddingTop={4}>
           <Typography variant="h6" align="center">
-            © {new Date().getFullYear()} Sanguinius INR. All rights reserved.
+            © {new Date().getFullYear()} Aplicación INR. Todos los derechos reservados.
           </Typography>
           <Box mt={1} sx={{ textAlign: "center" }}>
             <RouterLink
