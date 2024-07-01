@@ -11,7 +11,7 @@ import Select from "@mui/material/Select/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
 import FormHelperText from "@mui/material/FormHelperText/FormHelperText";
 import { MeasurementRequest, UserResponse } from "../../types";
-import { registerMeasurement } from "../../services/measurementService";
+import { registerMeasurement } from "../../services/measurementsService";
 import { useState } from "react";
 import Dialog from "@mui/material/Dialog/Dialog";
 import DialogTitle from "@mui/material/DialogTitle/DialogTitle";

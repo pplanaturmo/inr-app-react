@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Observation } from "../../types";
 import dayjs from "dayjs";
-import { CauseEnum, causeOptions } from "../../constants/causeOptions";
+import { CauseEnum, causeOptions } from "../../constants/causesOptions";
 
 interface ObservationCardProps {
   observation: Observation;

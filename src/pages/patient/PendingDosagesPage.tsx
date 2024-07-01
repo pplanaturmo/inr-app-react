@@ -2,12 +2,12 @@ import Box from "@mui/material/Box/Box";
 import Spinner from "../../components/Spinner";
 import { useAppStore } from "../../store/useAppStore";
 import DosageCard from "../../components/cards/DosageCard";
-import { fetchDosages } from "../../services/dosageService";
+import { fetchDosages } from "../../services/dosagesService";
 import { useEffect } from "react";
 import ExpectedDateCard from "../../components/cards/ExpectedDateCard";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { fetchExpectedMeasurementDate } from "../../services/expectedDateService";
+import { fetchExpectedMeasurementDate } from "../../services/expectedDatesService";
 
 export default function PendingDosagesPage() {
   const {

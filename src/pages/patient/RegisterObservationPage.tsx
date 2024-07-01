@@ -19,7 +19,7 @@ import { useAppStore } from "../../store/useAppStore";
 import { useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { registerObservation } from "../../services/observationsService";
-import { CauseEnum, causeOptions } from "../../constants/causeOptions";
+import { CauseEnum, causeOptions } from "../../constants/causesOptions";
 import TextField from "@mui/material/TextField/TextField";
 
 type props = {

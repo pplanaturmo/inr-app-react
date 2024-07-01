@@ -3,7 +3,7 @@ import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import { Dosage, UserResponse } from "../../types";
 import dayjs from "dayjs";
 
-import { updateDoseTaken } from "../../services/dosageService";
+import { updateDoseTaken } from "../../services/dosagesService";
 import Pill from "../icon-components/Pill";
 
 interface DosageCardProps {
